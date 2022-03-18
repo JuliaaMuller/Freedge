@@ -1,8 +1,21 @@
 -- seeds/01_users.sql
--- users seeds
-INSERT INTO users (id, email, password) VALUES (1, 'rick.sandchez@gmail.com', 'picklerick');
-INSERT INTO users (id, email, password) VALUES (2, 'lisa.simpson@gmail.com', 'ehhhhh');
-INSERT INTO users (id, email, password) VALUES (3, 'link@yahoo.com', 'hyrule');
-INSERT INTO users (id, email, password) VALUES (4, 'simon_bel123@mail.ca', 'dracula');
-INSERT INTO users (id, email, password) VALUES (5, 'all_might@academia.jp', 'plusUltra');
-INSERT INTO users (id, email, password) VALUES (6, 'mario@mushroomkindom.jp', 'plumber79');
+
+-- Users table seeds here (Example)
+INSERT INTO users (first_name, last_name, email, password, phone_number, address, city, ) VALUES ('Armand', 'Hilll','armandhill@gmail.com','1234','7052309906', '1390 Islington Ave','Toronto'),
+('Della', 'Gordon', 'clairemelendez@live.com', '1234','2264000462','3558 Thurston Dr', 'Toronto'),
+('Bruce', 'Summers', 'keiraclay@outlook.com', '1234','2048170685','4005 Nelson Street','Toronto'),
+('Harvey', 'Sanders', 'huntermclaughlin@mail.com', '1234','2048199891','2149 Ontario St','Vancouver'),
+('Lelia', 'Butler', 'jaycemeyer@live.com', '1234','2048089972','2446 rue Saint-Antoine','Montreal'),
+('Carrie', 'Hanson', 'sebastiangibbs@mail.com', '1234','7052549906','4096 137th Avenue','Vancouver'),
+('Mabel', 'Barrett', 'kaitlynhickman@yahoo.com', '1234','4389075567','425 Eglinton Avenue','Vancouver'),
+('Jean', 'Rowe', 'giannasullivan@live.com', '1234','4489185567','2016 Bloor Street','Vancouver'),
+('Christine', 'Ortega', 'christianpruitt@outlook.com', '1234','3148199892','896 Fallon Drive','Toronto'),
+('Larry', 'Pearson', 'owenhamilton@gmx.com', '1234','5489185667','2132 49th Avenue','Toronto'),
+('Shane', 'Lee', 'wyattyates@yahoo.com', '1234','2375101462','4325 Lauzon Parkway','Toronto'),
+('Russell', 'Vega', 'brooklynraymond@hotmail.com', '1234','3476201463','837 Bridgeport Rd','Toronto'),
+('Hallie', 'Maxwell', 'ianelliott@gmx.com', '1234','587301574','1441 Adelaide St','Toronto'),
+('Matilda', 'Lawrence', 'alicestuart@icloud.com', '1234','2104682461','8041539802','3481 Sixth Street','Toronto'),
+('Ann', 'Mack', 'isabellemiranda@gmx.com', '1234','9264123462','1787 90th Avenue','Montreal'),
+('Garrett', 'McCormick', 'charliehahn@mail.com', '1234','3149219782','4009 Toy Avenue','Montreal'),
+('Mabel', 'Berry', 'williamnavarro@icloud.com', '1234','4142192640','1648 Brew Creek Rd','Montreal'),
+('Lora', 'Walker', 'claireashley@yahoo.com', '1234','5148122892','1205 Duke Street','Montreal'),
