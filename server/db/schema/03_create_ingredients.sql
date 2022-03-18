@@ -6,5 +6,6 @@ CREATE TABLE ingredients (
   name VARCHAR(255) NOT NULL,
   quantity INTEGER NOT NULL,
   expiration_date DATE,
-  category VARCHAR(255)
+  category VARCHAR(255),
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
