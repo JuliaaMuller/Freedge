@@ -12,6 +12,16 @@ const resultsArray = [
 		},
 		{
 			"id": 9019,
+			"name": "apricot",
+			"image": "applesauce.png"
+		},
+    {
+			"id": 9006,
+			"name": "artichoke",
+			"image": "apple.jpg"
+		},
+		{
+			"id": 9012,
 			"name": "applesauce",
 			"image": "applesauce.png"
 		}
@@ -22,7 +32,7 @@ export default function IngredientSearch() {
   const [results, setResults] = useState([]);
   const [selection, setSelection] = useState([]);
 
-  // const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=2&apiKey=${process.env.REACT_APP_API_KEY}`
+  // const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=5&apiKey=${process.env.REACT_APP_API_KEY}`
 
   // useEffect(() => {
   //   axios
