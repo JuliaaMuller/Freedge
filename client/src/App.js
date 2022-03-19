@@ -2,7 +2,8 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import IngredientList from "./components/IngredientList"
-import './App.css';
+import './App.scss';
+import Home from "./components/Home"
 
 function App() {
   return (
@@ -11,6 +12,10 @@ function App() {
       <Route 
         path="/ingredients" 
         element={<IngredientList />}>
+      </Route>
+      <Route 
+        path="/" 
+        element={<Home />}>
       </Route>
     </Routes>
   </BrowserRouter>

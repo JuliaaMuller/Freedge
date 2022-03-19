@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function IngredientList() {
   return (
-    <div>IngredientList</div>
+    <div><h1>IngredientList</h1></div>
   )
 }
