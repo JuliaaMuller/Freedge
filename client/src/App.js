@@ -1,19 +1,14 @@
-//App.js
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import IngredientList from "./components/IngredientList"
-import './App.css';
+import "./App.css";
+import IngredientSearch from "./components/IngredientSearch";
 
 function App() {
   return (
     <BrowserRouter>
-    <Routes>
-      <Route 
-        path="/ingredients" 
-        element={<IngredientList />}>
-      </Route>
-    </Routes>
-  </BrowserRouter>
+      <Routes>
+        <Route path="/ingredients" element={<IngredientSearch />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
