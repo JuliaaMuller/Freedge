@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import IngredientItem from "./IngredientItem";
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
+import IngredientList from "./IngredientList";
 
 const resultsArray = [
 		{
@@ -20,7 +20,7 @@ const resultsArray = [
 export default function IngredientSearch() {
   const [term, setTerm] = useState('');
   const [results, setResults] = useState([]);
-  const [selection, setSelection] = useState();
+  const [selection, setSelection] = useState([]);
 
   // const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=2&apiKey=${process.env.REACT_APP_API_KEY}`
 
@@ -36,12 +36,9 @@ export default function IngredientSearch() {
   //     });
   // }, [term]);
   
-  console.log(term)
-  
   const handleChange = (value) => {
     if (!value) {
       setResults([]);
-      setSelection('');
     } else {
       setResults(resultsArray)
     }
@@ -51,9 +48,9 @@ export default function IngredientSearch() {
  
   const selectedOption = (option) => {
     setTerm(option.name);
-    setSelection(option);
+    setSelection(prev => ([...prev, option]));
   }
-
+  
   return (
     <main>
       <Form onSubmit={(event) => event.preventDefault()}>
@@ -69,7 +66,7 @@ export default function IngredientSearch() {
       {results && results.map((result) => {
         return <Card key = {result["id"]} onClick={() => selectedOption(result)} body> {result["name"]}</Card>
       })}
-      {selection && <IngredientItem item={selection}/>}
+      {selection.length > 0 ? <IngredientList items={selection}/> : ""}
     </main>
   );
 }
