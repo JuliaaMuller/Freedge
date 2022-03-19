@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import IngredientList from "./IngredientList";
 
 export default function IngredientSearch() {
   const [term, setTerm] = useState('');
   const [results, setResults] = useState([]);
 
-  const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=2&apiKey=${process.env.REACT_APP_API_KEY}`
+  // const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=2&apiKey=${process.env.REACT_APP_API_KEY}`
 
   useEffect(() => {
     axios
@@ -33,7 +34,7 @@ export default function IngredientSearch() {
           onChange={(event) => setTerm(event.target.value)}
         />
       </form>
-     
+     <IngredientList results = {results}/>
     </main>
   );
 }

@@ -1,5 +1,8 @@
 import React from "react";
+import IngredientListItem from "./IngredientListItem";
+
 
 export default function IngredientList() {
-  return <div>IngredientList</div>;
+  
+  
 }
