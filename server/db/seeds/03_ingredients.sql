@@ -70,4 +70,4 @@ INSERT INTO ingredients (name, quantity, category, user_id) VALUES ('tomato', 3,
 ('quinoa', 1, 'Pasta, rice, and cereals', 2),
 ('quinoa', 1, 'Pasta, rice, and cereals', 3),
 ('quinoa', 1, 'Pasta, rice, and cereals', 4),
-('quinoa', 1, 'Pasta, rice, and cereals', 5),
+('quinoa', 1, 'Pasta, rice, and cereals', 5)
