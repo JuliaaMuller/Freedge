@@ -32,8 +32,9 @@ function Home (props) {
     </Button>
     </div>
     <div className='my-meal-planner'>
-         Your meal planner
+         Your meals for the days
          <br/>
+         // if it's a new account or you don't have any ingredients -- message "You don't have a meal plan yet because you need to add ingredient first"
          <ButtonGroup className='days-button'>
         {days.map((day, idx) => (
           <ToggleButton

@@ -13,7 +13,7 @@ function About (props) {
     <p> Manseerat Kaur is a full-stack developper and ...</p>
   </div>
   <div className='julia'>
-    <p> Julia Muller also a full-stack developper and a busy mom.  </p>
+    <p> Julia Muller also a full-stack developper and a mother.  </p>
   </div>
   <h5> Why Freedge ? </h5>
   <div className='description'>
