@@ -27,7 +27,7 @@ function Home (props) {
     <div className='my-ingredients'>
          What's in your fridge ? 
          <br/>
-    <Button variant="btn btn-outline-secondary" type="submit" className='go-to-ingredients'> 
+    <Button variant="btn btn-outline-secondary" type="submit" className='go-to-ingredients' href='/ingredients'> 
       <GrAddCircle/>
     </Button>
     </div>
@@ -35,26 +35,14 @@ function Home (props) {
          Your meals for the days
          <br/>
          // if it's a new account or you don't have any ingredients -- message "You don't have a meal plan yet because you need to add ingredient first"
-         <ButtonGroup className='days-button'>
-        {days.map((day, idx) => (
-          <ToggleButton
-            key={idx}
-            id={`day-${idx}`}
-            type='day'
-            variant="outline-secondary"
-            name='days'
-            value={day.value}
-            checked={dayValue === day.value}
-            onChange={(e) => setdayValue(e.currentTarget.value)}
-          >
-            {day.name}
-          </ToggleButton>
-        ))}
-      </ButtonGroup>
+         <br/>
+    <Button variant="btn btn-outline-secondary" type="submit" className='go-to-meal-planner' href='/mealplanner'>
+      Today's meals
+    </Button>
     </div>
     <div className='my-shopping-list'>
          We can help you with your groceries : <br/>
-    <Button variant="btn btn-outline-secondary" type="submit" className='shopping-cart'> 
+    <Button variant="btn btn-outline-secondary" type="submit" className='shopping-cart' href='/shoppinglist'> 
       Place an order <MdAddShoppingCart/>
     </Button>
     </div>
@@ -67,7 +55,7 @@ function Home (props) {
       aria-label="Recipient's username"
       aria-describedby="basic-addon2"
     />
-    <Button variant="outline-secondary" id="button-addon2">
+    <Button variant="outline-secondary" id="button-addon2" href='/explore'>
       <FcSearch/>
     </Button>
   </InputGroup>

@@ -16,7 +16,6 @@ export default function NavMenu() {
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
-        <Nav.Link href="/">Home</Nav.Link>
         <Nav.Link href="/login">Log in</Nav.Link>
         <Nav.Link href="/register">Register</Nav.Link>
         <NavDropdown className ="dropdown-nav" title="Menu" id="basic-nav-dropdown">
