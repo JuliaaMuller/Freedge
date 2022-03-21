@@ -7,6 +7,7 @@ const db = require('./configs/db.config');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const ingredientsRouter = require('./routes/ingredients')
 
 var app = express();
 
@@ -18,6 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter(db));
+app.use('/ingredients',ingredientsRouter(db));
 
 
 module.exports = app;
