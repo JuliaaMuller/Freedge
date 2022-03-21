@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import IngredientList from "./IngredientList";
 
 const resultsArray = [
@@ -32,7 +33,7 @@ export default function IngredientSearch() {
   const [results, setResults] = useState([]);
   const [selection, setSelection] = useState([]);
 
-  // const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=5&apiKey=${process.env.REACT_APP_API_KEY}`
+  const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=5&apiKey=${process.env.REACT_APP_API_KEY || process.env.REACT_APP_SECONDARY_API_KEY}`
 
   // useEffect(() => {
   //   axios
@@ -49,7 +50,8 @@ export default function IngredientSearch() {
   const handleChange = (value) => {
     if (!value) {
       setResults([]);
-    } else {
+    } 
+    else {
       setResults(resultsArray)
     }
 
@@ -59,6 +61,7 @@ export default function IngredientSearch() {
   const selectedOption = (option) => {
     setTerm(option.name);
     setSelection(prev => ([...prev, option]));
+    setResults([]);
   }
   
   return (
@@ -77,6 +80,7 @@ export default function IngredientSearch() {
         return <Card key = {result["id"]} onClick={() => selectedOption(result)} body> {result["name"]}</Card>
       })}
       {selection.length > 0 ? <IngredientList items={selection}/> : ""}
+      
     </main>
   );
 }
