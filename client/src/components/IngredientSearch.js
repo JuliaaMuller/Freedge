@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+
 import IngredientList from "./IngredientList";
 
 const resultsArray = [
@@ -32,7 +32,15 @@ export default function IngredientSearch() {
   const [term, setTerm] = useState('');
   const [results, setResults] = useState([]);
   const [selection, setSelection] = useState([]);
-
+  const [category, setCategory] = useState({
+   vegetable: [],
+   fruit: [],
+   dairy: [],
+   protein: [],
+   grain: [],
+   other: []
+  })
+  console.log(category);
   const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=5&apiKey=${process.env.REACT_APP_API_KEY || process.env.REACT_APP_SECONDARY_API_KEY}`
 
   // useEffect(() => {
@@ -63,6 +71,29 @@ export default function IngredientSearch() {
     setSelection(prev => ([...prev, option]));
     setResults([]);
   }
+
+  const handleCategory = (type, name, id, quantity) => {
+    console.log(type, name, id, quantity)
+    if(type === "vegetable") {
+      setCategory(prev => ({...prev, vegetable: [...prev.vegetable, {id: id, name: name, quantity: quantity}]}))
+    }
+    if(type === "protein") {
+      setCategory(prev => ({...prev, protein: [...prev.protein, {id: id, name: name, quantity: quantity}]}))
+    }
+    if(type === "fruit") {
+      setCategory(prev => ({...prev, fruit: [...prev.fruit, {id: id, name: name, quantity: quantity}]}))
+    }
+    if(type === "grain") {
+      setCategory(prev => ({...prev, grain: [...prev.grain, {id: id, name: name, quantity: quantity}]}))
+    }
+    if(type === "dairy") {
+      setCategory(prev => ({...prev, dairy: [...prev.dairy, {id: id, name: name, quantity: quantity}]}))
+    }
+    if(type === "other") {
+      setCategory(prev => ({...prev, other: [...prev.other, {id: id, name: name, quantity: quantity}]}))
+    }
+    
+  }
   
   return (
     <main>
@@ -79,7 +110,7 @@ export default function IngredientSearch() {
       {results && results.map((result) => {
         return <Card key = {result["id"]} onClick={() => selectedOption(result)} body> {result["name"]}</Card>
       })}
-      {selection.length > 0 ? <IngredientList items={selection}/> : ""}
+      {selection.length > 0 ? <IngredientList items={selection} handleCategory={handleCategory}/> : ""}
       
     </main>
   );

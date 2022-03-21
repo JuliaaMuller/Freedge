@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./IngredientItem.scss";
 
-export default function IngredientItem({ name, image }) {
+export default function IngredientItem({ name, handleCategory, id }) {
   const [count, setCount] = useState(0);
 
   function increment() {
@@ -20,7 +20,7 @@ export default function IngredientItem({ name, image }) {
       <div className="category">
         CATEGORY
         <div className="category--item">
-          <img src="images/vegetable.png"/>
+          <img onClick={() => handleCategory("vegetable", name, id, count)} src="images/vegetable.png"/>
           <img src="images/fruits.png"/>
           <img src="images/meat.png"/>
           <img src="images/dairy.png"/>
