@@ -1,8 +1,14 @@
 main {
 margin-left: 20px;
 margin-right: 20px;
+background-color: #ffffff;
+background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
 }
 
+.brand-logo {
+align-content: center;
+height: 450px;
+}
 .my-ingredients {
 padding: 10px;
 border-color: black;
@@ -23,6 +29,14 @@ text-align: center;
 }
 
 .my-shopping-list {
+text-align: center;
+padding: 10px;
+border-color: black;
+border: solid 2px;
+text-align: center;
+}
+
+.explore-recipes {
 text-align: center;
 padding: 10px;
 border-color: black;

@@ -4,6 +4,7 @@ import './Home.scss';
 import { GrAddCircle } from 'react-icons/gr';
 import { ButtonGroup, ToggleButton, InputGroup, Button, FormControl } from 'react-bootstrap';
 import { MdAddShoppingCart } from 'react-icons/md';
+import { FcSearch } from 'react-icons/fc';
 
 function Home (props) {
 
@@ -21,9 +22,7 @@ function Home (props) {
   return (
     <><NavMenu />  
   <main>
-    <h4>
-        Welcome to Freedge - We will help you free your fridge.
-    </h4>
+    <img className='brand-logo' src='images/brand-logo.png' alt=''/>
     <div className='my-ingredients'>
          What's in your fridge ? 
          <br/>
@@ -58,12 +57,12 @@ function Home (props) {
          What are you looking for ? 
   <InputGroup className="mb-3">
     <FormControl
-      placeholder="Recipient's username"
+      placeholder="Enter a key word"
       aria-label="Recipient's username"
       aria-describedby="basic-addon2"
     />
     <Button variant="outline-secondary" id="button-addon2">
-      Button
+      <FcSearch/>
     </Button>
   </InputGroup>
     </div>
