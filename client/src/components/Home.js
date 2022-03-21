@@ -27,31 +27,24 @@ function Home (props) {
     <div className='my-ingredients'>
          What's in your fridge ? 
          <br/>
-         <GrAddCircle  className='go-to-ingredients' onClick={props.onClick}/>
+    <Button variant="btn btn-outline-secondary" type="submit" className='go-to-ingredients' href='/ingredients'> 
+      <GrAddCircle/>
+    </Button>
     </div>
     <div className='my-meal-planner'>
-         Your meal planner
+         Your meals for the days
          <br/>
-         <ButtonGroup className='days-button'>
-        {days.map((day, idx) => (
-          <ToggleButton
-            key={idx}
-            id={`day-${idx}`}
-            type='day'
-            variant="outline-secondary"
-            name='days'
-            value={day.value}
-            checked={dayValue === day.value}
-            onChange={(e) => setdayValue(e.currentTarget.value)}
-          >
-            {day.name}
-          </ToggleButton>
-        ))}
-      </ButtonGroup>
+         // if it's a new account or you don't have any ingredients -- message "You don't have a meal plan yet because you need to add ingredient first"
+         <br/>
+    <Button variant="btn btn-outline-secondary" type="submit" className='go-to-meal-planner' href='/mealplanner'>
+      Today's meals
+    </Button>
     </div>
     <div className='my-shopping-list'>
-         We can help you with your groceries : 
-         Place an order <MdAddShoppingCart className='shopping-cart' onClick={props.onClick}/>
+         We can help you with your groceries : <br/>
+    <Button variant="btn btn-outline-secondary" type="submit" className='shopping-cart' href='/shoppinglist'> 
+      Place an order <MdAddShoppingCart/>
+    </Button>
     </div>
     <div className='explore-recipes'>
          Explore for more recipes : 
@@ -62,7 +55,7 @@ function Home (props) {
       aria-label="Recipient's username"
       aria-describedby="basic-addon2"
     />
-    <Button variant="outline-secondary" id="button-addon2">
+    <Button variant="outline-secondary" id="button-addon2" href='/explore'>
       <FcSearch/>
     </Button>
   </InputGroup>
