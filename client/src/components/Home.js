@@ -5,6 +5,7 @@ import { GrAddCircle } from 'react-icons/gr';
 import { ButtonGroup, ToggleButton, InputGroup, Button, FormControl } from 'react-bootstrap';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { FcSearch } from 'react-icons/fc';
+// import Footer from './footer';
 
 function Home (props) {
 
@@ -67,6 +68,7 @@ function Home (props) {
   </InputGroup>
     </div>
   </main>
+
       
       
       </>
