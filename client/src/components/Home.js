@@ -27,7 +27,9 @@ function Home (props) {
     <div className='my-ingredients'>
          What's in your fridge ? 
          <br/>
-         <GrAddCircle  className='go-to-ingredients' onClick={props.onClick}/>
+    <Button variant="btn btn-outline-secondary" type="submit" className='go-to-ingredients'> 
+      <GrAddCircle/>
+    </Button>
     </div>
     <div className='my-meal-planner'>
          Your meal planner
@@ -50,8 +52,10 @@ function Home (props) {
       </ButtonGroup>
     </div>
     <div className='my-shopping-list'>
-         We can help you with your groceries : 
-         Place an order <MdAddShoppingCart className='shopping-cart' onClick={props.onClick}/>
+         We can help you with your groceries : <br/>
+    <Button variant="btn btn-outline-secondary" type="submit" className='shopping-cart'> 
+      Place an order <MdAddShoppingCart/>
+    </Button>
     </div>
     <div className='explore-recipes'>
          Explore for more recipes : 
