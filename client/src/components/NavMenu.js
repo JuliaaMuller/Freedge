@@ -12,22 +12,23 @@ export default function NavMenu() {
 <Navbar  bg="light" expand="lg">
 
   <Container>
-    <Navbar.Brand href="#home">< BiFridge className="icon-nav"/> Freedge</Navbar.Brand>
+    <Navbar.Brand href="/">< BiFridge className="icon-nav"/> Freedge</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#link">Sign in</Nav.Link>
+        <Nav.Link href="/">Home</Nav.Link>
+        <Nav.Link href="/login">Log in</Nav.Link>
+        <Nav.Link href="/register">Register</Nav.Link>
         <NavDropdown className ="dropdown-nav" title="Menu" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1"><BiFridge/> My ingredients</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2"><MdOutlineAddShoppingCart/> My shopping list</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3"><BiCalendar/> My meal planner</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.4"><BiBookHeart/> My favorites</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.5"><BiSearchAlt/> Explore</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.6"><BsPersonCircle/> About</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.7"><AiOutlineSetting/> Setting</NavDropdown.Item>
+          <NavDropdown.Item href="/ingredients"><BiFridge/> My ingredients</NavDropdown.Item>
+          <NavDropdown.Item href="/shoppinglist"><MdOutlineAddShoppingCart/> My shopping list</NavDropdown.Item>
+          <NavDropdown.Item href="/mealplanner"><BiCalendar/> My meal planner</NavDropdown.Item>
+          <NavDropdown.Item href="/favorites"><BiBookHeart/> My favorites</NavDropdown.Item>
+          <NavDropdown.Item href="/explore"><BiSearchAlt/> Explore</NavDropdown.Item>
+          <NavDropdown.Item href="/about"><BsPersonCircle/> About</NavDropdown.Item>
+          <NavDropdown.Item href="/settings"><AiOutlineSetting/> Settings</NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item href="#action/3.8"><BiLogOut/> Log out</NavDropdown.Item>
+          <NavDropdown.Item href=""><BiLogOut/> Log out</NavDropdown.Item>
         </NavDropdown>
       </Nav>
     </Navbar.Collapse>

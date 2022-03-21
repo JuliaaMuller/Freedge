@@ -3,6 +3,7 @@ import axios from "axios";
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import IngredientList from "./IngredientList";
+import NavMenu from './NavMenu';
 
 const resultsArray = [
 		{
@@ -62,6 +63,7 @@ export default function IngredientSearch() {
   }
   
   return (
+    <><NavMenu />  
     <main>
       <Form onSubmit={(event) => event.preventDefault()}>
         <Form.Control
@@ -78,5 +80,6 @@ export default function IngredientSearch() {
       })}
       {selection.length > 0 ? <IngredientList items={selection}/> : ""}
     </main>
+    </>
   );
 }
