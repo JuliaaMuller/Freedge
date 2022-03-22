@@ -4,7 +4,7 @@ import './About.scss';
 
 function About (props) {
   return (
-<><NavMenu /> 
+<> 
 <main>
   <h3>About us </h3>
 

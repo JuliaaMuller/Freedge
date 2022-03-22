@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import NavMenu from './NavMenu';
 import LogInForm from './LogInForm';
+import { LoginProvider } from '../loginContext'
+
 
 function LogIn (props) {
   return (
-<><NavMenu /> 
+<>
 <main>
   <h2>Log in </h2>
- <LogInForm />
+ <LoginProvider>
+ <LogInForm/>
+ </LoginProvider>
 </main>
 </>
   )

@@ -5,7 +5,7 @@ import { IoLogoAppleAppstore } from 'react-icons/io';
 
 function Footer (props) {
   return (
-<><NavMenu /> 
+<>
 <main>
   <div>
     <ul className='social-media'>

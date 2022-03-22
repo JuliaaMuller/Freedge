@@ -21,7 +21,7 @@ function Home (props) {
       { name: 'Sun', value: '7' },
     ];
   return (
-    <><NavMenu />  
+    <>
   <main>
     <img className='brand-logo' src='images/brand-logo.png' alt=''/>
     <div className='my-ingredients'>

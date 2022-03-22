@@ -17,7 +17,7 @@ function MealPlanner(props) {
   ];
 
   return (
-<><NavMenu /> 
+<>
 <main>
   <h2>My meal planner </h2>
   <div className='my-meal-planner'>

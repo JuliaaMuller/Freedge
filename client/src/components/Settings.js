@@ -8,7 +8,7 @@ import { BsHouseDoor } from 'react-icons/bs';
 
 function Settings (props) {
   return (
-<><NavMenu /> 
+<>
 <main>
   <h2>Settings</h2>
   <p> Did you need to update some informations ? </p>

@@ -154,7 +154,7 @@ export default function IngredientSearch() {
 
   return (
     <>
-      <NavMenu />
+      
       <main>
         <Form onSubmit={(event) => event.preventDefault()}>
           <Form.Control

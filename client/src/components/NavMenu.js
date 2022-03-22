@@ -6,19 +6,31 @@ import { MdOutlineAddShoppingCart } from 'react-icons/md';
 import { BsPersonCircle } from 'react-icons/bs';
 import { AiOutlineSetting } from 'react-icons/ai';
 
+import { LoginContext } from '../loginContext';
 
-export default function NavMenu() {
+
+
+
+const NavMenu = () => {
+
   return (
+    <>
+    <div>
+      <LoginContext.Consumer>
+        {(value) => {
+          console.log(value)
+          return (
 <Navbar  bg="light" expand="lg">
-
   <Container>
     <Navbar.Brand href="/">< BiFridge className="icon-nav"/> Freedge</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
-        <Nav.Link href="/login">Log in</Nav.Link>
-        <Nav.Link href="/register">Register</Nav.Link>
-        <NavDropdown className ="dropdown-nav" title="Menu" id="basic-nav-dropdown">
+
+        {!value.userLog && <Nav.Link href="/login">Log in</Nav.Link>}
+        {!value.userLog && <Nav.Link href="/register">Register</Nav.Link>}
+        {value.userLog && <div><a>Logged in as : {value.email}</a>
+          <NavDropdown className ="dropdown-nav" title="Menu" id="basic-nav-dropdown">
           <NavDropdown.Item href="/ingredients"><BiFridge/> My ingredients</NavDropdown.Item>
           <NavDropdown.Item href="/shoppinglist"><MdOutlineAddShoppingCart/> My shopping list</NavDropdown.Item>
           <NavDropdown.Item href="/mealplanner"><BiCalendar/> My meal planner</NavDropdown.Item>
@@ -27,11 +39,20 @@ export default function NavMenu() {
           <NavDropdown.Item href="/about"><BsPersonCircle/> About</NavDropdown.Item>
           <NavDropdown.Item href="/settings"><AiOutlineSetting/> Settings</NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item href=""><BiLogOut/> Log out</NavDropdown.Item>
+          <NavDropdown.Item onClick={value.handleLogout} ><BiLogOut/> Log out</NavDropdown.Item>
         </NavDropdown>
+        </div>}
       </Nav>
     </Navbar.Collapse>
+        
   </Container>
 </Navbar>
-  );
-}
+          )
+        }
+      }
+      </LoginContext.Consumer>
+</div>
+</>
+  )
+} 
+export default NavMenu;
