@@ -41,17 +41,19 @@ module.exports = (db) => {
     const user = req.body;
     user.password = bcrypt.hashSync(user.password, 12);
     const email = user.email;
-    const queryString = `SELECT * FROM users WHERE email = $1;`;
+    const queryString = `SELECT * FROM users WHERE users.email = $1;`;
     const values = [email];
+    console.log(user)
     db.query(queryString, values)
       .then((data) => {
+        console.log('datarows est',data.rows)
         if (data.rows[0]["password"] !== password) {
           return console.log("The password you entered is not correct");
         }
         req.session.userId = user.id;
         res.redirect("../");
       })
-      .catch(() => alert("This user does not exist"));
+      .catch(() => console.log("This user does not exist"));
   });
 
   router.post("/logout", (req, res) => {
