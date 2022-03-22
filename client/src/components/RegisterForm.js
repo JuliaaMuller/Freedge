@@ -5,6 +5,7 @@ import { MdAlternateEmail } from 'react-icons/md';
 import { BiUserCircle, BiPhone, BiBuildingHouse } from 'react-icons/bi';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { BsHouseDoor } from 'react-icons/bs';
+import axios from 'axios';
 
 
 class RegisterForm extends React.Component {
@@ -20,24 +21,29 @@ class RegisterForm extends React.Component {
       phone_number:'',
     };
 
+    
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  
+  
   handleChange(event) {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-
+    
     this.setState({
       [name]: value
     });
+    
   }
 
   handleSubmit(event) {
-    alert('Form submitted');
-    console.log(JSON.parse(event.target))
     event.preventDefault();
+    alert('Form submitted');
+    // console.log(JSON.parse(event.target));
+    console.log(this.state);
+    axios.post('/register', this.state).then(res => console.log(res)).catch(err => console.warn(err));
   }
 
   

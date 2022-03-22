@@ -8,8 +8,9 @@ const cookieSession = require('cookie-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const ingredientsRouter = require('./routes/ingredients')
-const authRouter = require('./routes/auth')
+const ingredientsRouter = require('./routes/ingredients');
+const authRouter = require('./routes/auth');
+const recipesRouter = require('./routes/recipes');
 
 var app = express();
 
@@ -23,6 +24,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter(db));
 app.use('/ingredients',ingredientsRouter(db));
 app.use('/',authRouter(db))
+app.use('/recipes',recipesRouter(db))
 
 app.use(
   cookieSession({
