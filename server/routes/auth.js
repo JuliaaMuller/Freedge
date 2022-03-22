@@ -8,9 +8,9 @@ module.exports = (db) => {
     const queryString = `SELECT * FROM users WHERE email = $1;`;
     const values = [req.body["email"]];
     db.query(queryString, values).then((data) => {
-
+console.log(data.rows)
       if (data.rows.length > 0) {
-        console.log("This user already exists");
+        res.status(409).send("This user already exists");
         return;
       }
 
@@ -31,7 +31,7 @@ module.exports = (db) => {
       db.query(command, uservalues)
         .then((res) => {
           req.session.userId = user.id;
-          console.log(res.rows[0])
+          res.status(200).send("New user created");
         })
         .catch((e) => res.send(e));
     })
@@ -55,13 +55,13 @@ module.exports = (db) => {
         cookie["name"] = data.rows[0]["first_name"]
 
         if(!match) {
-          return console.log("The password you entered is not correct");          
+          return res.status(403).send("The password you entered is not correct");         
         }
 
-        console.log(`Logging in as: id ${user_id}, name ${data.rows[0]["first_name"]}`)
+        res.status(200).send(`Logging in as: id ${user_id}, name ${data.rows[0]["first_name"]}`)
         // res.redirect("../");
       })
-      .catch((e) => console.log("This user does not exist!"));
+      .catch((e) => res.status(403).send("This user does not exist!"));
   });
 
   router.post("/logout", (req, res) => {

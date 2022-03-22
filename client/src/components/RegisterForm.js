@@ -6,12 +6,13 @@ import { BiUserCircle, BiPhone, BiBuildingHouse } from 'react-icons/bi';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { BsHouseDoor } from 'react-icons/bs';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 
 
 class RegisterForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = {formData:{
       email: '',
       password:'',
       first_name:'',
@@ -19,6 +20,9 @@ class RegisterForm extends React.Component {
       address:'',
       city:'',
       phone_number:'',
+    },
+    auth:false,
+    alert:false,
     };
 
     
@@ -33,7 +37,7 @@ class RegisterForm extends React.Component {
     const name = target.name;
     
     this.setState({
-      [name]: value
+      formData:{...this.state.formData,[name]: value}
     });
     
   }
@@ -41,9 +45,16 @@ class RegisterForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     alert('Form submitted');
-    // console.log(JSON.parse(event.target));
     console.log(this.state);
-    axios.post('/register', this.state).then(res => console.log(res)).catch(err => console.warn(err));
+    axios.post('/register', this.state.formData)
+    .then(res => {  
+      if (res.status === 200) {
+      this.setState({auth: true})
+      }else if (res.status === 409) {
+      this.setState({alert: true})
+      }
+    })
+    .catch(err => console.warn(err));
   }
 
   
@@ -53,42 +64,44 @@ class RegisterForm extends React.Component {
   <Form onSubmit={this.handleSubmit}>
   <Form.Group className="mb-3" controlId="formBasicEmail">
     <Form.Label><MdAlternateEmail/> Email address</Form.Label>
-    <Form.Control name ="email" value={this.state.email} onChange={ this.handleChange } type="input" placeholder="Enter Email" />
+    <Form.Control name ="email" value={this.state.formData.email} onChange={ this.handleChange } type="input" placeholder="Enter Email" />
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formBasicPassword">
     <Form.Label><RiLockPasswordLine/> Password</Form.Label>
-    <Form.Control name ="password" value={this.state.password} onChange={ this.handleChange } type="input" placeholder="Password" />
+    <Form.Control name ="password" value={this.state.formData.password} onChange={ this.handleChange } type="input" placeholder="Password" />
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formBasicFirstName">
     <Form.Label><BiUserCircle/> First Name</Form.Label>
-    <Form.Control name ="first_name" value={this.state.first_name} onChange={ this.handleChange } type="input" placeholder="First Name" />
+    <Form.Control name ="first_name" value={this.state.formData.first_name} onChange={ this.handleChange } type="input" placeholder="First Name" />
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formBasicLastName">
     <Form.Label><BiUserCircle/> Last Name</Form.Label>
-    <Form.Control name ="last_name" value={this.state.last_name} onChange={ this.handleChange } type="input" placeholder="Last Name" />
+    <Form.Control name ="last_name" value={this.state.formData.last_name} onChange={ this.handleChange } type="input" placeholder="Last Name" />
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formBasicAddress">
     <Form.Label><BsHouseDoor/> Your address</Form.Label>
-    <Form.Control name ="address" value={this.state.address} onChange={ this.handleChange } type="input" placeholder="Adress" />
+    <Form.Control name ="address" value={this.state.formData.address} onChange={ this.handleChange } type="input" placeholder="Adress" />
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formBasicCity">
     <Form.Label><BiBuildingHouse/> City</Form.Label>
-    <Form.Control name ="city" value={this.state.city} onChange={ this.handleChange } type="input" placeholder="City" />
+    <Form.Control name ="city" value={this.state.formData.city} onChange={ this.handleChange } type="input" placeholder="City" />
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
     <Form.Label><BiPhone/> Your phone number</Form.Label>
-    <Form.Control name ="phone_number"  value={this.state.phone_number} onChange={ this.handleChange } type="input" placeholder="Phone Number" />
+    <Form.Control name ="phone_number"  value={this.state.formData.phone_number} onChange={ this.handleChange } type="input" placeholder="Phone Number" />
   </Form.Group>
 
     <Button variant="btn btn-outline-secondary" type="submit">
       Save
     </Button>
+    {this.state.alert && <span>Error: this user already exists!</span>}
+    {this.state.auth && <Navigate to = "/"/>}
   </Form>
 </>
   )
