@@ -1,11 +1,12 @@
 // -- routes/catRoutes.js
 const router = require("express").Router();
 
-function insertIntoDb(category, user_id) {
+function insertIntoDb(category, user_id, db) {
+  console.log(category);
   for (let item of category) {
     db.query(
       "INSERT INTO ingredients (name, quantity, category, user_id) VALUES ($1, $2, $3, $4 ) RETURNING *",
-      [item.name, item.quantity, `${category}`, user_id]
+      [item.name, item.quantity, item.category, user_id]
     ).then((res) => console.log(res.rows[0]));
   }
 }
@@ -22,24 +23,24 @@ module.exports = (db) => {
   router.post("/", (req, res) => {
     const data = req.body.data;
     const { userId, vegetable, fruit, dairy, protein, grain, other } = data;
-
+    console.log(vegetable);
     if (vegetable.length > 0) {
-      insertIntoDb(vegetable, userId);
+      insertIntoDb(vegetable, userId, db);
     }
     if (fruit.length > 0) {
-      insertIntoDb(fruit, userId);
+      insertIntoDb(fruit, userId, db);
     }
     if (dairy.length > 0) {
-      insertIntoDb(dairy, userId);
+      insertIntoDb(dairy, userId, db);
     }
     if (protein.length > 0) {
-      insertIntoDb(protein, userId);
+      insertIntoDb(protein, userId, db);
     }
     if (grain.length > 0) {
-      insertIntoDb(grain, userId);
+      insertIntoDb(grain, userId, db);
     }
     if (other.length > 0) {
-      insertIntoDb(other, userId);
+      insertIntoDb(other, userId, db);
     }
   });
 

@@ -10,23 +10,47 @@ const resultsArray = [
   {
     id: 9003,
     name: "apple",
-    image: "apple.jpg",
   },
   {
     id: 9019,
-    name: "apricot",
-    image: "applesauce.png",
+    name: "rice",
   },
   {
     id: 9006,
-    name: "artichoke",
-    image: "apple.jpg",
+    name: "bread",
   },
   {
     id: 9012,
     name: "applesauce",
-    image: "applesauce.png",
   },
+  {
+    id: 9014,
+    name: "eggs",
+  },
+  {
+    id: 9435,
+    name: "butter",
+  },
+  {
+    id: 9562,
+    name: "tomato",
+  },
+  {
+    id: 9052,
+    name: "onion",
+  },
+  {
+    id: 9812,
+    name: "chicken",
+  },
+  {
+    id: 9982,
+    name: "cheese",
+  },
+  {
+    id: 9092,
+    name: "oregano",
+  }
 ];
 
 export default function IngredientSearch() {
@@ -34,6 +58,7 @@ export default function IngredientSearch() {
   const [results, setResults] = useState([]);
   const [selection, setSelection] = useState([]);
   const [category, setCategory] = useState({
+    userId: 1,
     vegetable: [],
     fruit: [],
     dairy: [],
@@ -69,6 +94,15 @@ export default function IngredientSearch() {
     setTerm(value);
   };
 
+  const generateMealPlan = (data) => {
+
+    axios
+      .post("/ingredients",{ data })
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
+
+  }
+
   const selectedOption = (option) => {
     setTerm(option.name);
     setSelection((prev) => [...prev, option]);
@@ -82,38 +116,38 @@ export default function IngredientSearch() {
         ...prev,
         vegetable: [
           ...prev.vegetable,
-          { id: id, name: name, quantity: quantity },
+          { id: id, name: name, quantity: quantity, category: "vegetable" },
         ],
       }));
     }
     if (type === "protein") {
       setCategory((prev) => ({
         ...prev,
-        protein: [...prev.protein, { id: id, name: name, quantity: quantity }],
+        protein: [...prev.protein, { id: id, name: name, quantity: quantity, category: "protein" }],
       }));
     }
     if (type === "fruit") {
       setCategory((prev) => ({
         ...prev,
-        fruit: [...prev.fruit, { id: id, name: name, quantity: quantity }],
+        fruit: [...prev.fruit, { id: id, name: name, quantity: quantity, category: "fruit" }],
       }));
     }
     if (type === "grain") {
       setCategory((prev) => ({
         ...prev,
-        grain: [...prev.grain, { id: id, name: name, quantity: quantity }],
+        grain: [...prev.grain, { id: id, name: name, quantity: quantity, category: "grain" }],
       }));
     }
     if (type === "dairy") {
       setCategory((prev) => ({
         ...prev,
-        dairy: [...prev.dairy, { id: id, name: name, quantity: quantity }],
+        dairy: [...prev.dairy, { id: id, name: name, quantity: quantity, category: "dairy" }],
       }));
     }
     if (type === "other") {
       setCategory((prev) => ({
         ...prev,
-        other: [...prev.other, { id: id, name: name, quantity: quantity }],
+        other: [...prev.other, { id: id, name: name, quantity: quantity, category: "other" }],
       }));
     }
   };
@@ -150,7 +184,7 @@ export default function IngredientSearch() {
         ) : (
           ""
         )}
-         {selection.length > 0 ? <Button variant="secondary" size="lg">
+         {selection.length > 0 ? <Button variant="secondary" size="lg" onClick={() => generateMealPlan(category)}>
             Create Meal Plan
           </Button> : ""}
       </main>
