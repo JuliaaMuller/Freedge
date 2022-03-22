@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import IngredientList from "./IngredientList";
+import { Navigate } from 'react-router-dom';
 import NavMenu from "./NavMenu";
 
 const resultsArray = [
@@ -57,6 +58,7 @@ export default function IngredientSearch() {
   const [term, setTerm] = useState("");
   const [results, setResults] = useState([]);
   const [selection, setSelection] = useState([]);
+  const [status, setStatus] = useState(false);
   const [category, setCategory] = useState({
     userId: 1,
     vegetable: [],
@@ -98,7 +100,12 @@ export default function IngredientSearch() {
 
     axios
       .post("/ingredients",{ data })
-      .then(response => console.log(response))
+      .then(response => {
+        console.log(response)
+        if (response.status === 200) {
+          setStatus(true);
+        }
+      })
       .catch(error => console.log(error));
 
   }
@@ -185,8 +192,9 @@ export default function IngredientSearch() {
           ""
         )}
          {selection.length > 0 ? <Button variant="secondary" size="lg" onClick={() => generateMealPlan(category)}>
-            Create Meal Plan
+            Create Meal Plan 
           </Button> : ""}
+          {status && <Navigate to="/mealplanner"/>}
       </main>
     </>
   );

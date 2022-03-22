@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { mealContext } from '../providers/MealProvider';
 import NavMenu from './NavMenu';
 import './MealPlanner.scss';
 import { ButtonGroup, ToggleButton, InputGroup, Button, FormControl } from 'react-bootstrap';
+import MealPlanList from './MealPlanList';
 
 function MealPlanner(props) {
   const [dayValue, setdayValue] = useState('1');
+  const { state, setState, getRecipesForDay } = useContext(mealContext);
   
   const days = [
     { name: 'Mon', value: '1' },
@@ -15,7 +18,16 @@ function MealPlanner(props) {
     { name: 'Sat', value: '6' },
     { name: 'Sun', value: '7' },
   ];
+  
+  function generateRecipes(day) {
+    const recipes = getRecipesForDay();
 
+    if(!state[day]) {
+      setState(prev => ({...prev, day: {name: day, recipes: recipes}}))
+    }
+
+  }
+  
   return (
 <><NavMenu /> 
 <main>
@@ -31,13 +43,14 @@ function MealPlanner(props) {
             name='days'
             value={day.value}
             checked={dayValue === day.value}
-            onChange={(e) => setdayValue(e.currentTarget.value)}
+            onClick={(e) => generateRecipes(day.name)}
           >
             {day.name}
           </ToggleButton>
         ))}
       </ButtonGroup>
     </div>
+    <MealPlanList />
 </main>
 
 </>

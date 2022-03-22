@@ -10,10 +10,12 @@ import Settings from './components/Settings';
 import ShoppingList from './components/ShoppingList';
 import Register from './components/Register';
 import MealPlanner from './components/MealPlanner';
+import MealProvider from './providers/MealProvider';
 
 
 function App() {
   return (
+    <MealProvider>
     <BrowserRouter>
       <Routes>
         <Route path="/ingredients" element={<IngredientSearch />}></Route>
@@ -28,6 +30,7 @@ function App() {
         <Route path="/mealplanner" element={<MealPlanner />}></Route>
     </Routes>
   </BrowserRouter>
+  </MealProvider>
   );
 }
 

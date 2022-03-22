@@ -32,7 +32,6 @@ module.exports = (db) => {
   router.post("/", (req, res) => {
     const data = req.body.data;
     const { userId, vegetable, fruit, dairy, protein, grain, other } = data;
-    console.log(vegetable);
     if (vegetable.length > 0) {
       insertIntoDb(vegetable, userId, db);
     }
@@ -51,6 +50,7 @@ module.exports = (db) => {
     if (other.length > 0) {
       insertIntoDb(other, userId, db);
     }
+    res.status(200).send("Success!");
   });
 
   return router;
