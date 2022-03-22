@@ -4,10 +4,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
 const db = require('./configs/db.config');
+const cookieSession = require('cookie-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const ingredientsRouter = require('./routes/ingredients')
+const authRouter = require('./routes/auth')
 
 var app = express();
 
@@ -20,6 +22,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter(db));
 app.use('/ingredients',ingredientsRouter(db));
+app.use('/',authRouter(db))
+
+app.use(
+  cookieSession({
+    name: "session",
+    keys: [
+      "40ed1e00-25ea-4136-bc6b-e7451fb3d11a",
+      "f92c5252-5913-4bfa-82a6-1cffe026956f",
+    ],
+    maxAge: 24 * 60 * 60 * 1000,
+  })
+);
 
 
 module.exports = app;
