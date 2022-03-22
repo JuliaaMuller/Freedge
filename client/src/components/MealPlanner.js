@@ -7,6 +7,7 @@ import MealPlanList from './MealPlanList';
 
 function MealPlanner(props) {
   const [dayValue, setdayValue] = useState('1');
+  const [selected, setSelected] = useState("Mon");
   const { state, setState, getRecipesForDay } = useContext(mealContext);
   
   const days = [
@@ -20,12 +21,15 @@ function MealPlanner(props) {
   ];
   
   function generateRecipes(day) {
-    const recipes = getRecipesForDay();
-
     if(!state[day]) {
-      setState(prev => ({...prev, day: {name: day, recipes: recipes}}))
-    }
+      const recipes = getRecipesForDay();
+      let dayObject = {};
+      dayObject[`${day}`] = {name: day, recipes: recipes};
+      console.log(day);
 
+      setState(prev => ({...prev, ...dayObject}))
+    }
+    setSelected(day);
   }
   
   return (
@@ -50,7 +54,7 @@ function MealPlanner(props) {
         ))}
       </ButtonGroup>
     </div>
-    <MealPlanList />
+    <MealPlanList selected={selected}/>
 </main>
 
 </>
