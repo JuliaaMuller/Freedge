@@ -10,7 +10,7 @@ module.exports = (db) => {
     db.query(queryString, values).then((data) => {
 
       if (data.rows.length > 0) {
-        console.log("This user already exists");
+        res.status(409).send("This user already exists");
         return;
       }
 
@@ -46,7 +46,7 @@ module.exports = (db) => {
     db.query(queryString, values)
       .then((data) => {
         if (data.rows[0]["password"] !== password) {
-          return console.log("The password you entered is not correct");
+          return res.status(403).send("The password you entered is not correct");
         }
         req.session.userId = user.id;
         res.redirect("../");
