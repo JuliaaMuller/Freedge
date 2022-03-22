@@ -2,9 +2,9 @@
 const bcrypt = require("bcryptjs");
 const router = require("express").Router();
 
+
 module.exports = (db) => {
   router.post("/register", (req, res) => {
-    console.log("here!");
     const queryString = `SELECT * FROM users WHERE email = $1;`;
     const values = [req.body["email"]];
     db.query(queryString, values).then((data) => {
@@ -34,32 +34,40 @@ module.exports = (db) => {
           console.log(res.rows[0])
         })
         .catch((e) => res.send(e));
-    });
+    })
+    .catch((e) => res.send(e));
   });
 
   router.post("/login", (req, res) => {
     const user = req.body;
-    user.password = bcrypt.hashSync(user.password, 12);
     const email = user.email;
+    const password = user.password
     const queryString = `SELECT * FROM users WHERE users.email = $1;`;
     const values = [email];
-    console.log(user)
-    db.query(queryString, values)
+ 
+    return db.query(queryString, values)
       .then((data) => {
-        console.log('datarows est',data.rows)
-        if (data.rows[0]["password"] !== password) {
-          return console.log("The password you entered is not correct");
+        const userHashedPass = data.rows[0]["password"]
+        const user_id = data.rows[0]["id"]
+        const cookie = req.session
+        const match = bcrypt.compareSync(password, userHashedPass)
+        cookie["id"] = user_id;
+        cookie["name"] = data.rows[0]["first_name"]
+
+        if(!match) {
+          return console.log("The password you entered is not correct");          
         }
-        req.session.userId = user.id;
-        res.redirect("../");
+
+        console.log(`Logging in as: id ${user_id}, name ${data.rows[0]["first_name"]}`)
+        // res.redirect("../");
       })
-      .catch(() => console.log("This user does not exist"));
+      .catch((e) => console.log("This user does not exist!"));
   });
 
   router.post("/logout", (req, res) => {
     console.log(`Logging out as: id ${req.session["first_name"]}`);
     req.session = null;
-    res.redirect("../");
+    // res.redirect("../");
   });
   return router;
 };

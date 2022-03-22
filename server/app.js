@@ -20,13 +20,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter(db));
-app.use('/ingredients',ingredientsRouter(db));
-app.use('/register',authRouter(db))
-app.use('/login',authRouter(db))
-app.use('/recipes',recipesRouter(db))
-
 app.use(
   cookieSession({
     name: "session",
@@ -37,6 +30,14 @@ app.use(
     maxAge: 24 * 60 * 60 * 1000,
   })
 );
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter(db));
+app.use('/ingredients',ingredientsRouter(db));
+app.use('/',authRouter(db))
+app.use('/recipes',recipesRouter(db))
+
+
 
 
 module.exports = app;

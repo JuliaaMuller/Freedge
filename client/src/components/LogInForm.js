@@ -33,7 +33,9 @@ class LogInForm extends React.Component {
     event.preventDefault();
     alert('Form submitted');
     console.log(this.state);
-    axios.post('/login', this.state).then(res => console.log(res)).catch(err => console.warn(err));
+    axios.post('/login', this.state)
+    .then(res => res.redirect('../'))
+    .catch(err => console.warn(err));
   }
 
   
@@ -56,7 +58,7 @@ class LogInForm extends React.Component {
   <Form.Group className="mb-3" controlId="formBasicCheckbox">
     <Form.Check type="checkbox" label="Remember my info" />
   </Form.Group>
-  <Button variant="btn btn-outline-secondary" type="submit">
+  <Button variant="btn btn-outline-secondary"  type="submit">
     Login
   </Button>
   </Form>
