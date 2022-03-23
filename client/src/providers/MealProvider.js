@@ -6,11 +6,16 @@ export const mealContext = createContext();
 export default function MealProvider(props) {
   const [state, setState] = useState({});
 
-  function getRecipesForDay () {
-    let recipes;
-    axios.get("/recipes").then((response) => recipes = response).catch(err => console.log(err));
-    console.log(recipes);
-    return recipes;
+  function getRecipesForDay() {
+
+    return axios
+      .get("/recipes")
+      .then((response) => {
+        console.log(response.data);
+        return response.data;
+      })
+      .catch((err) => console.log(err));
+  
   }
 
   const providerData = { state, setState, getRecipesForDay };
