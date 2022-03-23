@@ -53,12 +53,13 @@ console.log(data.rows)
         const match = bcrypt.compareSync(password, userHashedPass)
         cookie["id"] = user_id;
         cookie["name"] = data.rows[0]["first_name"]
+        const name = data.rows[0]["first_name"]
 
         if(!match) {
           return res.status(403).send("The password you entered is not correct");         
         }
 
-        res.status(200).send(`Logging in as: id ${user_id}, name ${data.rows[0]["first_name"]}`)
+        res.status(200).send({user:user_id,name:name})
         // res.redirect("../");
       })
       .catch((e) => res.status(403).send("This user does not exist!"));

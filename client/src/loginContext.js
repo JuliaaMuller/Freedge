@@ -35,9 +35,9 @@ const LoginProvider = (props) => {
       if(res.status === 403){
         setAlert(true)
       } else if(res.status === 200){
-        const logemail=user.email
-        console.log(logemail)
-        setUserLog(logemail);
+        
+        console.log(res.data.name)
+        setUserLog(res.data.name);
         console.log(userLog)
         setAuth(true);
         console.log(auth)
@@ -45,6 +45,7 @@ const LoginProvider = (props) => {
     })
     .catch(err => console.log(err))
   }
+  console.log('ici:',userLog)
   const handleLogout = (e) =>{
     e.preventDefault();
     axios.post('/logout', user)
