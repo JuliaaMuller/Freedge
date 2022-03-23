@@ -14,6 +14,8 @@ function insertIntoDb(category, user_id, db) {
 module.exports = (db) => {
   // all routes will go here
   router.get("/", (req, res) => {
+    const user_id = req.session.userId;
+    console.log("cookie", user_id);
     const command = "SELECT array_agg(name) AS name, array_agg(quantity) AS quantity, category FROM ingredients WHERE user_id = 1 GROUP BY category;";
     db.query(command).then(data => {
      
