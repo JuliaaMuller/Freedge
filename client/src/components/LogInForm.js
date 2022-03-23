@@ -54,6 +54,7 @@ const LogInForm = () => {
     <>
    
           <Form onSubmit={handleSubmit}>
+          <h2>Log in </h2>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label><MdAlternateEmail /> Email address</Form.Label>
               <Form.Control type="email" name="email" onChange={handleChange} placeholder="Enter email" />
