@@ -11,18 +11,16 @@ import Settings from './components/Settings';
 import ShoppingList from './components/ShoppingList';
 import Register from './components/Register';
 import MealPlanner from './components/MealPlanner';
-import { LoginProvider } from './loginContext';
-import { UserProvider } from './registerContext';
 
+import MealProvider from './providers/MealProvider';
 
 
 function App() {
 
   return (
     <>
-    <LoginProvider>
     <NavMenu /> 
-    </LoginProvider>
+    <MealProvider>
     <BrowserRouter>
       <Routes>
 
@@ -39,6 +37,8 @@ function App() {
     
     </Routes>
   </BrowserRouter>
+  
+  </MealProvider>
   </>
   );
 }

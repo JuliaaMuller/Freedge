@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Button from 'react-bootstrap/Button'
 import "./IngredientItem.scss";
 
 export default function IngredientItem({ name, handleCategory, id }) {
@@ -14,21 +16,39 @@ export default function IngredientItem({ name, handleCategory, id }) {
   return (
     <div className="add_ingredient--item">
       <img src="images/plus.png" onClick={increment} />
-      {count} 
+      <h2>{count}</h2>
       <img src="images/minus.png" onClick={decrement} />
       <h3>{name}</h3>
-      <div className="category">
-        CATEGORY
+      
         <div className="category--item">
-          <img onClick={() => handleCategory("vegetable", name, id, count)} src="images/vegetable.png"/>
-          <img onClick={() => handleCategory("fruit", name, id, count)} src="images/fruits.png"/>
-          <img onClick={() => handleCategory("protein", name, id, count)} src="images/meat.png"/>
-          <img onClick={() => handleCategory("dairy", name, id, count)} src="images/dairy.png"/>
-          <img onClick={() => handleCategory("grain", name, id, count)} src="images/carbohydrates.png"/>
-          <img onClick={() => handleCategory("other", name, id, count)} src="images/question-mark.png"/>
-
+          <ButtonGroup aria-label="Basic example">
+            <Button variant="outline-secondary"><img
+            onClick={() => handleCategory("vegetable", name, id, count)}
+            src="images/vegetable.png"
+          /></Button>
+            <Button variant="outline-secondary"> <img
+            onClick={() => handleCategory("fruit", name, id, count)}
+            src="images/fruits.png"
+          /></Button>
+            <Button variant="outline-secondary"> <img
+            onClick={() => handleCategory("protein", name, id, count)}
+            src="images/meat.png"
+          /></Button>
+          <Button variant="outline-secondary">  <img
+            onClick={() => handleCategory("dairy", name, id, count)}
+            src="images/dairy.png"
+          /></Button>
+          <Button variant="outline-secondary"><img
+            onClick={() => handleCategory("grain", name, id, count)}
+            src="images/carbohydrates.png"
+          /></Button>
+          <Button variant="outline-secondary"><img
+            onClick={() => handleCategory("other", name, id, count)}
+            src="images/question-mark.png"
+          /></Button>
+          </ButtonGroup>
+      
         </div>
-      </div>
     </div>
   );
 }

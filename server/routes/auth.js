@@ -8,7 +8,7 @@ module.exports = (db) => {
     const queryString = `SELECT * FROM users WHERE email = $1;`;
     const values = [req.body["email"]];
     db.query(queryString, values).then((data) => {
-console.log(data.rows)
+    console.log(data.rows)
       if (data.rows.length > 0) {
         res.status(409).send("This user already exists");
         return;
@@ -37,6 +37,20 @@ console.log(data.rows)
     })
     .catch((e) => res.send(e));
   });
+const findUserById=(id) => {
+  const queryString = `SELECT * FROM users WHERE users.id = $1;`;
+  const values = [id];
+  return db.query(queryString, values)
+  .then((data) => {
+    if (data.rows.length !=0) {
+      res.status(200).send({user_id:data.rows[0]["id"],name:data.rows[0]["name"]})
+    }
+  })
+}
+  router.post('/user/:id', (req, res) => {
+    userId = req.session["id"]
+    return findUserById(userId)
+  })
 
   router.post("/login", (req, res) => {
     const user = req.body;

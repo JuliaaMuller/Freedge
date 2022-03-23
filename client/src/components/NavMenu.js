@@ -6,25 +6,27 @@ import { BiFridge, BiBookHeart, BiCalendar, BiSearchAlt, BiLogOut } from 'react-
 import { MdOutlineAddShoppingCart } from 'react-icons/md';
 import { BsPersonCircle } from 'react-icons/bs';
 import { AiOutlineSetting } from 'react-icons/ai';
-
-import { LoginContext } from '../loginContext';
+import { UserContext } from '../userContext';
+import axios from 'axios';
 
 
 
 
 const NavMenu = () => {
 
-const {userLog , handleLogout} = useContext(LoginContext)
+const { userLog } = useContext(UserContext)
 
+const handleLogout = (e) =>{
+  e.preventDefault();
+  axios.post('/logout', userLog)
+  .then((res) => {
+     
+    })
+
+}
 console.log("etat userLog",userLog)
   return (
-    
     <>
-    <div>
-      {/* <LoginContext.Consumer>
-        {(value) => { */}
-          {/* console.log(value) */}
-          {/* return ( */}
 <Navbar  bg="light" expand="lg">
   <Container>
     <Navbar.Brand href="/">< BiFridge className="icon-nav"/> Freedge</Navbar.Brand>
@@ -52,11 +54,7 @@ console.log("etat userLog",userLog)
         
   </Container>
 </Navbar>
-          {/* ) */}
-        {/* } */}
-      {/* } */}
-      {/* </LoginContext.Consumer> */}
-</div>
+ 
 </>
   )
 } 

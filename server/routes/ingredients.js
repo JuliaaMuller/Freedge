@@ -14,16 +14,24 @@ function insertIntoDb(category, user_id, db) {
 module.exports = (db) => {
   // all routes will go here
   router.get("/", (req, res) => {
-    const command = "SELECT * FROM ingredients";
-    db.query(command).then((data) => {
-      res.json(data.rows);
-    });
+    const command = "SELECT array_agg(name) AS name, array_agg(quantity) AS quantity, category FROM ingredients WHERE user_id = 1 GROUP BY category;";
+    db.query(command).then(data => {
+     
+      let result = {};
+
+      for (let item of data.rows) {
+        const ingredientList = item["name"].map((name, index) => ({name: name, quantity: item["quantity"][index]}));
+        result[item["category"]] = ingredientList
+      }
+      
+      res.json(result);
+
+    })
   });
 
   router.post("/", (req, res) => {
     const data = req.body.data;
     const { userId, vegetable, fruit, dairy, protein, grain, other } = data;
-    console.log(vegetable);
     if (vegetable.length > 0) {
       insertIntoDb(vegetable, userId, db);
     }
@@ -42,6 +50,7 @@ module.exports = (db) => {
     if (other.length > 0) {
       insertIntoDb(other, userId, db);
     }
+    res.status(200).send("Success!");
   });
 
   return router;
