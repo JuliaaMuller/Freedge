@@ -70,9 +70,9 @@ export default function IngredientSearch() {
   });
 
 
-  const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=5&apiKey=${
-    process.env.REACT_APP_API_KEY || process.env.REACT_APP_SECONDARY_API_KEY
-  }`;
+  // const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=3&apiKey=${
+  //   process.env.REACT_APP_API_KEY || process.env.REACT_APP_SECONDARY_API_KEY
+  // }`;
 
   // useEffect(() => {
   //   axios
@@ -89,7 +89,8 @@ export default function IngredientSearch() {
   const handleChange = (value) => {
     if (!value) {
       setResults([]);
-    } else {
+    } 
+    else {
       setResults(resultsArray);
     }
 
