@@ -9,10 +9,9 @@ const LoginProvider = (props) => {
     password:'',
   })
   const [alert, setAlert] = useState(false)
-  const [auth, setAuth ] = useState(false)
+  const [auth, setAuth] = useState(false)
   const [userLog, setUserLog] = useState(null)
   const [input, setInput] = useState(false)
-
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -29,14 +28,19 @@ const LoginProvider = (props) => {
     const {email, password } = user
     if (!email || !password){
       setInput(true)
+      return
     }
     axios.post('/login', user)
     .then((res) => {
       if(res.status === 403){
         setAlert(true)
       } else if(res.status === 200){
-        setUserLog(user.email)
-        setAuth(true)
+        const logemail=user.email
+        console.log(logemail)
+        setUserLog(logemail);
+        console.log(userLog)
+        setAuth(true);
+        console.log(auth)
       }
     })
     .catch(err => console.log(err))

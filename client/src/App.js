@@ -12,6 +12,7 @@ import ShoppingList from './components/ShoppingList';
 import Register from './components/Register';
 import MealPlanner from './components/MealPlanner';
 import { LoginProvider } from './loginContext';
+import { UserProvider } from './registerContext';
 
 
 

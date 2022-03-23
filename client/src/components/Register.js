@@ -3,7 +3,7 @@ import RegisterForm from './RegisterForm';
 import { UserProvider } from '../registerContext'
 
 
-function Register (props) {
+function Register () {
 
   return (
 <>

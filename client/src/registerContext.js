@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 import axios from 'axios';
 
-const UserContext = createContext()
+const RegisterContext = createContext()
 
 const UserProvider = (props) => {
   const [user, setUser] = useState({
@@ -20,17 +20,13 @@ const UserProvider = (props) => {
 
 
   const handleChange = (e) => {
-
-    // const target = event.target;
     const value = e.target.value;
     const name = e.target.name;
     setUser(prev => ({
       ...prev,
       [name]:value
     }))
-    // this.setState({
-    //   formData:{...this.state.formData,[name]: value}
-    // });
+
     
   }
 
@@ -40,6 +36,7 @@ const UserProvider = (props) => {
     const {email, password, address, first_name, last_name, city, phone_number } = user
     if (!email || !password || !address || !first_name || !last_name || !city || !phone_number){
       setInput(true)
+      return
     }
       axios.post('/register', user)
       .then(res => {  
@@ -55,7 +52,7 @@ const UserProvider = (props) => {
 
   return (
     <>
-    <UserContext.Provider 
+    <RegisterContext.Provider 
     value={{
       ...user,
       handleSubmit:handleSubmit,
@@ -67,10 +64,10 @@ const UserProvider = (props) => {
     }}
     >
       {props.children}
-    </UserContext.Provider>
+    </RegisterContext.Provider>
 
     </>
   )
 }
-// const UserConsumer = UserContext.Consumer
-export { UserContext, UserProvider }
+const UserConsumer = RegisterContext.Consumer
+export { RegisterContext, UserProvider, UserConsumer }

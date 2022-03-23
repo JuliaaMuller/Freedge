@@ -27,9 +27,9 @@ const NavMenu = () => {
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
 
-        {!value.userLog && <Nav.Link href="/login">Log in</Nav.Link>}
-        {!value.userLog && <Nav.Link href="/register">Register</Nav.Link>}
-        {value.userLog && <div><a>Logged in as : {value.email}</a>
+        {!value.auth && <Nav.Link href="/login">Log in</Nav.Link>}
+        {!value.auth && <Nav.Link href="/register">Register</Nav.Link>}
+        {value.auth && <div><a>Logged in as : {value.email}</a>
           <NavDropdown className ="dropdown-nav" title="Menu" id="basic-nav-dropdown">
           <NavDropdown.Item href="/ingredients"><BiFridge/> My ingredients</NavDropdown.Item>
           <NavDropdown.Item href="/shoppinglist"><MdOutlineAddShoppingCart/> My shopping list</NavDropdown.Item>

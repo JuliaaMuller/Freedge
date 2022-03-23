@@ -1,10 +1,9 @@
 import React, { useContext, useState } from 'react';
-import NavMenu from './NavMenu';
 import LogInForm from './LogInForm';
 import { LoginProvider } from '../loginContext'
 
 
-function LogIn (props) {
+function LogIn () {
   return (
 <>
 <main>

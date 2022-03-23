@@ -18,10 +18,10 @@ const LogInForm = () => {
         {(value) => {
           return (
       
-          <Form >
+          <Form onSubmit={value.loginHandleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label><MdAlternateEmail /> Email address</Form.Label>
-              <Form.Control type="email" name="email" value ={value.email} onChange={value.loginHandleChange} placeholder="Enter email" />
+              <Form.Control type="email" name="email" onChange={value.loginHandleChange} placeholder="Enter email" />
               <Form.Text className="text-muted">
                 {/* We'll never share your email with anyone else. */}
               </Form.Text>
@@ -29,12 +29,12 @@ const LogInForm = () => {
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label><RiLockPasswordLine /> Password</Form.Label>
-              <Form.Control type="password" name="password" value ={value.password} onChange={value.loginHandleChange} placeholder="Password" />
+              <Form.Control type="password" name="password"  onChange={value.loginHandleChange} placeholder="Password" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Remember my info" />
             </Form.Group>
-            <Button variant="btn btn-outline-secondary" type="submit" onClick={value.loginHandleSubmit} >
+            <Button variant="btn btn-outline-secondary" type="submit"  >
               Login
             </Button>
             {value.alert && <span>Error: Password or email incorrect!</span>}
