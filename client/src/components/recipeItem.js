@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import RecipeInfo from "./RecipeInfo";
+import Confirmation from "./Confirmation";
 import { Button } from "react-bootstrap";
 import "./RecipeItem.scss";
 import { BiFridge, BiBookHeart } from "react-icons/bi";
@@ -40,7 +41,7 @@ export default function RecipeItem({
         aisle: item.aisle,
         image: item.image
       }
-      axios.post("/shopping", data).then(res => console.log(res)).catch(err => console.log(err));
+      axios.post("/shopping", data).then(res => setModalShow(true)).catch(err => console.log(err));
     })
 
   }
@@ -85,6 +86,7 @@ export default function RecipeItem({
         </Button>
       </div>
       <RecipeInfo instructions={instructions} />
+      <Confirmation show={modalShow} onHide={() => setModalShow(false)}/>
     </div>
     </>
   );
