@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 const UserContext = createContext()
 
 const ContextProvider = (props) => {
-  const [userLog, setUserLog] = useState("")
+  const [userLog, setUserLog] = useState("Julia")
   const [userId, setUserId] = useState('1')
 
   useEffect(() => {
