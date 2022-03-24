@@ -14,7 +14,12 @@ function ShoppingList (props) {
     })
   }, [])
 
-  const shoppingListItems = shoppingItems.map(item => <ShoppingListItem key={item.id} id={item.id} name={item.name} quantity={item.quantity} aisle={item.aisle} image={item.image}/>)
+  const deleteItem = (id) => {
+      const items = shoppingItems.filter(item => item.id !== id)
+      setShoppingItems(items);
+      axios.delete(`/shopping/${id}`).then(res => console.log(res));
+  }
+  const shoppingListItems = shoppingItems.map(item => <ShoppingListItem key={item.id} id={item.id} name={item.name} quantity={item.quantity} aisle={item.aisle} image={item.image} onDelete={deleteItem}/>)
   return (
 <>
 <main>
