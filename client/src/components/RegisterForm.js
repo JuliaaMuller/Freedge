@@ -6,6 +6,7 @@ import { RiLockPasswordLine } from 'react-icons/ri';
 import { BsHouseDoor } from 'react-icons/bs';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
+import './RegisterForm.scss';
 
 
 
@@ -54,6 +55,9 @@ const RegisterForm = () => {
 
   return (
 <>
+<div className='register-form'>
+  <p> Welcome to Freedge</p>
+  <p>Give us some informations about you :</p>
   <Form onSubmit ={handleSubmit}>
   <Form.Group className="mb-3" controlId="formBasicEmail">
     <Form.Label><MdAlternateEmail/> Email address</Form.Label>
@@ -97,6 +101,7 @@ const RegisterForm = () => {
     {input && <span>Error: Please fill all the forms!</span>}
     {auth && <Navigate to = "/"/>}
   </Form>
+  </div>
   </>
         )
       }

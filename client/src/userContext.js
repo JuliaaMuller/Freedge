@@ -4,7 +4,8 @@ import Cookies from "js-cookie";
 const UserContext = createContext()
 
 const ContextProvider = (props) => {
-  const [userLog, setUserLog] = useState(null)
+  const [userLog, setUserLog] = useState("Julia")
+  const [userId, setUserId] = useState('')
 
   useEffect(() => {
     const myCookie = Cookies.get['session']
@@ -13,6 +14,8 @@ const ContextProvider = (props) => {
       const res = axios.post('/user/:id')
       .then(user => user.JSON());
       setUserLog(res.name)
+      // setUserId(res.id)
+      setUserId(1)
     }
   }, [])
   
@@ -24,6 +27,7 @@ const ContextProvider = (props) => {
     <UserContext.Provider 
     value={{
       userLog:userLog,
+      userId:userId,
     }}
     >
       {props.children}

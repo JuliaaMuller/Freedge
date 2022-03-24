@@ -10,26 +10,25 @@ import { UserContext } from '../userContext';
 import axios from 'axios';
 
 
-
-
 const NavMenu = () => {
 
-const { userLog } = useContext(UserContext)
+  const { userLog } = useContext(UserContext)
 
-const handleLogout = (e) =>{
-  e.preventDefault();
-  axios.post('/logout', userLog)
-  .then((res) => {
-     
-    })
+  const handleLogout = (e) =>{
+    e.preventDefault();
+    axios.post('/logout', userLog)
+    .then((res) => {
+      
+      })
 
-}
-console.log("etat userLog",userLog)
+  }
+  console.log("etat userLog",userLog)
+
   return (
     <>
-<Navbar  bg="light" expand="lg">
+<Navbar  className="nav-bar-container" bg="light" expand="lg">
   <Container>
-    <Navbar.Brand href="/">< BiFridge className="icon-nav"/> Freedge</Navbar.Brand>
+    <Navbar.Brand href="/">< img className='brand-logo-letter' src='https://github.com/JuliaaMuller/Freedge/blob/master/client/public/images/Freedge_letter_logo.png?raw=true'/> <img className='brand-name'src='https://github.com/JuliaaMuller/Freedge/blob/master/client/public/images/Freedge.png?raw=true' /></Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">

@@ -1,14 +1,13 @@
 import React from 'react';
 import RegisterForm from './RegisterForm';
+import './Register.scss';
 
 
 function Register () {
 
   return (
 <>
-<main>
-  <h2>Register page </h2>
-  <p> Welcome to Freedge - Give us some informations about you : </p>
+<main className='register-form-container'>
 <RegisterForm />
 </main>
 </>
