@@ -7,9 +7,9 @@ export default function UserIngredientsList() {
 
   let userItems = [];
   console.log(userIngredients);
-  useEffect(() => {
-    axios.get("/ingredients").then((res) => setUserIngredients(res.data));
-  }, []);
+  // useEffect(() => {
+  //   axios.get("/ingredients").then((res) => setUserIngredients(res.data));
+  // }, []);
 
   const onDeleteItem = (name) => {
 

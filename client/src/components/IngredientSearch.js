@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import IngredientList from "./IngredientList";
+import Confirmation from "./Confirmation";
 import UserIngredientsList from "./UserIngredientsList";
 import { Navigate } from 'react-router-dom';
 import { UserContext } from '../userContext';
@@ -71,7 +72,7 @@ export default function IngredientSearch() {
     other: [],
   });
   const { userLog } = useContext(UserContext)
-
+  const [modalShow, setModalShow] = useState(false);
   // const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=3&apiKey=${
   //   process.env.REACT_APP_API_KEY || process.env.REACT_APP_SECONDARY_API_KEY
   // }`;
@@ -105,7 +106,19 @@ export default function IngredientSearch() {
     
   }
 
+  const isEmpty = (data) => {
+    for (let key of Object.keys(data)) {
+      if (data[key].length > 0) {
+        return false;
+      }
+    }
+    return true;
+  }
   const generateMealPlan = (data) => {
+
+    if(isEmpty(data)) {
+      return setModalShow(true);
+    }
 
     axios
       .post("/ingredients",{ data })
@@ -172,7 +185,7 @@ export default function IngredientSearch() {
     <>
       
       <main>
-      {!userLog && <Navigate to='/welcome'/>}
+      {/* {!userLog && <Navigate to='/welcome'/>} */}
         <Form onSubmit={(event) => event.preventDefault()}>
           <Form.Control
             size="lg"
@@ -206,6 +219,7 @@ export default function IngredientSearch() {
             Create Meal Plan 
           </Button> : ""}
           {status && <Navigate to="/mealplanner"/>}
+          <Confirmation show={modalShow} onHide={() => setModalShow(false)}/>
       </main>
     </>
   );
