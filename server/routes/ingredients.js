@@ -14,6 +14,8 @@ function insertIntoDb(category, user_id, db) {
 module.exports = (db) => {
   // all routes will go here
   router.get("/", (req, res) => {
+    const user_id = req.session.userId;
+    console.log("cookie", user_id);
     const command = "SELECT array_agg(name) AS name, array_agg(quantity) AS quantity, category FROM ingredients WHERE user_id = 1 GROUP BY category;";
     db.query(command).then(data => {
      
@@ -53,5 +55,11 @@ module.exports = (db) => {
     res.status(200).send("Success!");
   });
 
+  router.delete("/:name", (req, res) => {
+    const name = req.params.name;
+
+    const command = "DELETE FROM ingredients WHERE name = $1";
+    db.query(command, [name]).then(() => res.status(200).send("Deleted successfully")).catch(err => console.log(err))
+  })
   return router;
 };
