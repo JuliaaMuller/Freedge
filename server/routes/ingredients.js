@@ -55,5 +55,11 @@ module.exports = (db) => {
     res.status(200).send("Success!");
   });
 
+  router.delete("/:name", (req, res) => {
+    const name = req.params.name;
+
+    const command = "DELETE FROM ingredients WHERE name = $1";
+    db.query(command, [name]).then(() => res.status(200).send("Deleted successfully")).catch(err => console.log(err))
+  })
   return router;
 };

@@ -97,6 +97,11 @@ export default function IngredientSearch() {
     setTerm(value);
   };
 
+  const onDelete = (name) => {
+    const filteredSelection = selection.filter((item) => item.name !== name)
+    setSelection(filteredSelection);
+    // axios.delete(`/ingredients/${name}`).then(res => console.log(res));
+  }
   const generateMealPlan = (data) => {
 
     axios
@@ -188,7 +193,7 @@ export default function IngredientSearch() {
             );
           })}
         {selection.length > 0 ? (
-          <IngredientList items={selection} handleCategory={handleCategory} />
+          <IngredientList items={selection} onDelete={onDelete} handleCategory={handleCategory} />
         ) : (
           ""
         )}
