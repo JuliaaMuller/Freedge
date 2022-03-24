@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import NavMenu from './NavMenu';
 import axios from 'axios';
 import Table from "react-bootstrap/Table";
 import ShoppingListItem from './ShoppingListItem';
+import { Navigate } from 'react-router-dom';
+import { UserContext } from '../userContext';
 
 function ShoppingList (props) {
 
   const [shoppingItems, setShoppingItems] = useState([]);
+  const { userLog } = useContext(UserContext)
+
   console.log(shoppingItems);
   useEffect(() => {
     axios.get("/shopping").then(({ data }) => {
@@ -23,6 +27,7 @@ function ShoppingList (props) {
   return (
 <>
 <main>
+{!userLog && <Navigate to='/welcome'/>}
   <h2>My shopping Lists </h2>
  
   <Table striped bordered hover>

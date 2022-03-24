@@ -20,6 +20,19 @@ module.exports = (db) => {
     })
     .catch((e) => res.send(e));
     });
+
+    router.post("/delete/:id", (req, res) => {
+      console.log("item id:",req.params["id"]);
+      let queryString = `
+      DELETE FROM favorites
+      WHERE id = $1;`;
+      let values = [req.params["id"]];
+      console.log(req.params);
+  
+      return db.query(queryString, values)
+        .then(() => res.redirect(`/favorites`));
+    });
+    
     return router;
   };
   

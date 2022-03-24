@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import NavMenu from './NavMenu';
 import { Form, FormGroup, FormControl, FormCheck, Button } from 'react-bootstrap';
 import { MdAlternateEmail } from 'react-icons/md';
 import { BiUserCircle, BiPhone } from 'react-icons/bi';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { BsHouseDoor } from 'react-icons/bs';
+import { Navigate } from 'react-router-dom';
+import { UserContext } from '../userContext';
 
 function Settings (props) {
+  const { userLog } = useContext(UserContext)
+  
   return (
 <>
 <main>
+{!userLog && <Navigate to='/welcome'/>}
   <h2>Settings</h2>
   <p> Did you need to update some informations ? </p>
 

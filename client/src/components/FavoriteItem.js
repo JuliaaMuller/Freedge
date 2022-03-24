@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { BiFridge, BiBookHeart } from 'react-icons/bi';
-import { Button } from 'react-bootstrap';
+import { GiBrokenHeart } from 'react-icons/gi';
+import { Button, Form } from 'react-bootstrap';
 
 
 
@@ -22,6 +23,11 @@ const[image, setImage]=useState('')
   //   })
   //   .catch((err) => console.log(err));
   // }, [])
+ function handleDelete (id) {
+  axios.post(`/favorites/delete/${id}`) 
+  .then((res) => console.log("favorite is delete"))
+  .catch((err) => console.log(err))
+ }
  
   return (
   <div className='fav-recipe-item'>
@@ -33,9 +39,11 @@ const[image, setImage]=useState('')
       // src={image}
       />
       <div className='buttons'>
-      <Button className ='fav-button' variant="btn btn-outline-secondary" type="submit" >
-              <BiBookHeart/> Remove from favorites
-      </Button>
+      <Form onClick={handleDelete}>
+        <Button className ='fav-button' variant="btn btn-outline-secondary" type="submit" >
+                <GiBrokenHeart/> Remove from favorites
+        </Button>
+      </Form>
       </div>
   </div>
   )

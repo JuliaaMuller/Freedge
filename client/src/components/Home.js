@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
-import NavMenu from './NavMenu';
+import React, { useState, useContext } from 'react';
 import './Home.scss';
 import { GrAddCircle } from 'react-icons/gr';
 import { ButtonGroup, ToggleButton, InputGroup, Button, FormControl } from 'react-bootstrap';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { FcSearch } from 'react-icons/fc';
 // import Footer from './footer';
+import { Navigate } from 'react-router-dom';
+import { UserContext } from '../userContext';
+
 
 function Home (props) {
+  const { userLog } = useContext(UserContext)
 
     const [dayValue, setdayValue] = useState('1');
   
@@ -23,6 +26,7 @@ function Home (props) {
   return (
     <>
   <main>
+  {!userLog && <Navigate to='/welcome'/>}
     <img className='brand-logo' src='images/brand-logo.png' alt=''/>
     <div className='my-ingredients'>
          What's in your fridge ? 

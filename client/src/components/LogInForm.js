@@ -10,6 +10,7 @@ import { UserContext } from '../userContext';
 
 
 
+
 const LogInForm = () => {
   const [user, setUser] = useState({
     email: '',
@@ -18,6 +19,7 @@ const LogInForm = () => {
   const [alert, setAlert] = useState(false)
   const [auth, setAuth] = useState(false)
   const [input, setInput] = useState(false)
+  const { setIsLoggedIn, setUserLog, setUserId } = useContext(UserContext)
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -42,7 +44,10 @@ const LogInForm = () => {
       } else if(res.status === 200){
         
         console.log(res.data.name)
-       
+        // setUserLog()
+        setIsLoggedIn(true)
+        setUserLog(res.data.name)
+        setUserId(res.data.id)
         setAuth(true);
         console.log(auth)
       }

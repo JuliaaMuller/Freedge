@@ -33,10 +33,11 @@ app.use(
   })
 );
 
-app.use('/', indexRouter);
+app.use('/', indexRouter());
 app.use('/users', usersRouter(db));
 app.use('/ingredients',ingredientsRouter(db));
 app.use('/',authRouter(db))
+app.use('/login', authRouter(db))
 app.use('/recipes',recipesRouter(db))
 app.use('/shopping',shoppingRouter(db))
 app.use('/favorites', favoritesRouter(db))

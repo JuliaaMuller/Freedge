@@ -64,7 +64,8 @@ module.exports = (db) => {
         const userHashedPass = data.rows[0]["password"]
         const user_id = data.rows[0]["id"]
         const cookie = req.session
-        const match = bcrypt.compareSync(password, userHashedPass)
+        // const match = bcrypt.compareSync(password, userHashedPass). ==> à remettre après essai
+        const match = '1234'
         cookie["id"] = user_id;
         cookie["name"] = data.rows[0]["first_name"]
         const name = data.rows[0]["first_name"]
@@ -73,16 +74,16 @@ module.exports = (db) => {
           return res.status(403).send("The password you entered is not correct");         
         }
 
-        res.status(200).send({user:user_id,name:name})
+        res.status(200).send({id:user_id,name:name})
         // res.redirect("../");
       })
       .catch((e) => res.status(403).send("This user does not exist!"));
   });
 
   router.post("/logout", (req, res) => {
-    console.log(`Logging out as: id ${req.session["first_name"]}`);
-    req.session = null;
-    // res.redirect("../");
+    console.log(`Logging out as: ${req.session["name"]}`);
+    req.session = null
+    res.redirect("../");
   });
   return router;
 };

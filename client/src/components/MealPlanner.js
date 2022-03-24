@@ -1,15 +1,17 @@
 import React, { useState, useContext } from 'react';
 import { mealContext } from '../providers/MealProvider';
-import NavMenu from './NavMenu';
 import './MealPlanner.scss';
 import { ButtonGroup, ToggleButton, InputGroup, Button, FormControl } from 'react-bootstrap';
 import MealPlanList from './MealPlanList';
+import { Navigate } from 'react-router-dom';
+import { UserContext } from '../userContext';
 
 function MealPlanner(props) {
   const [dayValue, setdayValue] = useState('1');
   const [selected, setSelected] = useState("");
   const { state, setState, getRecipesForDay } = useContext(mealContext);
-  
+  const { userLog } = useContext(UserContext)
+
   const days = [
     { name: 'Mon', value: '1' },
     { name: 'Tue', value: '2' },
@@ -36,6 +38,7 @@ function MealPlanner(props) {
   return (
 <>
 <main>
+{!userLog && <Navigate to='/welcome'/>}
   <h2>My meal planner </h2>
   <div className='my-meal-planner'>
          <ButtonGroup className='days-button'>

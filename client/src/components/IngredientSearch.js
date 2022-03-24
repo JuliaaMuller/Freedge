@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
@@ -6,7 +6,8 @@ import Button from "react-bootstrap/Button";
 import IngredientList from "./IngredientList";
 import UserIngredientsList from "./UserIngredientsList";
 import { Navigate } from 'react-router-dom';
-import NavMenu from "./NavMenu";
+import { UserContext } from '../userContext';
+
 
 const resultsArray = [
   {
@@ -69,7 +70,7 @@ export default function IngredientSearch() {
     grain: [],
     other: [],
   });
-
+  const { userLog } = useContext(UserContext)
 
   // const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=3&apiKey=${
   //   process.env.REACT_APP_API_KEY || process.env.REACT_APP_SECONDARY_API_KEY
@@ -171,6 +172,7 @@ export default function IngredientSearch() {
     <>
       
       <main>
+      {!userLog && <Navigate to='/welcome'/>}
         <Form onSubmit={(event) => event.preventDefault()}>
           <Form.Control
             size="lg"

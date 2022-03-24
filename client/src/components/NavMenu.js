@@ -8,18 +8,25 @@ import { BsPersonCircle } from 'react-icons/bs';
 import { AiOutlineSetting } from 'react-icons/ai';
 import { UserContext } from '../userContext';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
+import { useEffect } from 'react/cjs/react.production.min';
 
 
 const NavMenu = () => {
 
-  const { userLog } = useContext(UserContext)
+  const { userLog, setUserLog } = useContext(UserContext)
 
   const handleLogout = (e) =>{
     e.preventDefault();
-    axios.post('/logout', userLog)
-    .then((res) => {
-      
-      })
+    // useEffect(() => {
+      return axios.post('/logout')
+      .then((res) => {
+        console.log('logout')
+      setUserLog('')
+        })
+
+    // }, [])
+    
 
   }
   console.log("etat userLog",userLog)
@@ -48,11 +55,10 @@ const NavMenu = () => {
           <NavDropdown.Divider />
           <NavDropdown.Item onClick={handleLogout} ><BiLogOut/> Log out</NavDropdown.Item>
         </NavDropdown>
-        
       </Nav>
     </Navbar.Collapse>
-    </div>
-}
+    </div>}
+
   </Container>
 </Navbar>
  
