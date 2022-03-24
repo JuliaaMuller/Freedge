@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import IngredientList from "./IngredientList";
+import UserIngredientsList from "./UserIngredientsList";
 import { Navigate } from 'react-router-dom';
 import NavMenu from "./NavMenu";
 
@@ -97,6 +98,12 @@ export default function IngredientSearch() {
     setTerm(value);
   };
 
+  const onDelete = (name) => {
+    const filteredSelection = selection.filter((item) => item.name !== name)
+    setSelection(filteredSelection);
+    
+  }
+
   const generateMealPlan = (data) => {
 
     axios
@@ -117,45 +124,45 @@ export default function IngredientSearch() {
     setResults([]);
   };
 
-  const handleCategory = (type, name, id, quantity) => {
-    console.log(type, name, id, quantity);
+  const handleCategory = (type, name, quantity) => {
+    console.log(type, name, quantity);
     if (type === "vegetable") {
       setCategory((prev) => ({
         ...prev,
         vegetable: [
           ...prev.vegetable,
-          { id: id, name: name, quantity: quantity, category: "vegetable" },
+          { name: name, quantity: quantity, category: "vegetable" },
         ],
       }));
     }
     if (type === "protein") {
       setCategory((prev) => ({
         ...prev,
-        protein: [...prev.protein, { id: id, name: name, quantity: quantity, category: "protein" }],
+        protein: [...prev.protein, { name: name, quantity: quantity, category: "protein" }],
       }));
     }
     if (type === "fruit") {
       setCategory((prev) => ({
         ...prev,
-        fruit: [...prev.fruit, { id: id, name: name, quantity: quantity, category: "fruit" }],
+        fruit: [...prev.fruit, { name: name, quantity: quantity, category: "fruit" }],
       }));
     }
     if (type === "grain") {
       setCategory((prev) => ({
         ...prev,
-        grain: [...prev.grain, { id: id, name: name, quantity: quantity, category: "grain" }],
+        grain: [...prev.grain, { name: name, quantity: quantity, category: "grain" }],
       }));
     }
     if (type === "dairy") {
       setCategory((prev) => ({
         ...prev,
-        dairy: [...prev.dairy, { id: id, name: name, quantity: quantity, category: "dairy" }],
+        dairy: [...prev.dairy, { name: name, quantity: quantity, category: "dairy" }],
       }));
     }
     if (type === "other") {
       setCategory((prev) => ({
         ...prev,
-        other: [...prev.other, { id: id, name: name, quantity: quantity, category: "other" }],
+        other: [...prev.other, { name: name, quantity: quantity, category: "other" }],
       }));
     }
   };
@@ -187,8 +194,9 @@ export default function IngredientSearch() {
               </Card>
             );
           })}
+        <UserIngredientsList />
         {selection.length > 0 ? (
-          <IngredientList items={selection} handleCategory={handleCategory} />
+          <IngredientList items={selection} onDelete={onDelete} handleCategory={handleCategory} />
         ) : (
           ""
         )}
