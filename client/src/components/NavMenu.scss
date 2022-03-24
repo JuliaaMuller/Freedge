@@ -1,15 +1,24 @@
 .nav-bar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   background-repeat: no-repeat;
   background-image: url("https://img.wallpapersafari.com/desktop/800/450/71/15/AipStT.jpg");
-// background-image: url("https://t4.ftcdn.net/jpg/03/73/26/09/360_F_373260949_C49GBDmBKwzfg33ym1wMHRYK7g2cFAHI.jpg");
-// width: 900px;
-background-size: 100%;
-// background-image: url('https://image.shutterstock.com/image-illustration/soft-green-watercolor-background-brush-260nw-1145362352.jpg');
+  background-size: 100%;
 }
 
 .brand-logo-letter {
 height: 50px;
+}
 
+.nav-left{
+align-items: flex-start;
+}
+.nav-center{
+align-items: center;
+}
+.nav-right{
+align-items: flex-end;
 }
 
 .brand-name {

@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Form,  Button } from 'react-bootstrap';
 import './Welcome.scss';
+import { Navigate } from 'react-router-dom';
+import { UserContext } from '../userContext';
 
-function Welcome (props) {
+function Welcome () {
+  const { userLog } = useContext(UserContext)
+
   return (
 <> 
+{userLog && <Navigate to='/'/>}
 <div className='welcome'>
 
 <img className='logo'  src='images/brand-logo.png'/>

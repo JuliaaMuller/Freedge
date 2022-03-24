@@ -1,9 +1,18 @@
 @import "~bootstrap/scss/bootstrap";
 
+
 body {
   margin-left: 10px;
   margin-right: 10px;
 }
+
+main {
+display: flex;
+flex-direction: column;
+background-color: #f3f1ef;
+min-height: 900px;
+ 
+} 
 
 .App {
   text-align: center;

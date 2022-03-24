@@ -30,8 +30,15 @@ module.exports = (db) => {
 
       db.query(command, uservalues)
         .then((res) => {
-          req.session["id"] = user.id;
-          res.status(200).send("New user created");
+          console.log(res)
+          const cookie = req.session
+          const user_id = res.rows[0]["id"]
+          cookie["id"] = user_id
+          cookie["name"] = res.rows[0]["first_name"]
+          const name = data.rows[0]["first_name"]
+          console.log("session created")
+          res.status(200).send({id:user_id,name:name})
+          res.redirect("../");
         })
         .catch((e) => res.send(e));
     })
@@ -64,8 +71,7 @@ module.exports = (db) => {
         const userHashedPass = data.rows[0]["password"]
         const user_id = data.rows[0]["id"]
         const cookie = req.session
-        // const match = bcrypt.compareSync(password, userHashedPass). ==> à remettre après essai
-        const match = '1234'
+        const match = bcrypt.compareSync(password, userHashedPass)
         cookie["id"] = user_id;
         cookie["name"] = data.rows[0]["first_name"]
         const name = data.rows[0]["first_name"]
@@ -75,7 +81,7 @@ module.exports = (db) => {
         }
 
         res.status(200).send({id:user_id,name:name})
-        // res.redirect("../");
+        res.redirect("../");
       })
       .catch((e) => res.status(403).send("This user does not exist!"));
   });

@@ -7,6 +7,7 @@ import { BsHouseDoor } from 'react-icons/bs';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 import './RegisterForm.scss';
+import { UserContext } from '../userContext';
 
 
 
@@ -23,6 +24,7 @@ const RegisterForm = () => {
   const [alert, setAlert] = useState(false)
   const [auth, setAuth ] = useState(false)
   const [input, setInput] = useState(false)
+  const { setIsLoggedIn, setUserId, setUserLog} = useContext(UserContext)
 
 
   const handleChange = (e) => {
@@ -45,7 +47,13 @@ const RegisterForm = () => {
       axios.post('/register', user)
       .then(res => {  
         if (res.status === 200) {
-        setAuth(true)
+        console.log(res.data.name)
+        // setUserLog()
+        setIsLoggedIn(true)
+        setUserLog(res.data.name)
+        setUserId(res.data.id)
+        setAuth(true);  
+  
         }else if (res.status === 409) {
         setAlert(true)
         }

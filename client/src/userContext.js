@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from "react";
 import axios from 'axios';
-import Cookies from "js-cookie";
 const UserContext = createContext()
 
 const ContextProvider = (props) => {
@@ -9,18 +8,15 @@ const ContextProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn]= useState(false)
 
   useEffect(() => {
-    const myCookie = Cookies.get['session']
-   
-    // if(myCookie){
+    
       return axios.post('/user/')
       .then(res => {console.log(res)
       console.log('res.data.name:', res.data.name)
-      console.log('res.data.id:',res.data.id)
+      console.log('res.data.id:', res.data.id)
       setUserLog(res.data.name)
       setUserId(res.data.id)
       });
       
-    // }
   }, [])
   
   

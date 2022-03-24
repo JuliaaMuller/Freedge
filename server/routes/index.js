@@ -8,8 +8,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.post('/user/', function(req, res, next) {
+router.post('/user/', (req, res) => {
   if(req.session){
+    console.log("req.session:",req.session)
 const user_id = req.session["id"]
 const name = req.session["name"]
 console.log(user_id)

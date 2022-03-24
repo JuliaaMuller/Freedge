@@ -1,20 +1,21 @@
-main {
-margin-left: 20px;
-margin-right: 20px;
-background-color: #f3f1ef;
-
-}
 
 .brand-logo {
 display: block;
 margin: 0px auto;
-height: 450px;
+height: 250px;
 }
+.menu-1 {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+
 .my-ingredients {
 margin-top: 20px;
+margin: 20px;
+width: 80%;
 padding: 10px;
-border-color: black;
-border: solid 2px;
+background-color: #ede7e1;
 border-radius: 8px;
 text-align: center;
 }
@@ -24,47 +25,56 @@ font-size: 15px;
 }
 
 .my-ingredients:hover {
-  box-shadow: 3px 4px gray;
+  box-shadow: 3px 4px rgb(201, 178, 158);
 }
 
-.my-meal-planner {
+.my-meal-planner-box {
 margin-top: 20px;
 text-align: center;
 padding: 10px;
-border-color: black;
-border: solid 2px;
+margin: 20px;
+width: 80%;
+background-color: #ede7e1;
 border-radius: 8px;
 text-align: center;
 }
 
-.my-meal-planner:hover {
-  box-shadow: 3px 4px gray;
+.my-meal-planner-box:hover {
+  box-shadow: 3px 4px rgb(201, 178, 158);
+}
+
+.menu-2 {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
 }
 
 .my-shopping-list {
 margin-top: 20px;
 text-align: center;
 padding: 10px;
-border-color: black;
-border: solid 2px;
+margin: 20px;
+width: 80%;
+background-color: #ede7e1;
 border-radius: 8px;
 text-align: center;
 }
 
 .my-shopping-list:hover {
-  box-shadow: 3px 4px gray;
+  box-shadow: 3px 4px rgb(201, 178, 158);
 }
 
 .explore-recipes {
 margin-top: 20px;
 text-align: center;
 padding: 10px;
-border-color: black;
-border: solid 2px;
+margin: 20px;
+width: 80%;
+background-color: #ede7e1;
 border-radius: 8px;
 text-align: center;
 }
 
 .explore-recipes:hover {
-  box-shadow: 3px 4px gray;
+  box-shadow: 3px 4px rgb(201, 178, 158);
 }

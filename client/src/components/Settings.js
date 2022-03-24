@@ -10,11 +10,11 @@ import { UserContext } from '../userContext';
 
 function Settings (props) {
   const { userLog } = useContext(UserContext)
-  
+
   return (
 <>
 <main>
-{!userLog && <Navigate to='/welcome'/>}
+{/* {!userLog && <Navigate to='/welcome'/>} */}
   <h2>Settings</h2>
   <p> Did you need to update some informations ? </p>
 

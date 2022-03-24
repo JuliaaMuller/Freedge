@@ -27,7 +27,7 @@ function ShoppingList (props) {
   return (
 <>
 <main>
-{!userLog && <Navigate to='/welcome'/>}
+{/* {!userLog && <Navigate to='/welcome'/>} */}
   <h2>My shopping Lists </h2>
  
   <Table striped bordered hover>

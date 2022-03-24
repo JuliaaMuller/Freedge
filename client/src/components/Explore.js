@@ -8,7 +8,7 @@ function Explore (props) {
   return (
 <>
 <main>
-{!userLog && <Navigate to='/welcome'/>}
+{/* {!userLog && <Navigate to='/welcome'/>} */}
   <h2>Explore more recipes </h2>
 </main>
 </>

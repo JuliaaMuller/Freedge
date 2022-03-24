@@ -6,9 +6,6 @@ import Cookies from "js-cookie";
 
 function LogIn () {
 
-  const myCookie = Cookies.get('session')
-
-  console.log('mycookie = ',myCookie)
   return (
 <>
 <main>

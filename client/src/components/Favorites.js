@@ -21,7 +21,7 @@ console.log('favList=',favList)
   return (
 <>
 <main>
-{!userLog && <Navigate to='/welcome'/>}
+{/* {!userLog && <Navigate to='/welcome'/>} */}
   <h2>My favorites recipes </h2>
 {favList.map((id) => { return <FavoriteItem id={id}/>}
  )}
