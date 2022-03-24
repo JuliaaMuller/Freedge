@@ -52,7 +52,7 @@ const LogInForm = () => {
   
   return (
     <>
-   
+  <div className='Login-form-container'>
           <Form onSubmit={handleSubmit}>
           <h2>Log in </h2>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -77,7 +77,7 @@ const LogInForm = () => {
             {input && <span>Error: Password and email cannot be blank!</span>}
             {auth && <Navigate to="/" />}
           </Form>
-          
+  </div>
         
     
 
