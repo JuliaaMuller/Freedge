@@ -28,7 +28,7 @@ const NavMenu = () => {
     <>
 <Navbar  className="nav-bar-container" bg="light" expand="lg">
   <Container>
-    <Navbar.Brand href="/">< BiFridge className="icon-nav"/> Freedge</Navbar.Brand>
+    <Navbar.Brand href="/">< img className='brand-logo-letter' src='https://github.com/JuliaaMuller/Freedge/blob/master/client/public/images/Freedge_letter_logo.png?raw=true'/> <img className='brand-name'src='https://github.com/JuliaaMuller/Freedge/blob/master/client/public/images/Freedge.png?raw=true' /></Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
