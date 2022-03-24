@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Form, FormGroup, FormControl, FormCheck, Button } from 'react-bootstrap';
+import { Form, FormGroup, FormControl, FormCheck, Button, InputGroup } from 'react-bootstrap';
 import { MdAlternateEmail } from 'react-icons/md';
 import { BiUserCircle, BiPhone, BiBuildingHouse } from 'react-icons/bi';
 import { RiLockPasswordLine } from 'react-icons/ri';
@@ -56,44 +56,45 @@ const RegisterForm = () => {
   return (
 <>
 <div className='register-form'>
-  <p> Welcome to Freedge</p>
-  <p>Give us some informations about you :</p>
+  <h3 id="register-form-title"> Welcome to Freedge</h3>
+  <p id="register-form-info"> Give us some informations about you :</p>
+  
   <Form onSubmit ={handleSubmit}>
-  <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Form.Label><MdAlternateEmail/> Email address</Form.Label>
-    <Form.Control name ="email"  onChange={ handleChange } type="input" placeholder="Enter Email" />
-  </Form.Group>
-
-  <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Label><RiLockPasswordLine/> Password</Form.Label>
-    <Form.Control name ="password"  onChange={ handleChange } type="input" placeholder="Password" />
-  </Form.Group>
-
-  <Form.Group className="mb-3" controlId="formBasicFirstName">
-    <Form.Label><BiUserCircle/> First Name</Form.Label>
-    <Form.Control name ="first_name"  onChange={ handleChange } type="input" placeholder="First Name" />
-  </Form.Group>
-
-  <Form.Group className="mb-3" controlId="formBasicLastName">
-    <Form.Label><BiUserCircle/> Last Name</Form.Label>
-    <Form.Control name ="last_name"  onChange={ handleChange } type="input" placeholder="Last Name" />
-  </Form.Group>
-
-  <Form.Group className="mb-3" controlId="formBasicAddress">
-    <Form.Label><BsHouseDoor/> Your address</Form.Label>
-    <Form.Control name ="address"  onChange={ handleChange } type="input" placeholder="Adress" />
-  </Form.Group>
-
-  <Form.Group className="mb-3" controlId="formBasicCity">
-    <Form.Label><BiBuildingHouse/> City</Form.Label>
-    <Form.Control name ="city"  onChange={ handleChange } type="input" placeholder="City" />
-  </Form.Group>
-
-  <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
-    <Form.Label><BiPhone/> Your phone number</Form.Label>
-    <Form.Control name ="phone_number"   onChange={ handleChange } type="input" placeholder="Phone Number" />
-  </Form.Group>
-
+  <InputGroup size="sm" className="mb-3" controlId="formBasicEmail">
+    <InputGroup.Text id="inputGroup-sizing-sm"><MdAlternateEmail/></InputGroup.Text>
+    <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name ="email"  onChange={ handleChange } type="input" placeholder="Enter Email" />
+  </InputGroup>
+  <br />
+  <InputGroup size="sm" className="mb-3" controlId="formBasicPassword">
+    <InputGroup.Text id="inputGroup-sizing-sm"><RiLockPasswordLine/></InputGroup.Text>
+    <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name ="password"  onChange={ handleChange } type="input" placeholder="Password" />
+  </InputGroup>
+  <br />
+  <InputGroup size="sm" className="mb-3" controlId="formBasicFirstName">
+    <InputGroup.Text id="inputGroup-sizing-sm"><BiUserCircle/></InputGroup.Text>
+    <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name ="first_name"  onChange={ handleChange } type="input" placeholder="First Name" />
+  </InputGroup>
+  <br />
+  <InputGroup size="sm" className="mb-3" controlId="formBasicLastName">
+    <InputGroup.Text id="inputGroup-sizing-sm"><BiUserCircle/></InputGroup.Text>
+    <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name ="last_name"  onChange={ handleChange } type="input" placeholder="Last Name" />
+  </InputGroup>
+  <br />
+  <InputGroup size="sm" className="mb-3" controlId="formBasicAddress">
+    <InputGroup.Text id="inputGroup-sizing-sm"><BsHouseDoor/></InputGroup.Text>
+    <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name ="address"  onChange={ handleChange } type="input" placeholder="Adress" />
+  </InputGroup>
+  <br />
+  <InputGroup size="sm" className="mb-3" controlId="formBasicCity">
+    <InputGroup.Text id="inputGroup-sizing-sm"><BiBuildingHouse/></InputGroup.Text>
+    <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name ="city"  onChange={ handleChange } type="input" placeholder="City" />
+  </InputGroup>
+  <br />
+  <InputGroup size="sm" className="mb-3" controlId="formBasicPhoneNumber">
+    <InputGroup.Text id="inputGroup-sizing-sm"><BiPhone/></InputGroup.Text>
+    <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name ="phone_number"  onChange={ handleChange } type="input" placeholder="Phone Number" />
+  </InputGroup>
+  <br />
     <Button variant="btn btn-outline-secondary" type="submit" >
       Save
     </Button>

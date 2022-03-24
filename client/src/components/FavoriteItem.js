@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { BiFridge, BiBookHeart } from 'react-icons/bi';
 import { Button } from 'react-bootstrap';
@@ -9,23 +9,24 @@ import { Button } from 'react-bootstrap';
 
 export default function FavoriteItem ({id}) {
 
-console.log('props:',id)
+const[title,setTitle]=useState('')
+const[image, setImage]=useState('')
 
-  function getRecipeById(recipeId){
-    let url = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${process.env.REACT_APP_API_KEY}`
-
-  axios.get(url)
-  .then((response)=>  {return response.data})
-  .catch((err) => console.log(err));
-  }
-
-const recipeData = getRecipeById()
-
-
+  useEffect(()=> {
+    let url = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY}`
+    // let url = `https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=false&apiKey=e6e56c0c58be4654a653d00d767b3fc5`
+    return axios.get(url)
+    .then((response)=>  {
+      setTitle(response.data.title)
+      setImage(response.data.image)
+    })
+    .catch((err) => console.log(err));
+  }, [])
+ 
   return (
   <div className='fav-recipe-item'>
-      <h1 className='fav-recipe-title'>{recipeData.title}</h1>
-      <img className='fav-recipe-image' src={recipeData.image}/>
+      <h1 className='fav-recipe-title'>{title}</h1>
+      <img className='fav-recipe-image' src={image}/>
       <div className='buttons'>
       <Button className ='fav-button' variant="btn btn-outline-secondary" type="submit" >
               <BiBookHeart/> Remove from favorites

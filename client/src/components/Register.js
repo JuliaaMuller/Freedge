@@ -7,9 +7,9 @@ function Register () {
 
   return (
 <>
-<main className='register-form-container'>
+<div className='register-form-container'>
 <RegisterForm />
-</main>
+</div>
 </>
   )
 }

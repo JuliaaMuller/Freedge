@@ -52,7 +52,7 @@ const LogInForm = () => {
   
   return (
     <>
-  <div className='Login-form-container'>
+  <div className='login-form'>
           <Form onSubmit={handleSubmit}>
           <h2>Log in </h2>
             <Form.Group className="mb-3" controlId="formBasicEmail">

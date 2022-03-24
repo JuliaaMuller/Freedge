@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
 main {
   margin-left: 20px;
   margin-right: 20px;
@@ -11,4 +13,31 @@ main {
   margin: 0px auto;
   text-align: center;
   width: 300px;
+
+  #register-form-title {
+    font-family: 'Playfair Display', serif;
+    color: black;
+    margin-top: 20px;
+    border-color: black;
+    border: solid 2px;
+    border-radius: 8px;
+    text-align: center;
+    background-color:#f3f1ef;
+  }
+  
+  #register-form-info {
+    font-family: 'Playfair Display', serif;
+    color: black;
+    margin-top: 20px;
+    border-color: black;
+    border: solid 2px;
+    border-radius: 8px;
+    text-align: center;
+    background-color:#f3f1ef;
+  }
+}
+
+#inputGroup-sizing-sm {
+  background-color: black;
+  color: azure;
 }

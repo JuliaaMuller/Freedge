@@ -8,7 +8,7 @@ function LogIn () {
   return (
 <>
 <main>
- <div className='login-form'>
+ <div className='login-form-container'>
  <LogInForm/>
  </div>
 </main>

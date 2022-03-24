@@ -21,8 +21,9 @@ console.log('favList=',favList)
 <>
 <main>
   <h2>My favorites recipes </h2>
-{favList.map((id) => { return <FavoriteItem id={id}/>}
- )}
+{/* {favList.map((id) => { return <FavoriteItem id={id}/>}
+ )} */}
+ <FavoriteItem id={3456}/>
 </main>
 </>
   )
