@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import IngredientList from "./IngredientList";
+import UserIngredientsList from "./UserIngredientsList";
 import { Navigate } from 'react-router-dom';
 import NavMenu from "./NavMenu";
 
@@ -100,8 +101,9 @@ export default function IngredientSearch() {
   const onDelete = (name) => {
     const filteredSelection = selection.filter((item) => item.name !== name)
     setSelection(filteredSelection);
-    // axios.delete(`/ingredients/${name}`).then(res => console.log(res));
+    
   }
+
   const generateMealPlan = (data) => {
 
     axios
@@ -192,6 +194,7 @@ export default function IngredientSearch() {
               </Card>
             );
           })}
+        <UserIngredientsList />
         {selection.length > 0 ? (
           <IngredientList items={selection} onDelete={onDelete} handleCategory={handleCategory} />
         ) : (
