@@ -1,0 +1,19 @@
+.settings-form-container {
+display: flex;
+flex-direction: column;
+// margin: 0px auto;
+text-align: center;
+width: 100%;
+background-repeat:no-repeat;
+background-image: url("https://github.com/JuliaaMuller/Freedge/blob/master/client/public/images/veggie.png?raw=true");
+background-size: 100%;
+min-height: 900px;
+filter:opacity(80%);
+}
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto;
+  text-align: center;
+  width: 300px;
+}

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import NavMenu from './NavMenu';
+import './Settings.scss'
 import { Form, FormGroup, FormControl, FormCheck, Button } from 'react-bootstrap';
 import { MdAlternateEmail } from 'react-icons/md';
 import { BiUserCircle, BiPhone } from 'react-icons/bi';
@@ -14,11 +15,12 @@ function Settings (props) {
   return (
 <>
 <main>
+<div className="settings-form-container">
 {/* {!userLog && <Navigate to='/welcome'/>} */}
   <h2>Settings</h2>
-  <p> Did you need to update some informations ? </p>
+  <p> Do you need to update some informations ? </p>
 
-  <Form>
+  <Form className='settings-form'>
   <Form.Group className="mb-3" controlId="formBasicEmail">
     <Form.Label><MdAlternateEmail/> Email address</Form.Label>
     <Form.Control type="email" placeholder="Enter Email" />
@@ -57,6 +59,7 @@ function Settings (props) {
       Save
     </Button>
   </Form>
+  </div>
 </main>
 </>
   )

@@ -33,22 +33,20 @@ const NavMenu = () => {
 
   return (
     <>
-<Navbar  className="nav-bar-container" bg="light" expand="lg">
+<Navbar bg="light" expand="lg" className="nav-bar-container" >
   <Container>
-  {/* {userLog &&  */}
-  <div>
-    <div className='nav-left'>
-    <Navbar.Brand href="/">< img className='brand-logo-letter' src='https://github.com/JuliaaMuller/Freedge/blob/master/client/public/images/Freedge_letter_logo.png?raw=true'/> <img className='brand-name'src='https://github.com/JuliaaMuller/Freedge/blob/master/client/public/images/Freedge.png?raw=true' /></Navbar.Brand>
+    
+    <Navbar.Brand href="/">
+    <img className='brand-logo-letter' src='https://github.com/JuliaaMuller/Freedge/blob/master/client/public/images/Freedge_letter_logo.png?raw=true'/> 
+    <img className='brand-name'src='https://github.com/JuliaaMuller/Freedge/blob/master/client/public/images/Freedge.png?raw=true' />
+    </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    </div>
-   
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
-    <div className='nav-center'>
-         <a>Hello {userLog}</a>
-    </div>
-    <div className='nav-right'>
-          <NavDropdown className ="dropdown-nav" title="Menu" id="basic-nav-dropdown">
+      <Navbar.Text>
+        Signed in as: <a href="#login">Julia Muller </a>
+      </Navbar.Text>
+        <NavDropdown title="Menu" id="basic-nav-dropdown">
           <NavDropdown.Item href="/ingredients"><BiFridge/> My ingredients</NavDropdown.Item>
           <NavDropdown.Item href="/shoppinglist"><MdOutlineAddShoppingCart/> My shopping list</NavDropdown.Item>
           <NavDropdown.Item href="/mealplanner"><BiCalendar/> My meal planner</NavDropdown.Item>
@@ -59,14 +57,11 @@ const NavMenu = () => {
           <NavDropdown.Divider />
           <NavDropdown.Item onClick={handleLogout} ><BiLogOut/> Log out</NavDropdown.Item>
         </NavDropdown>
-      </div>
       </Nav>
     </Navbar.Collapse>
-    </div>
-    
-
   </Container>
 </Navbar>
+
  
 </>
   )

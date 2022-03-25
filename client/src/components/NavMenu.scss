@@ -1,24 +1,14 @@
 .nav-bar-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   background-repeat: no-repeat;
   background-image: url("https://img.wallpapersafari.com/desktop/800/450/71/15/AipStT.jpg");
   background-size: 100%;
+  align-items: center;
 }
 
 .brand-logo-letter {
 height: 50px;
-}
-
-.nav-left{
-align-items: flex-start;
-}
-.nav-center{
-align-items: center;
-}
-.nav-right{
-align-items: flex-end;
 }
 
 .brand-name {
@@ -28,4 +18,8 @@ filter:grayscale(100%)
 
 .dropdown-nav{
 margin-left: 700px ;
+}
+
+.user-name{
+margin-left: 100px;
 }

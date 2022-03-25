@@ -6,16 +6,17 @@ function About (props) {
   return (
 <> 
 <main>
-  <h3>About us </h3>
-
-  <h5> Who are we ? </h5>
+<div className='about-container'>
+  <center><h5> Who are we ? </h5></center>
+  <div className='menu-1'>
   <div className='manseerat'>
-    <p> Manseerat Kaur is a full-stack developper and ...</p>
+    <p> Manseerat Kaur is a full-stack developper </p>
   </div>
   <div className='julia'>
-    <p> Julia Muller also a full-stack developper and a mother.  </p>
+    <p> Julia Muller also a junior full-stack developper </p>
   </div>
-  <h5> Why Freedge ? </h5>
+  </div>
+  <center><h5> Why Freedge ? </h5></center>
   <div className='description'>
     <p> We are two young web developers and during this intense bootcamp we didn't have time to think about what we were going to cook. 
       Most often it was necessary to eat as quickly as possible to get back to work. 
@@ -26,9 +27,15 @@ function About (props) {
       the application that will help you empty your fridge to save you time but also save a little money 
       by avoiding food waste as much as possible. </p>
   </div>
+  <img id='image-about'src='https://images.squarespace-cdn.com/content/v1/5e29fdb6a671454c6d456f61/1592267692369-1RTKJI9UBXVXV052OV2G/Jasmine+Final_1.gif?format=1500w'/>
+</div>
 </main>
 </>
   )
 }
 
 export default About;
+
+
+
+// 
