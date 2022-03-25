@@ -3,6 +3,7 @@ display: flex;
 flex-direction: column;
 // margin: 0px auto;
 text-align: center;
+align-items: center;
 width: 100%;
 background-repeat:no-repeat;
 background-image: url("https://github.com/JuliaaMuller/Freedge/blob/master/client/public/images/veggie.png?raw=true");
@@ -10,10 +11,50 @@ background-size: 100%;
 min-height: 900px;
 filter:opacity(80%);
 }
+
+#setting {
+  font-family: 'Playfair Display', serif;
+  color: black;
+  margin-top: 20px;
+  width: 30%;
+  justify-content: center;
+  border-color: black;
+  border: solid 2px;
+  border-radius: 8px;
+  text-align: center;
+  background-color:#f3f1ef;
+}
+
+#setting-info {
+  border: solid 2px;
+  border-radius: 8px;
+  width: 30%;
+  text-align: center;
+  background-color:#f3f1ef;
+  
+}
+
 .settings-form {
   display: flex;
   flex-direction: column;
   margin: 0px auto;
   text-align: center;
-  width: 300px;
+  width: 30%;
+}
+
+.button-box {
+  
+  #back-button {
+    background-color: #f3f1ef;
+    color:black;
+    border-radius: 20px;
+    margin:20px;
+  }
+
+  #save-button{
+    background-color: #f3f1ef;
+    color:black;
+    border-radius: 20px;
+    margin:20px;
+  }
 }

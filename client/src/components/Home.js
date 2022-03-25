@@ -33,7 +33,7 @@ function Home (props) {
          What's in your fridge ? 
          <br/>
          <br/>
-    <Button variant="btn btn-outline-secondary" type="submit" className='go-to-ingredients' href='/ingredients'> 
+    <Button variant="btn btn-outline-secondary" type="submit" id='go-to-ingredients' href='/ingredients'> 
       <GrAddCircle/>
     </Button>
     </div>
@@ -41,7 +41,7 @@ function Home (props) {
          Your meals for the days
          <br/>
          <br/>
-    <Button variant="btn btn-outline-secondary" type="submit" className='go-to-meal-planner' href='/mealplanner'>
+    <Button variant="btn btn-outline-secondary" type="submit" id='go-to-meal-planner' href='/mealplanner'>
       Today's meals
     </Button>
     </div>
@@ -51,7 +51,7 @@ function Home (props) {
          We can help you with your groceries : 
          <br/>
          <br/>
-    <Button variant="btn btn-outline-secondary" type="submit" className='shopping-cart' href='/shoppinglist'> 
+    <Button variant="btn btn-outline-secondary" type="submit" id='shopping-cart' href='/shoppinglist'> 
       Place an order <MdAddShoppingCart/>
     </Button>
     </div>
@@ -60,7 +60,7 @@ function Home (props) {
          What are you looking for ? 
          <br/>
          <br/>
-  <InputGroup className="mb-3">
+  <InputGroup className="mb-3" id='explore-bar'>
     <FormControl
       placeholder="Enter a key word"
       aria-label="Recipient's username"

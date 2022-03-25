@@ -68,46 +68,47 @@ const RegisterForm = () => {
   <p id="register-form-info"> Give us some informations about you :</p>
   
   <Form onSubmit ={handleSubmit}>
-  <InputGroup size="sm" className="mb-3" controlId="formBasicEmail">
+  <InputGroup size="sm" className="mb-3" >
     <InputGroup.Text id="inputGroup-sizing-sm"><MdAlternateEmail/></InputGroup.Text>
     <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name ="email"  onChange={ handleChange } type="input" placeholder="Enter Email" />
   </InputGroup>
   <br />
-  <InputGroup size="sm" className="mb-3" controlId="formBasicPassword">
+  <InputGroup size="sm" className="mb-3" >
     <InputGroup.Text id="inputGroup-sizing-sm"><RiLockPasswordLine/></InputGroup.Text>
-    <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name ="password"  onChange={ handleChange } type="input" placeholder="Password" />
+    <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name ="password"  onChange={ handleChange } type="password" placeholder="Password" />
   </InputGroup>
   <br />
-  <InputGroup size="sm" className="mb-3" controlId="formBasicFirstName">
+  <InputGroup size="sm" className="mb-3" >
     <InputGroup.Text id="inputGroup-sizing-sm"><BiUserCircle/></InputGroup.Text>
     <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name ="first_name"  onChange={ handleChange } type="input" placeholder="First Name" />
   </InputGroup>
   <br />
-  <InputGroup size="sm" className="mb-3" controlId="formBasicLastName">
+  <InputGroup size="sm" className="mb-3" >
     <InputGroup.Text id="inputGroup-sizing-sm"><BiUserCircle/></InputGroup.Text>
     <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name ="last_name"  onChange={ handleChange } type="input" placeholder="Last Name" />
   </InputGroup>
   <br />
-  <InputGroup size="sm" className="mb-3" controlId="formBasicAddress">
+  <InputGroup size="sm" className="mb-3" >
     <InputGroup.Text id="inputGroup-sizing-sm"><BsHouseDoor/></InputGroup.Text>
     <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name ="address"  onChange={ handleChange } type="input" placeholder="Adress" />
   </InputGroup>
   <br />
-  <InputGroup size="sm" className="mb-3" controlId="formBasicCity">
+  <InputGroup size="sm" className="mb-3" >
     <InputGroup.Text id="inputGroup-sizing-sm"><BiBuildingHouse/></InputGroup.Text>
     <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name ="city"  onChange={ handleChange } type="input" placeholder="City" />
   </InputGroup>
   <br />
-  <InputGroup size="sm" className="mb-3" controlId="formBasicPhoneNumber">
+  <InputGroup size="sm" className="mb-3" >
     <InputGroup.Text id="inputGroup-sizing-sm"><BiPhone/></InputGroup.Text>
     <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name ="phone_number"  onChange={ handleChange } type="input" placeholder="Phone Number" />
   </InputGroup>
   <br />
-    <Button variant="btn btn-outline-secondary" type="submit" >
-      Save
+    <Button id='register-button' variant="btn btn-outline-secondary" type="submit" >
+      Register
     </Button>
-    {alert && <span>Error: this user already exists!</span>}
-    {input && <span>Error: Please fill all the forms!</span>}
+    <br />
+    {alert && <span className='error-span'>Error: this user already exists!</span>}
+    {input && <span className='error-span'>Error: Please fill all the forms!</span>}
     {auth && <Navigate to = "/"/>}
   </Form>
   </div>

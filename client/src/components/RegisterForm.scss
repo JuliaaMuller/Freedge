@@ -6,7 +6,7 @@
   flex-direction: column;
   margin: 0px auto;
   text-align: center;
-  width: 300px;
+  width: 30%;
 
   #register-form-title {
     font-family: 'Playfair Display', serif;
@@ -14,7 +14,7 @@
     margin-top: 20px;
     border-color: black;
     border: solid 2px;
-    border-radius: 8px;
+    border-radius: 20px;
     text-align: center;
     background-color:#f3f1ef;
   }
@@ -25,7 +25,7 @@
     margin-top: 20px;
     border-color: black;
     border: solid 2px;
-    border-radius: 8px;
+    border-radius: 20px;
     text-align: center;
     background-color:#f3f1ef;
   }
@@ -34,4 +34,16 @@
 #inputGroup-sizing-sm {
   background-color: black;
   color: azure;
+}
+
+#register-button {
+  background-color: #f3f1ef;
+  color:black;
+  border-radius: 20px;
+}
+.error-span {
+  font-size: 20px;
+  background-color: #f3f1ef;
+  border-radius: 8px;
+  color: rgb(148, 111, 235)
 }
