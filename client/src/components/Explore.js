@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 import { UserContext } from "../userContext";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import ExploreList from "./ExploreList";
 import axios from "axios";
 
 function Explore(props) {
@@ -37,6 +38,7 @@ function Explore(props) {
             Search
           </Button>
         </Form>
+        {recipeData && <ExploreList recipeData={recipeData} />}
       </main>
     </>
   );
