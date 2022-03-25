@@ -12,7 +12,6 @@ import Settings from './components/Settings';
 import ShoppingList from './components/ShoppingList';
 import Register from './components/Register';
 import MealPlanner from './components/MealPlanner';
-
 import MealProvider from './providers/MealProvider';
 
 

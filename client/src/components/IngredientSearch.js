@@ -172,7 +172,7 @@ export default function IngredientSearch() {
     <>
       
       <main>
-      {!userLog && <Navigate to='/welcome'/>}
+      {/* {!userLog && <Navigate to='/welcome'/>} */}
         <Form onSubmit={(event) => event.preventDefault()}>
           <Form.Control
             size="lg"
