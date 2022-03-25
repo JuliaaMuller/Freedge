@@ -9,13 +9,16 @@ import axios from "axios";
 function Explore(props) {
   const { userLog } = useContext(UserContext);
   const [ term, setTerm ] = useState("");
-  console.log(term);
-  useEffect(() => {
-    const url = `https://api.spoonacular.com/recipes/complexSearch?query=${term}&number=6&apiKey=${process.env.REACT_APP_API_KEY}`;
+  const [recipeData, setRecipeData] = useState(null);
+  
  
-  }, [])
-
-
+  console.log(recipeData);
+  
+  const getRecipeData = () => {
+    
+    const url = `https://api.spoonacular.com/recipes/complexSearch?query=${term}&number=6&apiKey=${process.env.REACT_APP_API_KEY}`;
+    axios.get(url).then(res => setRecipeData(res.data.results)).catch(err => console.log(err));
+  } 
 
   return (
     <>
@@ -30,7 +33,7 @@ function Explore(props) {
             onChange={(e) => setTerm(e.target.value)}
             placeholder="Search Recipes"
           />
-          <Button type="submit" variant="btn btn-outline-secondary">
+          <Button type="submit" variant="btn btn-outline-secondary" onClick={getRecipeData}>
             Search
           </Button>
         </Form>
