@@ -14,7 +14,7 @@
     margin-top: 20px;
     border-color: black;
     border: solid 2px;
-    border-radius: 8px;
+    border-radius: 20px;
     text-align: center;
     background-color:#f3f1ef;
   }
@@ -25,7 +25,7 @@
     margin-top: 20px;
     border-color: black;
     border: solid 2px;
-    border-radius: 8px;
+    border-radius: 20px;
     text-align: center;
     background-color:#f3f1ef;
   }
@@ -39,6 +39,7 @@
 #register-button {
   background-color: #f3f1ef;
   color:black;
+  border-radius: 20px;
 }
 .error-span {
   font-size: 20px;

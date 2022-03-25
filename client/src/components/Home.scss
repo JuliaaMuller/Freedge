@@ -4,6 +4,7 @@ display: block;
 margin: 0px auto;
 height: 250px;
 }
+
 .menu-1 {
 display: flex;
 flex-direction: row;
@@ -20,8 +21,11 @@ border-radius: 8px;
 text-align: center;
 }
 
-.go-to-ingredients {
+#go-to-ingredients {
 font-size: 15px;
+background-color: #f3f1ef;
+color:black;
+border-radius: 20px;
 }
 
 .my-ingredients:hover {
@@ -41,6 +45,12 @@ text-align: center;
 
 .my-meal-planner-box:hover {
   box-shadow: 3px 4px rgb(201, 178, 158);
+}
+
+#go-to-meal-planner {
+  background-color: #f3f1ef;
+  color:black;
+  border-radius: 20px;
 }
 
 .menu-2 {
@@ -63,6 +73,11 @@ text-align: center;
 .my-shopping-list:hover {
   box-shadow: 3px 4px rgb(201, 178, 158);
 }
+
+#shopping-cart {
+  background-color: #f3f1ef;
+  color:black;
+  border-radius: 20px;}
 
 .explore-recipes {
 margin-top: 20px;

@@ -38,7 +38,7 @@ const[image, setImage]=useState('')
       />
       <div className='buttons'>
       
-        <Button className ='fav-button' onClick={onDelete} variant="btn btn-outline-secondary" type="submit" >
+        <Button  id='fav-button' onClick={onDelete} variant="btn btn-outline-secondary" type="submit" >
                 <GiBrokenHeart/> Remove from favorites
         </Button>
    
