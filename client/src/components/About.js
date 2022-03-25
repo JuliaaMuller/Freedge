@@ -11,9 +11,11 @@ function About (props) {
   <div className='menu-1'>
   <div className='manseerat'>
     <p> Manseerat Kaur is a full-stack developper </p>
+    <img id='mama-img' src='https://live.staticflickr.com/8818/17050483727_b541cbe73b_z.jpg'/>
   </div>
   <div className='julia'>
     <p> Julia Muller also a junior full-stack developper </p>
+    <img id='juju-img'src='https://i.pinimg.com/736x/08/eb/b8/08ebb8da254d939f8ce8b17c47d34747.jpg'/>
   </div>
   </div>
   <center><h5> Why Freedge ? </h5></center>
