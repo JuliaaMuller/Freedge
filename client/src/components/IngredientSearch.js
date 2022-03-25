@@ -4,9 +4,11 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import IngredientList from "./IngredientList";
+import Confirmation from "./Confirmation";
 import UserIngredientsList from "./UserIngredientsList";
 import { Navigate } from 'react-router-dom';
 import { UserContext } from '../userContext';
+import { IngredientContext } from "../providers/IngredientProvider";
 
 
 const resultsArray = [
@@ -58,11 +60,12 @@ const resultsArray = [
 
 export default function IngredientSearch() {
   const [term, setTerm] = useState("");
+  const { userLog, userId } = useContext(UserContext);
+  const { userIngredients, onDeleteItem } = useContext(IngredientContext);
   const [results, setResults] = useState([]);
   const [selection, setSelection] = useState([]);
   const [status, setStatus] = useState(false);
   const [category, setCategory] = useState({
-    userId: 1,
     vegetable: [],
     fruit: [],
     dairy: [],
@@ -70,34 +73,39 @@ export default function IngredientSearch() {
     grain: [],
     other: [],
   });
-  const { userLog } = useContext(UserContext)
+  const [modalShow, setModalShow] = useState(false);
 
-  // const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=3&apiKey=${
-  //   process.env.REACT_APP_API_KEY || process.env.REACT_APP_SECONDARY_API_KEY
-  // }`;
+  // const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=3&apiKey=6253ecf1547a4ef3a66b7f87a3e3b50b`;
 
-  // useEffect(() => {
-  //   axios
-  //     .get(URL)
-  //     .then(function (response) {
-  //       setResults(response.data.results);
-  //       console.log(results);
-  //     })
-  //     .catch(function (error) {
-  //       console.warn(error);
-  //     });
-  // }, [term]);
+  //   useEffect(() => {
+  //     axios
+  //       .get(URL)
+  //       .then(function (response) {
+  //         setResults(response.data.results);
+  //         console.log(results);
+  //       })
+  //       .catch(function (error) {
+  //         console.warn(error);
+  //       });
+  //   }, [term.length > 4 ? term: null]);
+ 
 
+  console.log(userId);
   const handleChange = (value) => {
     if (!value) {
       setResults([]);
     } 
-    else {
+   
+    
+    setTerm(value);
+    if (value.length > 3) {
       setResults(resultsArray);
+     
     }
 
-    setTerm(value);
   };
+
+
 
   const onDelete = (name) => {
     const filteredSelection = selection.filter((item) => item.name !== name)
@@ -105,10 +113,37 @@ export default function IngredientSearch() {
     
   }
 
-  const generateMealPlan = (data) => {
+  const isEmpty = (data) => {
+    for (let key of Object.keys(data)) {
+      if (data[key].length > 0) {
+        return false;
+      }
+    }
+    return true;
+  }
 
+  const isQuantityZero = (data) => {
+    for (let key of Object.keys(data)) {
+      const found = data[key].some(item => item.quantity === 0)
+      if (found) {
+        return true;
+      }
+    }
+    return false;
+  }
+  const generateMealPlan = (data) => {
+    console.log(data);  
+    if(isEmpty(data)) {
+      return setModalShow(true);
+    }
+
+    if(isQuantityZero(data)) {
+      return setModalShow(true);
+    }
+    const postData = {...data, userId}
+    console.log(postData);
     axios
-      .post("/ingredients",{ data })
+      .post("/ingredients", postData)
       .then(response => {
         console.log(response)
         if (response.status === 200) {
@@ -119,10 +154,35 @@ export default function IngredientSearch() {
 
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const option = {name: term}
+    
+    selectedOption(option);
+  }
+  
   const selectedOption = (option) => {
     setTerm(option.name);
-    setSelection((prev) => [...prev, option]);
+    const found = selection.some(item => item.name === option.name);
+    
     setResults([]);
+    if (found) {
+      return setModalShow(true);
+    }
+    
+    let doExist;
+    for (let key of Object.keys(userIngredients)) {
+      if (!doExist) {
+      doExist = userIngredients[key].some(item => item.name === option.name)
+      }
+    }
+
+    if (!doExist) {
+      setSelection((prev) => [...prev, option])
+    } else {
+      return setModalShow(true);
+    }
+
   };
 
   const handleCategory = (type, name, quantity) => {
@@ -173,7 +233,7 @@ export default function IngredientSearch() {
       
       <main>
       {/* {!userLog && <Navigate to='/welcome'/>} */}
-        <Form onSubmit={(event) => event.preventDefault()}>
+        <Form onSubmit={handleSubmit}>
           <Form.Control
             size="lg"
             name="name"
@@ -182,7 +242,9 @@ export default function IngredientSearch() {
             value={term}
             onChange={(event) => handleChange(event.target.value)}
           />
+          <Button type="submit" variant="btn btn-outline-secondary">Add</Button>
         </Form>
+        <h5>Please add at least 5 ingredients and their categories. </h5>
         {results &&
           results.map((result) => {
             return (
@@ -202,10 +264,11 @@ export default function IngredientSearch() {
         ) : (
           ""
         )}
-         {selection.length > 0 ? <Button variant="secondary" size="lg" onClick={() => generateMealPlan(category)}>
+         {selection.length > 4 ? <Button variant="secondary" size="lg" onClick={() => generateMealPlan(category)}>
             Create Meal Plan 
           </Button> : ""}
           {status && <Navigate to="/mealplanner"/>}
+          <Confirmation show={modalShow} onHide={() => setModalShow(false)}/>
       </main>
     </>
   );

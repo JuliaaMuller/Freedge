@@ -13,6 +13,7 @@ import ShoppingList from './components/ShoppingList';
 import Register from './components/Register';
 import MealPlanner from './components/MealPlanner';
 import MealProvider from './providers/MealProvider';
+import IngredientProvider from './providers/IngredientProvider';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
   return (
     <>
     <NavMenu /> 
+    <IngredientProvider>
     <MealProvider>
     <BrowserRouter>
       <Routes>
@@ -40,6 +42,7 @@ function App() {
   </BrowserRouter>
   
   </MealProvider>
+  </IngredientProvider>
   </>
   );
 }

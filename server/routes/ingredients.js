@@ -14,10 +14,10 @@ function insertIntoDb(category, user_id, db) {
 module.exports = (db) => {
   // all routes will go here
   router.get("/", (req, res) => {
-    const user_id = req.session.userId;
-    console.log("cookie", user_id);
-    const command = "SELECT array_agg(name) AS name, array_agg(quantity) AS quantity, category FROM ingredients WHERE user_id = 1 GROUP BY category;";
-    db.query(command).then(data => {
+    const user_id = req.session["id"];
+  
+    const command = "SELECT array_agg(name) AS name, array_agg(quantity) AS quantity, category FROM ingredients WHERE user_id = $1 GROUP BY category;";
+    db.query(command, [user_id]).then(data => {
      
       let result = {};
 
@@ -32,7 +32,8 @@ module.exports = (db) => {
   });
 
   router.post("/", (req, res) => {
-    const data = req.body.data;
+    const data = req.body;
+    console.log(data);
     const { userId, vegetable, fruit, dairy, protein, grain, other } = data;
     if (vegetable.length > 0) {
       insertIntoDb(vegetable, userId, db);
@@ -57,9 +58,10 @@ module.exports = (db) => {
 
   router.delete("/:name", (req, res) => {
     const name = req.params.name;
-
-    const command = "DELETE FROM ingredients WHERE name = $1";
-    db.query(command, [name]).then(() => res.status(200).send("Deleted successfully")).catch(err => console.log(err))
+    const userId = req.session["id"];
+    console.log(userId);
+    const command = "DELETE FROM ingredients WHERE name = $1 AND user_id = $2";
+    db.query(command, [name, userId]).then(() => res.status(200).send("Deleted successfully")).catch(err => console.log(err))
   })
   return router;
 };
