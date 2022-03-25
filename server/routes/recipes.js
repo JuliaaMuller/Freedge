@@ -4,9 +4,10 @@ const axios = require("axios");
 module.exports = (db) => {
   // all routes will go here
   router.get("/", (req, res) => {
+    const userId = req.session["id"];
     const command =
-      "SELECT array_agg(name) AS name, array_agg(quantity) AS quantity, category FROM ingredients WHERE user_id = 1 GROUP BY category;";
-    db.query(command).then((data) => {
+      "SELECT array_agg(name) AS name, array_agg(quantity) AS quantity, category FROM ingredients WHERE user_id = $1 GROUP BY category;";
+    db.query(command, [userId]).then((data) => {
       let result = {};
 
       for (let item of data.rows) {
@@ -23,9 +24,8 @@ module.exports = (db) => {
       );
 
       const queryString = queryList.join(",");
-      console.log(queryString);
-      const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${queryString}&number=3&ranking=1&apiKey=${
-        process.env.API_KEY || process.env.SECONDARY_API_KEY
+        console.log(queryString);
+      const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${queryString}&number=3&ranking=1&apiKey=${process.env.SECONDARY_API_KEY
       }`;
 
       axios
