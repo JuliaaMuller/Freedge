@@ -13,6 +13,7 @@ const authRouter = require('./routes/auth');
 const recipesRouter = require('./routes/recipes');
 const shoppingRouter = require('./routes/shoppingList');
 const favoritesRouter = require('./routes/favorites');
+const settingsRouter = require('./routes/settings')
 
 var app = express();
 
@@ -41,6 +42,8 @@ app.use('/login', authRouter(db))
 app.use('/recipes',recipesRouter(db))
 app.use('/shopping',shoppingRouter(db))
 app.use('/favorites', favoritesRouter(db))
+app.use('/settings', settingsRouter(db))
+
 
 
 

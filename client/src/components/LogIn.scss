@@ -1,5 +1,3 @@
-
-
 .login-form-container {
   display: flex;
   flex-direction: column;
@@ -9,7 +7,7 @@
   background-repeat:no-repeat;
   background-image: url("https://github.com/JuliaaMuller/Freedge/blob/master/client/public/images/veggie.png?raw=true");
   background-size: 100%;
-  height: 100%;
-  filter:opacity(50%);
+  min-height: 900px;
+  filter:opacity(80%);
   // backdrop-filter: opacity(0.5);
 }

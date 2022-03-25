@@ -1,11 +1,12 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { Form, FormGroup, FormControl, FormCheck, Button } from 'react-bootstrap';
+import { Form, FormControl, FormCheck, Button, InputGroup } from 'react-bootstrap';
 import { RiLockPasswordLine, RiTextDirectionL } from 'react-icons/ri';
 import { MdAlternateEmail } from 'react-icons/md';
 // import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import { UserContext } from '../userContext';
+import './LogInForm.scss';
 
 
 
@@ -49,7 +50,7 @@ const LogInForm = () => {
         setUserLog(res.data.name)
         setUserId(res.data.id)
         setAuth(true);
-        console.log(auth)
+        
       }
     })
     .catch(err => console.log(err))
@@ -58,35 +59,27 @@ const LogInForm = () => {
   return (
     <>
   <div className='login-form'>
-          <Form onSubmit={handleSubmit}>
-          <h2>Log in </h2>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label><MdAlternateEmail /> Email address</Form.Label>
-              <Form.Control type="email" name="email" onChange={handleChange} placeholder="Enter email" />
-              <Form.Text className="text-muted">
-                {/* We'll never share your email with anyone else. */}
-              </Form.Text>
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label><RiLockPasswordLine /> Password</Form.Label>
-              <Form.Control type="password" name="password"  onChange={handleChange} placeholder="Password" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Remember my info" />
-            </Form.Group>
-            <Button variant="btn btn-outline-secondary" type="submit"  >
-              Login
-            </Button>
-            {alert && <span>Error: Password or email incorrect!</span>}
-            {input && <span>Error: Password and email cannot be blank!</span>}
-            {auth && <Navigate to="/" />}
-          </Form>
+    <Form onSubmit ={handleSubmit}>
+    <h2 id='login-form-title'>Log in </h2>
+      <InputGroup size="sm" className="mb-3" >
+        <InputGroup.Text id="inputGroup-sizing-sm"><MdAlternateEmail/></InputGroup.Text>
+        <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name ="email"  onChange={ handleChange } type="input" placeholder="Enter Email" />
+      </InputGroup>
+      <br />
+      <InputGroup size="sm" className="mb-3" >
+        <InputGroup.Text id="inputGroup-sizing-sm"><RiLockPasswordLine/></InputGroup.Text>
+        <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" name ="password"  onChange={ handleChange } type="password" placeholder="Password" />
+      </InputGroup>
+      <br />
+      <Button id='login-button' variant="btn btn-outline-secondary" type="submit"  >
+        Login
+      </Button>
+      <br />
+      {alert && <span className='error-span'>Error: Password or email incorrect!</span>}
+      {input && <span className='error-span'>Error: Password and email cannot be blank!</span>}
+      {auth && <Navigate to="/" />}
+    </Form>
   </div>
-        
-    
-
-  
     </>
   )
 }

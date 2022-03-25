@@ -4,7 +4,7 @@ const UserContext = createContext()
 
 const ContextProvider = (props) => {
   const [userLog, setUserLog] = useState("")
-  const [userId, setUserId] = useState('')
+  const [userId, setUserId] = useState('1')
   const [isLoggedIn, setIsLoggedIn]= useState(false)
 
   useEffect(() => {

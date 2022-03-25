@@ -1,7 +1,30 @@
 .login-form {
-  display: flex;
-  flex-direction: column;
-  margin: 0px auto;
-  text-align: center;
-  width: 50%;
+display: flex;
+flex-direction: column;
+margin: 0px auto;
+text-align: center;
+width: 30%;
+}
+
+#login-form-title {
+font-family: 'Playfair Display', serif;
+color: black;
+margin-top: 20px;
+margin-bottom: 50px;
+border-color: black;
+border: solid 2px;
+border-radius: 8px;
+text-align: center;
+background-color:#f3f1ef;
+}
+
+#login-button {
+  background-color: #f3f1ef;
+  color:black;
+}
+.error-span {
+  font-size: 20px;
+  background-color: #f3f1ef;
+  border-radius: 8px;
+  color: rgb(148, 111, 235)
 }

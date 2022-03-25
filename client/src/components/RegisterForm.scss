@@ -6,7 +6,7 @@
   flex-direction: column;
   margin: 0px auto;
   text-align: center;
-  width: 300px;
+  width: 30%;
 
   #register-form-title {
     font-family: 'Playfair Display', serif;
@@ -34,4 +34,15 @@
 #inputGroup-sizing-sm {
   background-color: black;
   color: azure;
+}
+
+#register-button {
+  background-color: #f3f1ef;
+  color:black;
+}
+.error-span {
+  font-size: 20px;
+  background-color: #f3f1ef;
+  border-radius: 8px;
+  color: rgb(148, 111, 235)
 }
