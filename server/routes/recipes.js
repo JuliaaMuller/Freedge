@@ -24,9 +24,8 @@ module.exports = (db) => {
       );
 
       const queryString = queryList.join(",");
-    
-      const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${queryString}&number=3&ranking=1&apiKey=${
-        process.env.API_KEY || process.env.SECONDARY_API_KEY
+        console.log(queryString);
+      const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${queryString}&number=3&ranking=1&apiKey=${process.env.SECONDARY_API_KEY
       }`;
 
       axios

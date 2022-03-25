@@ -97,7 +97,7 @@ export default function IngredientSearch() {
     
     setTerm(value);
     if (value.length > 3) {
-      // setResults(resultsArray);
+      setResults(resultsArray);
      
     }
 

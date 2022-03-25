@@ -32,6 +32,8 @@ function MealPlanner(props) {
         setSelected(day);
         
       })
+    } else {
+      setSelected(day);
     }
   }
   
