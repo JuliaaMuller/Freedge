@@ -16,6 +16,8 @@ export default function RecipeItem({
 }) {
   const [instructions, setInstructions] = useState([]);
   const [modalShow, setModalShow] = useState(false);
+  const [showIngredients, setShowIngredients] = useState(true);
+  const [showMethod, setShowMethod] = useState(false);
 
   // useEffect(() => {
   //   axios
@@ -39,12 +41,22 @@ export default function RecipeItem({
         name: item.name,
         quantity: amount,
         aisle: item.aisle,
-        image: item.image
-      }
-      axios.post("/shopping", data).then(res => setModalShow(true)).catch(err => console.log(err));
-    })
-
+        image: item.image,
+      };
+      axios
+        .post("/shopping", data)
+        .then((res) => setModalShow(true))
+        .catch((err) => console.log(err));
+    });
   }
+
+  const toggleShow = () => {
+    setShowMethod(!showMethod);
+    setShowIngredients(!showIngredients);
+  }
+
+
+  console.log(usedIngredients);
 
   // function onFav(id) {
   //   axios.post(`/recipes/${id}`).then(() => {
@@ -54,40 +66,62 @@ export default function RecipeItem({
 
   return (
     <>
-    <div className="recipe-item">
-      <h1 className="recipe-title">{title}</h1>
-      <img className="recipe-image" src={`${image}`} />
-      {/* <a style={{color:"green"}}>Ingredients in stock : {usedIngredients.length}</a> */}
-      {/* <a style={{color: "red"}}>Ingredients missing : {missedIngredients.length}</a> */}
-      <div className="buttons">
-        <Button
-          className="inStock-button"
-          variant="btn btn-outline-secondary"
-          type=""
-        >
-          <BiFridge /> Ingredients in stock : {usedIngredients.length}
-        </Button>
-        <Button
-          className="shop-button"
-          variant="btn btn-outline-secondary"
-          type="submit"
-          onClick={addToShopping}
-        >
-          <MdOutlineAddShoppingCart /> Add the {missedIngredients.length}{" "}
-          missing ingredients to shopping list
-        </Button>
-        <Button
-          className="fav-button"
-          variant="btn btn-outline-secondary"
-          type="submit"
-          // onClick={onFav}
-        >
-          <BiBookHeart /> Add to favorites
-        </Button>
+      <div className="recipe-item">
+        <img className="recipe-image" src={`${image}`} />
+        <div className="recipe-body">
+          <h1 className="recipe-title">{title}</h1>
+          <div className="buttons">
+            {/* <Button
+              className="inStock-button"
+              variant="btn btn-outline-secondary"
+                type=""
+                >
+                <BiFridge /> Ingredients in stock : {usedIngredients.length}
+               </Button> */}
+            <Button
+              className="shop-button"
+              variant="btn btn-outline-secondary"
+              type="submit"
+              onClick={addToShopping}
+            >
+              <MdOutlineAddShoppingCart /> Add the {missedIngredients.length}{" "}
+              missing ingredients to shopping list
+            </Button>
+            <Button
+              className="fav-button"
+              variant="btn btn-outline-secondary"
+              type="submit"
+              // onClick={onFav}
+            >
+              <BiBookHeart /> Add to favorites
+            </Button>
+          </div>
+          <ul className="recipe-nav">
+            <li>
+              <h3 className={showIngredients ? "active" : ""} onClick={toggleShow}>Ingredients</h3>
+            </li>
+            <li className={showMethod ? "active" : ""} onClick={toggleShow}>
+              <h3>Method</h3>
+            </li>
+          </ul>
+          {showIngredients && (
+            <div className="recipe-ingredients">
+              <ul className="stock">
+                {usedIngredients.map((item) => {
+                  return <li>{item.original}</li>;
+                })}
+              </ul>
+              <ul className="missed">
+                {missedIngredients.map((item) => {
+                  return <li>{item.original}</li>;
+                })}
+              </ul>
+            </div>
+          )}
+         {showMethod &&  <ul className="recipe-method"><RecipeInfo instructions={instructions} /></ul>}
+        </div>
+        <Confirmation show={modalShow} onHide={() => setModalShow(false)} />
       </div>
-      <RecipeInfo instructions={instructions} />
-      <Confirmation show={modalShow} onHide={() => setModalShow(false)}/>
-    </div>
     </>
   );
 }
