@@ -1,21 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import IngredientItem from "./IngredientItem";
 import axios from "axios";
+import { UserContext } from '../userContext';
 
 export default function UserIngredientsList() {
   const [userIngredients, setUserIngredients] = useState({});
+  const { userId } = useContext(UserContext);
 
   let userItems = [];
   console.log(userIngredients);
-  // useEffect(() => {
-  //   axios.get("/ingredients").then((res) => setUserIngredients(res.data));
-  // }, []);
+  console.log(userId);
+  useEffect(() => {
+    axios.get(`/ingredients/${userId}`).then((res) => setUserIngredients(res.data));
+  }, []);
 
   const onDeleteItem = (name) => {
 
     Promise.all([
       axios.delete(`/ingredients/${name}`),
-      axios.get("/ingredients")
+      axios.get(`/ingredients/${userId}`)
     ]).then((response) => {
       setUserIngredients(response[1].data)
     });

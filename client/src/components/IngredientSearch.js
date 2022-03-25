@@ -59,11 +59,11 @@ const resultsArray = [
 
 export default function IngredientSearch() {
   const [term, setTerm] = useState("");
+  const { userLog, userId } = useContext(UserContext)
   const [results, setResults] = useState([]);
   const [selection, setSelection] = useState([]);
   const [status, setStatus] = useState(false);
   const [category, setCategory] = useState({
-    userId: 1,
     vegetable: [],
     fruit: [],
     dairy: [],
@@ -71,10 +71,10 @@ export default function IngredientSearch() {
     grain: [],
     other: [],
   });
-  const { userLog } = useContext(UserContext)
   const [modalShow, setModalShow] = useState(false);
+
   // const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=3&apiKey=${
-  //   process.env.REACT_APP_API_KEY || process.env.REACT_APP_SECONDARY_API_KEY
+  //   process.env.REACT_APP_SECONDARY_API_KEY
   // }`;
 
   // useEffect(() => {
@@ -89,6 +89,7 @@ export default function IngredientSearch() {
   //     });
   // }, [term]);
 
+  console.log(userId);
   const handleChange = (value) => {
     if (!value) {
       setResults([]);
@@ -114,14 +115,29 @@ export default function IngredientSearch() {
     }
     return true;
   }
-  const generateMealPlan = (data) => {
 
+  const isQuantityZero = (data) => {
+    for (let key of Object.keys(data)) {
+      const found = data[key].some(item => item.quantity === 0)
+      if (found) {
+        return true;
+      }
+    }
+    return false;
+  }
+  const generateMealPlan = (data) => {
+    console.log(data);  
     if(isEmpty(data)) {
       return setModalShow(true);
     }
 
+    if(isQuantityZero(data)) {
+      return setModalShow(true);
+    }
+    const postData = {...data, userId}
+    console.log(postData);
     axios
-      .post("/ingredients",{ data })
+      .post("/ingredients", postData)
       .then(response => {
         console.log(response)
         if (response.status === 200) {
@@ -132,10 +148,16 @@ export default function IngredientSearch() {
 
   }
 
+  
   const selectedOption = (option) => {
     setTerm(option.name);
-    setSelection((prev) => [...prev, option]);
+    const found = selection.some(item => item.name === option.name);
     setResults([]);
+    if (found) {
+      return setModalShow(true);
+    }
+    
+    setSelection((prev) => [...prev, option]);
   };
 
   const handleCategory = (type, name, quantity) => {
