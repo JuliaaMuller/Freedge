@@ -40,7 +40,7 @@ function MealPlanner(props) {
   return (
 <>
 <main>
-{!userLog && <Navigate to='/welcome'/>}
+{/* {!userLog && <Navigate to='/welcome'/>} */}
   <h2>My meal planner </h2>
   <div className='my-meal-planner'>
          <ButtonGroup className='days-button'>

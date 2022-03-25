@@ -8,6 +8,7 @@ import Confirmation from "./Confirmation";
 import UserIngredientsList from "./UserIngredientsList";
 import { Navigate } from 'react-router-dom';
 import { UserContext } from '../userContext';
+import { IngredientContext } from "../providers/IngredientProvider";
 
 
 const resultsArray = [
@@ -59,7 +60,8 @@ const resultsArray = [
 
 export default function IngredientSearch() {
   const [term, setTerm] = useState("");
-  const { userLog, userId } = useContext(UserContext)
+  const { userLog, userId } = useContext(UserContext);
+  const { userIngredients, onDeleteItem } = useContext(IngredientContext);
   const [results, setResults] = useState([]);
   const [selection, setSelection] = useState([]);
   const [status, setStatus] = useState(false);
@@ -102,6 +104,8 @@ export default function IngredientSearch() {
     }
 
   };
+
+
 
   const onDelete = (name) => {
     const filteredSelection = selection.filter((item) => item.name !== name)
@@ -150,16 +154,35 @@ export default function IngredientSearch() {
 
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const option = {name: term}
+    
+    selectedOption(option);
+  }
   
   const selectedOption = (option) => {
     setTerm(option.name);
     const found = selection.some(item => item.name === option.name);
+    
     setResults([]);
     if (found) {
       return setModalShow(true);
     }
     
-    setSelection((prev) => [...prev, option]);
+    let doExist;
+    for (let key of Object.keys(userIngredients)) {
+      if (!doExist) {
+      doExist = userIngredients[key].some(item => item.name === option.name)
+      }
+    }
+
+    if (!doExist) {
+      setSelection((prev) => [...prev, option])
+    } else {
+      return setModalShow(true);
+    }
+
   };
 
   const handleCategory = (type, name, quantity) => {
@@ -210,7 +233,7 @@ export default function IngredientSearch() {
       
       <main>
       {/* {!userLog && <Navigate to='/welcome'/>} */}
-        <Form onSubmit={(event) => event.preventDefault()}>
+        <Form onSubmit={handleSubmit}>
           <Form.Control
             size="lg"
             name="name"
@@ -219,6 +242,7 @@ export default function IngredientSearch() {
             value={term}
             onChange={(event) => handleChange(event.target.value)}
           />
+          <Button type="submit" variant="btn btn-outline-secondary">Add</Button>
         </Form>
         <h5>Please add at least 5 ingredients and their categories. </h5>
         {results &&
