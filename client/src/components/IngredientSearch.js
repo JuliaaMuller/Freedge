@@ -73,32 +73,34 @@ export default function IngredientSearch() {
   });
   const [modalShow, setModalShow] = useState(false);
 
-  // const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=3&apiKey=${
-  //   process.env.REACT_APP_SECONDARY_API_KEY
-  // }`;
+  // const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=3&apiKey=6253ecf1547a4ef3a66b7f87a3e3b50b`;
 
-  // useEffect(() => {
-  //   axios
-  //     .get(URL)
-  //     .then(function (response) {
-  //       setResults(response.data.results);
-  //       console.log(results);
-  //     })
-  //     .catch(function (error) {
-  //       console.warn(error);
-  //     });
-  // }, [term]);
+  //   useEffect(() => {
+  //     axios
+  //       .get(URL)
+  //       .then(function (response) {
+  //         setResults(response.data.results);
+  //         console.log(results);
+  //       })
+  //       .catch(function (error) {
+  //         console.warn(error);
+  //       });
+  //   }, [term.length > 4 ? term: null]);
+ 
 
   console.log(userId);
   const handleChange = (value) => {
     if (!value) {
       setResults([]);
     } 
-    else {
-      setResults(resultsArray);
+   
+    
+    setTerm(value);
+    if (value.length > 3) {
+      // setResults(resultsArray);
+     
     }
 
-    setTerm(value);
   };
 
   const onDelete = (name) => {
@@ -218,6 +220,7 @@ export default function IngredientSearch() {
             onChange={(event) => handleChange(event.target.value)}
           />
         </Form>
+        <h5>Please add at least 5 ingredients and their categories. </h5>
         {results &&
           results.map((result) => {
             return (
@@ -237,7 +240,7 @@ export default function IngredientSearch() {
         ) : (
           ""
         )}
-         {selection.length > 0 ? <Button variant="secondary" size="lg" onClick={() => generateMealPlan(category)}>
+         {selection.length > 4 ? <Button variant="secondary" size="lg" onClick={() => generateMealPlan(category)}>
             Create Meal Plan 
           </Button> : ""}
           {status && <Navigate to="/mealplanner"/>}

@@ -11,14 +11,14 @@ export default function UserIngredientsList() {
   console.log(userIngredients);
   console.log(userId);
   useEffect(() => {
-    axios.get(`/ingredients/${userId}`).then((res) => setUserIngredients(res.data));
+    axios.get(`/ingredients`).then((res) => setUserIngredients(res.data)).catch(err => console.log(err));
   }, []);
 
   const onDeleteItem = (name) => {
 
     Promise.all([
       axios.delete(`/ingredients/${name}`),
-      axios.get(`/ingredients/${userId}`)
+      axios.get(`/ingredients`)
     ]).then((response) => {
       setUserIngredients(response[1].data)
     });

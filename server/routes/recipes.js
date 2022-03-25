@@ -4,7 +4,7 @@ const axios = require("axios");
 module.exports = (db) => {
   // all routes will go here
   router.get("/", (req, res) => {
-    const userId = req.session["user_id"];
+    const userId = req.session["id"];
     const command =
       "SELECT array_agg(name) AS name, array_agg(quantity) AS quantity, category FROM ingredients WHERE user_id = $1 GROUP BY category;";
     db.query(command, [userId]).then((data) => {
