@@ -19,48 +19,20 @@ export default function RecipeItem({
   const [modalShow, setModalShow] = useState(false);
   const [showIngredients, setShowIngredients] = useState(true);
   const [showMethod, setShowMethod] = useState(false);
-  const [nutrients, setNutrients] = useState({
-    protein: null,
-    carbohydrates: null,
-    sugar: null,
-    sodium: null,
-    fat: null,
-    calories: null
-  });
+  const [nutrients, setNutrients] = useState([]);
 
   useEffect(() => {
     axios
       .get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=0c9667069d874559adad952a175705db`)
       .then((response) => {
-        console.log(response);
         setInstructions(response.data.analyzedInstructions[0].steps);
         setMealData(response.data);
-        response.data.nutrition.nutrients.forEach((item) => {
-          if (item.name === "Calories") {
-            setNutrients({...nutrients, "calories": item})
-          }
-          if (item.name === "Saturated Fat") {
-            setNutrients({...nutrients, "fat": item})
-          }
-          if (item.name === "Carbohydrates") {
-            setNutrients({...nutrients, "carbohydrates": item})
-          }
-          if (item.name === "Sugar") {
-            setNutrients({...nutrients, "sugar": item})
-          }
-          if (item.name === "Sodium") {
-            setNutrients({...nutrients, "sodium": item})
-          }
-          if (item.name === "Protein") {
-            setNutrients({...nutrients, "protein": item})
-          }
-        });
+        setNutrients(response.data.nutrition.nutrients);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(mealData);
-
+  console.log(nutrients);
   function addToShopping() {
     missedIngredients.forEach((item) => {
       let amount = 1;
@@ -87,7 +59,6 @@ export default function RecipeItem({
     setShowIngredients(!showIngredients);
   };
 
-  console.log(usedIngredients);
 
   // function onFav(id) {
   //   axios.post(`/recipes/${id}`).then(() => {
@@ -170,32 +141,30 @@ export default function RecipeItem({
           )}
         </div>
         <Confirmation show={modalShow} onHide={() => setModalShow(false)} />
-        {nutrients.calories && <div className="footer">
+        {nutrients.length > 0 && <div className="footer">
           <h4>NUTRITION FACTS</h4>
           <table>
             <tr>
               <td>
-                CALORIES:{" "}
-                {`${nutrients.calories.amount} ${nutrients.calories.unit}`}
+                CALORIES:
+                {`${nutrients[0].amount} ${nutrients[0].unit}`}
               </td>
               <td>
-                SATURATED FAT: {`${nutrients.fat.amount} ${nutrients.fat.unit}`}
+                SATURATED FAT: {`${nutrients[1].amount} ${nutrients[1].unit}`}
               </td>
               <td>
-                SODIUM: {`${nutrients.sodium.amount} ${nutrients.sodium.unit}`}
+                SODIUM: {`${nutrients[7].amount} ${nutrients[7].unit}`}
               </td>
             </tr>
             <tr>
               <td>
-                SUGAR: {`${nutrients.sugar.amount} ${nutrients.sugar.unit}`}
+                SUGAR: {`${nutrients[5].amount} ${nutrients[5].unit}`}
               </td>
               <td>
-                PROTEIN:{" "}
-                {`${nutrients.protein.amount} ${nutrients.protein.unit}`}
+                PROTEIN: {`${nutrients[8].amount} ${nutrients[8].unit}`}
               </td>
               <td>
-                CARBOHYDRATES:{" "}
-                {`${nutrients.carbohydrates.amount} ${nutrients.carbohydrates.unit}`}
+                CARBOHYDRATES: {`${nutrients[3].amount} ${nutrients[3].unit}`}
               </td>
             </tr>
           </table>

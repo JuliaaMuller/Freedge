@@ -110,15 +110,25 @@ color: rgb(228, 136, 136)
   color: white;
   table {
     text-align: center;
-    color: white
+    color: white;
+    margin: auto;
   }
   td {
     border: 2px solid white;
+    padding: 4px;
   }
-  tr:last-child {
-    border-bottom: none;
-  }
-  tr:first-child {
+  td:nth-child(2), td:nth-child(1), td:nth-child(3) {
     border-top: none;
   }
+  td:nth-child(4), td:nth-child(5), td:nth-child(6) {
+    border-bottom: none;
+  }
+
+  td:nth-child(1), td:nth-child(4) {
+    border-left: none;
+  }
+  td:nth-child(3), td:nth-child(6) {
+    border-right: none;
+  }
+
 }
