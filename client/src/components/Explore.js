@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import ExploreList from "./ExploreList";
 import axios from "axios";
+import './Explore.scss';
 
 function Explore(props) {
   const { userLog } = useContext(UserContext);
@@ -46,7 +47,9 @@ function Explore(props) {
             Search
           </Button>
         </Form>
+        <div className="recipes">
         {recipeData && <ExploreList recipeData={recipeData} />}
+        </div>
       </main>
     </>
   );
