@@ -76,7 +76,7 @@ export default function IngredientSearch() {
   const [modalShow, setModalShow] = useState(false);
   const isAuth = window.localStorage.getItem("user_id")
   
-  // const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=3&apiKey=6253ecf1547a4ef3a66b7f87a3e3b50b`;
+  // const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=3&apiKey={process.env.REACT_APP_API_KEY}`;
 
   //   useEffect(() => {
   //     axios
