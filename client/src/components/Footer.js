@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import NavMenu from './NavMenu';
 import { FaFacebook, FaInstagram, FaGooglePlay} from 'react-icons/fa';
-import { IoLogoAppleAppstore } from 'react-icons/io';
+import { IoLogoApple } from 'react-icons/io';
+import './Footer.scss'
 
 function Footer (props) {
   return (
 <>
-<main>
-  <div>
-    <ul className='social-media'>
-      <li><FaFacebook/></li>
-      <li><FaInstagram/></li>
-      <li><FaGooglePlay/></li>
-      <li><IoLogoAppleAppstore/></li>
-    </ul>
+
+  <div className='footer-container'>
+    <div className='social-media'>
+    <a><FaFacebook/></a>
+      <a><FaInstagram/></a>
+      <a><FaGooglePlay/></a>
+      <a><IoLogoApple/></a>
+    </div>
+  <p>All rights reserved. Freedge Inc</p>
   </div>
-  <p>All right reserved. Freedge Inc</p>
-</main>
 </>
   )
 }

@@ -11,6 +11,7 @@ import LogIn from './components/LogIn';
 import Settings from './components/Settings';
 import ShoppingList from './components/ShoppingList';
 import Register from './components/Register';
+import Footer from './components/Footer';
 import MealPlanner from './components/MealPlanner';
 import MealProvider from './providers/MealProvider';
 import IngredientProvider from './providers/IngredientProvider';
@@ -43,6 +44,7 @@ function App() {
   
   </MealProvider>
   </IngredientProvider>
+  <Footer />
   </>
   );
 }
