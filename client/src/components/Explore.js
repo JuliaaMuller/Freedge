@@ -11,7 +11,7 @@ function Explore(props) {
   const { userLog } = useContext(UserContext);
   const [ term, setTerm ] = useState("");
   const [recipeData, setRecipeData] = useState(null);
-  
+  const isAuth = window.localStorage.getItem("user_id")
  
   console.log(recipeData);
   
@@ -24,7 +24,7 @@ function Explore(props) {
   return (
     <>
       <main>
-        {!userLog && <Navigate to='/welcome'/>}
+        {!isAuth && <Navigate to='/welcome'/>}
         <Form onSubmit={(e) => e.preventDefault()}>
           <Form.Control
             size="lg"

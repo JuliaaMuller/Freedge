@@ -14,16 +14,16 @@ import { Navigate } from 'react-router-dom';
 const NavMenu = () => {
 
   const { userLog, setUserLog } = useContext(UserContext)
-  // const [loggingOut, setLoggingOut] = useState(false)
+  const isAuth = window.localStorage.getItem("user_id")
 
   const handleLogout = (e) =>{
     e.preventDefault();
-   
       return axios.post('/logout')
       .then((res) => {
         console.log('logout')
       setUserLog('')
-      // setLoggingOut(true)
+      window.localStorage.clear()
+      window.location.reload(true);
         })
 
     
@@ -33,7 +33,7 @@ const NavMenu = () => {
 
   return (
     <>
-    {userLog && <div>
+    {isAuth && <div>
 <Navbar bg="light" expand="lg" className="nav-bar-container" >
   <Container>
     

@@ -20,8 +20,8 @@ function Settings (props) {
     address: '',
     city: '',
     phone_number: '',
-
   });
+  const isAuth = window.localStorage.getItem("user_id")
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -53,6 +53,7 @@ const handleSubmit= (e) => {
     .then(res => {  
       if (res.status === 200) {
       // console.log(res.data.name)
+      window.location.href="/"
 
       }else if (res.status === 409) {
       // setAlert(true)
@@ -66,7 +67,7 @@ const handleSubmit= (e) => {
 <>
 <main>
 <div className="settings-form-container">
-{!userLog && <Navigate to='/welcome'/>}
+{!isAuth && <Navigate to='/welcome'/>}
   <h2 id='setting'>Settings</h2>
   <p id='setting-info'> Do you need to update some informations ? </p>
 

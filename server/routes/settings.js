@@ -28,7 +28,6 @@ db.query(command, value).then(()=> {
 
 res.status(200).send(`Informations for user ${userId} updated`)
 console.log(`Informations for user ${userId} updated`)
-res.redirect('../')
 })
 .catch(()=> res.status(403)
 )

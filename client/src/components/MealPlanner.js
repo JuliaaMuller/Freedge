@@ -11,7 +11,7 @@ function MealPlanner(props) {
   const [selected, setSelected] = useState("");
   const { state, setState, getRecipesForDay } = useContext(mealContext);
   const { userLog } = useContext(UserContext)
-
+  const isAuth = window.localStorage.getItem("user_id")
   const days = [
     { name: 'Mon', value: '1' },
     { name: 'Tue', value: '2' },
@@ -36,11 +36,10 @@ function MealPlanner(props) {
       setSelected(day);
     }
   }
-  
+
   return (
 <>
 <main>
-{!userLog && <Navigate to='/welcome'/>}
   <h2>My meal planner </h2>
   <div className='my-meal-planner'>
          <ButtonGroup className='days-button'>
@@ -62,7 +61,7 @@ function MealPlanner(props) {
     </div>
     <MealPlanList selected={selected}/>
 </main>
-
+{!isAuth && <Navigate to='/welcome'/>}
 </>
   )
 }

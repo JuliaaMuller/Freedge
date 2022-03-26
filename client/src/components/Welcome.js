@@ -6,20 +6,20 @@ import { UserContext } from '../userContext';
 
 function Welcome () {
   const { userLog } = useContext(UserContext)
-
+  const isAuth = window.localStorage.getItem("user_id")
   return (
 <> 
-{userLog && <Navigate to='/'/>}
+{isAuth && <Navigate to='/'/>}
 <div className='welcome'>
 
 <img className='logo'  src='images/brand-logo.png'/>
 
   <div className='welcome-button'>
-  <Button variant="btn btn-outline-secondary" type="submit" href='/register'>
+  <Button id='register-b' variant="btn btn-outline-secondary" type="submit" href='/register'>
         Register
   </Button>
 
-  <Button variant="btn btn-outline-secondary" type="submit" href='/login'>
+  <Button id='login-b' variant="btn btn-outline-secondary" type="submit" href='/login'>
         Login
   </Button>
   </div>

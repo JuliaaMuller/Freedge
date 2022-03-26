@@ -36,7 +36,7 @@ module.exports = (db) => {
           const name = data.rows[0]["first_name"]
           console.log("session created")
           res.status(200).send({id:user_id,name:name})
-          res.redirect("../");
+        
         })
         .catch((e) => res.send(e));
     })
@@ -80,7 +80,6 @@ module.exports = (db) => {
 
         res.status(200).send({id:user_id,name:name})
         
-        // res.redirect("../");
       })
       // .catch((e) => res.status(404).send("This user does not exist!"));
   });
@@ -89,7 +88,7 @@ module.exports = (db) => {
     console.log(`Logging out as: ${req.session["name"]}`);
     req.session = null
     res.status(200).send("logging out")
-    // res.redirect("../");
+
   });
   return router;
 };

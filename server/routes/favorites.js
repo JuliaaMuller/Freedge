@@ -7,7 +7,7 @@ module.exports = (db) => {
     const queryString = `SELECT * FROM favorites WHERE favorites.user_id = $1`
     // const values =[req.session["id"]]
     console.log("**")
-    const values = [1]
+    const values = [req.session["id"]]
 
     return db.query(queryString, values)
     .then((data) => {
@@ -29,14 +29,14 @@ module.exports = (db) => {
       let queryString = `
       DELETE FROM favorites
       WHERE user_id = $1 AND recipe_id = $2;`;
-      let values = [ 1, req.params["id"]];
+      let values = [req.session["id"], req.params["id"]];
       console.log("req params id",req.params["id"]);
       // console.log("user",req.session['id'])
   
       return db.query(queryString, values)
         .then(() =>  {
         res.status(200).send("Favorite deleted")
-        res.redirect("../");
+       
       });
     })
     

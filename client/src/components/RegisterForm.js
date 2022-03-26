@@ -24,7 +24,7 @@ const RegisterForm = () => {
   const [alert, setAlert] = useState(false)
   const [auth, setAuth ] = useState(false)
   const [input, setInput] = useState(false)
-  const { setIsLoggedIn, setUserId, setUserLog} = useContext(UserContext)
+  const { setIsLoggedIn, setUserId, userId, setUserLog} = useContext(UserContext)
 
 
   const handleChange = (e) => {
@@ -47,12 +47,12 @@ const RegisterForm = () => {
       axios.post('/register', user)
       .then(res => {  
         if (res.status === 200) {
-        console.log(res.data.name)
-        // setUserLog()
+        window.localStorage.setItem("user_id", "TRUE" )
         setIsLoggedIn(true)
         setUserLog(res.data.name)
         setUserId(res.data.id)
         setAuth(true);  
+        window.location.href="/";
   
         }else if (res.status === 409) {
         setAlert(true)

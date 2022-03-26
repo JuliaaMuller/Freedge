@@ -74,7 +74,8 @@ export default function IngredientSearch() {
     other: [],
   });
   const [modalShow, setModalShow] = useState(false);
-
+  const isAuth = window.localStorage.getItem("user_id")
+  
   // const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=3&apiKey=6253ecf1547a4ef3a66b7f87a3e3b50b`;
 
   //   useEffect(() => {
@@ -232,7 +233,7 @@ export default function IngredientSearch() {
     <>
       
       <main>
-      {!userLog && <Navigate to='/welcome'/>}
+      {!isAuth && <Navigate to='/welcome'/>}
         <Form onSubmit={handleSubmit}>
           <Form.Control
             size="lg"
