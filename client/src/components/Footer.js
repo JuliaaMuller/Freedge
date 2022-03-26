@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import NavMenu from './NavMenu';
 import { FaFacebook, FaInstagram, FaGooglePlay} from 'react-icons/fa';
-import { IoLogoApple } from 'react-icons/io';
+import { GrAppleAppStore} from 'react-icons/gr';
 import './Footer.scss'
 
 function Footer (props) {
@@ -13,7 +13,7 @@ function Footer (props) {
     <a><FaFacebook/></a>
       <a><FaInstagram/></a>
       <a><FaGooglePlay/></a>
-      <a><IoLogoApple/></a>
+      <a><GrAppleAppStore/></a>
     </div>
   <p>All rights reserved. Freedge Inc</p>
   </div>

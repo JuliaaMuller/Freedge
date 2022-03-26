@@ -26,7 +26,7 @@ function Home (props) {
   return (
     <>
   <main>
-  {/* {!userLog && <Navigate to='/welcome'/>} */}
+  {!userLog && <Navigate to='/welcome'/>}
     <img className='brand-logo' src='images/brand-logo.png' alt=''/>
     <div className='menu-1'>
     <div className='my-ingredients'>
