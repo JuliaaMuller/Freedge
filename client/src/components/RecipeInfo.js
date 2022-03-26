@@ -5,7 +5,7 @@ export default function RecipeInfo(props) {
   return (
     <>
     {props.instructions.map(step => {
-     return   ( <li><p>{step.step}</p></li>)
+     return   ( <li key={step.number}><p>{step.step}</p></li>)
     })}
     </>
   )

@@ -36,11 +36,6 @@
   margin-top: 20px;
 }
 
-.inStock-button {
-margin: 20px;
-color: rgb(152, 198, 152);
-}
-
 .shop-button {
 margin: 20px;
 color: rgb(228, 136, 136)
@@ -98,4 +93,32 @@ color: rgb(228, 136, 136)
 .recipe-method {
   padding: revert;
   text-align: initial;
+}
+
+.info {
+  background-color: #b2c798;
+  color: white;
+  font-size: larger;
+  a {
+    text-decoration: none;
+    color: rgb(218, 24, 24);
+  }
+}
+
+.footer{
+  background-color: #b2c798;
+  color: white;
+  table {
+    text-align: center;
+    color: white
+  }
+  td {
+    border: 2px solid white;
+  }
+  tr:last-child {
+    border-bottom: none;
+  }
+  tr:first-child {
+    border-top: none;
+  }
 }

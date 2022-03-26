@@ -15,19 +15,51 @@ export default function RecipeItem({
   missedIngredients,
 }) {
   const [instructions, setInstructions] = useState([]);
+  const [mealData, setMealData] = useState(null);
   const [modalShow, setModalShow] = useState(false);
   const [showIngredients, setShowIngredients] = useState(true);
   const [showMethod, setShowMethod] = useState(false);
+  const [nutrients, setNutrients] = useState({
+    protein: null,
+    carbohydrates: null,
+    sugar: null,
+    sodium: null,
+    fat: null,
+    calories: null
+  });
 
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${process.env.REACT_APP_API_KEY}`
-  //     )
-  //     .then((res) => {
-  //       setInstructions(res.data[0].steps);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=0c9667069d874559adad952a175705db`)
+      .then((response) => {
+        console.log(response);
+        setInstructions(response.data.analyzedInstructions[0].steps);
+        setMealData(response.data);
+        response.data.nutrition.nutrients.forEach((item) => {
+          if (item.name === "Calories") {
+            setNutrients({...nutrients, "calories": item})
+          }
+          if (item.name === "Saturated Fat") {
+            setNutrients({...nutrients, "fat": item})
+          }
+          if (item.name === "Carbohydrates") {
+            setNutrients({...nutrients, "carbohydrates": item})
+          }
+          if (item.name === "Sugar") {
+            setNutrients({...nutrients, "sugar": item})
+          }
+          if (item.name === "Sodium") {
+            setNutrients({...nutrients, "sodium": item})
+          }
+          if (item.name === "Protein") {
+            setNutrients({...nutrients, "protein": item})
+          }
+        });
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  console.log(mealData);
 
   function addToShopping() {
     missedIngredients.forEach((item) => {
@@ -53,8 +85,7 @@ export default function RecipeItem({
   const toggleShow = () => {
     setShowMethod(!showMethod);
     setShowIngredients(!showIngredients);
-  }
-
+  };
 
   console.log(usedIngredients);
 
@@ -69,6 +100,15 @@ export default function RecipeItem({
       <div className="recipe-item">
         <img className="recipe-image" src={`${image}`} />
         <div className="recipe-body">
+          {mealData && (
+            <div className="info">
+              <span>Ready In: {mealData.readyInMinutes} mins </span>
+              <span>Serves: {mealData.servings} </span>
+              <a href={mealData.sourceUrl} target="_blank">
+                Find Details
+              </a>
+            </div>
+          )}
           <h1 className="recipe-title">{title}</h1>
           <div className="buttons">
             {/* <Button
@@ -98,7 +138,12 @@ export default function RecipeItem({
           </div>
           <ul className="recipe-nav">
             <li>
-              <h3 className={showIngredients ? "active" : ""} onClick={toggleShow}>Ingredients</h3>
+              <h3
+                className={showIngredients ? "active" : ""}
+                onClick={toggleShow}
+              >
+                Ingredients
+              </h3>
             </li>
             <li className={showMethod ? "active" : ""} onClick={toggleShow}>
               <h3>Method</h3>
@@ -118,9 +163,43 @@ export default function RecipeItem({
               </ul>
             </div>
           )}
-         {showMethod &&  <ul className="recipe-method"><RecipeInfo instructions={instructions} /></ul>}
+          {showMethod && (
+            <ul className="recipe-method">
+              <RecipeInfo instructions={instructions} />
+            </ul>
+          )}
         </div>
         <Confirmation show={modalShow} onHide={() => setModalShow(false)} />
+        {nutrients.calories && <div className="footer">
+          <h4>NUTRITION FACTS</h4>
+          <table>
+            <tr>
+              <td>
+                CALORIES:{" "}
+                {`${nutrients.calories.amount} ${nutrients.calories.unit}`}
+              </td>
+              <td>
+                SATURATED FAT: {`${nutrients.fat.amount} ${nutrients.fat.unit}`}
+              </td>
+              <td>
+                SODIUM: {`${nutrients.sodium.amount} ${nutrients.sodium.unit}`}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                SUGAR: {`${nutrients.sugar.amount} ${nutrients.sugar.unit}`}
+              </td>
+              <td>
+                PROTEIN:{" "}
+                {`${nutrients.protein.amount} ${nutrients.protein.unit}`}
+              </td>
+              <td>
+                CARBOHYDRATES:{" "}
+                {`${nutrients.carbohydrates.amount} ${nutrients.carbohydrates.unit}`}
+              </td>
+            </tr>
+          </table>
+        </div>}
       </div>
     </>
   );
