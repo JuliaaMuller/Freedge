@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import IngredientSearch from './components/IngredientSearch';
 import './App.scss';
 import Home from './components/Home';
@@ -15,6 +15,8 @@ import Footer from './components/Footer';
 import MealPlanner from './components/MealPlanner';
 import MealProvider from './providers/MealProvider';
 import IngredientProvider from './providers/IngredientProvider';
+import { useContext } from 'react/cjs/react.production.min';
+import { UserContext } from './userContext';
 
 
 function App() {

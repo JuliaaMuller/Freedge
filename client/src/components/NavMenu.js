@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import './NavMenu.scss';
 import { Navbar, NavDropdown, Container, Nav } from 'react-bootstrap';
 import { BiFridge, BiBookHeart, BiCalendar, BiSearchAlt, BiLogOut } from 'react-icons/bi';
@@ -9,23 +9,23 @@ import { AiOutlineSetting } from 'react-icons/ai';
 import { UserContext } from '../userContext';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
-import { useEffect } from 'react/cjs/react.production.min';
 
 
 const NavMenu = () => {
 
   const { userLog, setUserLog } = useContext(UserContext)
+  // const [loggingOut, setLoggingOut] = useState(false)
 
   const handleLogout = (e) =>{
     e.preventDefault();
-    // useEffect(() => {
+   
       return axios.post('/logout')
       .then((res) => {
         console.log('logout')
       setUserLog('')
+      // setLoggingOut(true)
         })
 
-    // }, [])
     
 
   }
@@ -33,6 +33,7 @@ const NavMenu = () => {
 
   return (
     <>
+    {userLog && <div>
 <Navbar bg="light" expand="lg" className="nav-bar-container" >
   <Container>
     
@@ -61,8 +62,9 @@ const NavMenu = () => {
     </Navbar.Collapse>
   </Container>
 </Navbar>
-
- 
+{/* {loggingOut && <Navigate to="/" />} */}
+</div>
+}
 </>
   )
 } 

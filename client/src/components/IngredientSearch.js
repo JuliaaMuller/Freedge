@@ -232,7 +232,7 @@ export default function IngredientSearch() {
     <>
       
       <main>
-      {/* {!userLog && <Navigate to='/welcome'/>} */}
+      {!userLog && <Navigate to='/welcome'/>}
         <Form onSubmit={handleSubmit}>
           <Form.Control
             size="lg"

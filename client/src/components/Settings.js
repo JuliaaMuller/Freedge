@@ -66,7 +66,7 @@ const handleSubmit= (e) => {
 <>
 <main>
 <div className="settings-form-container">
-{/* {!userLog && <Navigate to='/welcome'/>} */}
+{!userLog && <Navigate to='/welcome'/>}
   <h2 id='setting'>Settings</h2>
   <p id='setting-info'> Do you need to update some informations ? </p>
 
