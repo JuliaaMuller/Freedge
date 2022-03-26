@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BiFridge, BiBookHeart } from 'react-icons/bi';
 import { GiBrokenHeart } from 'react-icons/gi';
 import { Button, Form } from 'react-bootstrap';
-import './FavoriteItem.scss';
+import './FavoriteItem.js';
 
 
 
