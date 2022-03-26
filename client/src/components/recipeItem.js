@@ -23,7 +23,7 @@ export default function RecipeItem({
 
   useEffect(() => {
     axios
-      .get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=0c9667069d874559adad952a175705db`)
+      .get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=${process.env.REACT_APP_API_KEY}`)
       .then((response) => {
         setInstructions(response.data.analyzedInstructions[0].steps);
         setMealData(response.data);
