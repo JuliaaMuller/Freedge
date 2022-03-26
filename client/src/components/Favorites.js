@@ -30,9 +30,10 @@ console.log('favList=',favList)
   return (
 <>
 <main>
+{!userLog && <Navigate to="/welcome"/>}
 <h2 id='fav-title'>My favorites recipes </h2>
   <div className='favorite-container'>
-{/* {!userLog && <Navigate to='/welcome'/>} */}
+
   
 {favList.map((id) => { return <FavoriteItem onDelete ={()=>{handleDelete(id); return <Navigate to='/favorites'/>}} key ={id} recipe_id={id}/>}
  )}

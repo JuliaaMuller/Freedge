@@ -24,7 +24,7 @@ function Explore(props) {
   return (
     <>
       <main>
-        {/* {!userLog && <Navigate to='/welcome'/>} */}
+        {!userLog && <Navigate to='/welcome'/>}
         <Form onSubmit={(e) => e.preventDefault()}>
           <Form.Control
             size="lg"
