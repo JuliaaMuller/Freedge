@@ -9,7 +9,7 @@ export default function ExploreListItem({ recipe }) {
         <span>Cooking Time: {recipe.readyInMinutes} mins </span> |
       <span>     Servings: {recipe.servings}     </span>   
       </div>
-      <a href={recipe.sourceUrl}>Go to Recipe</a>
+      <a href={recipe.sourceUrl} target={"_blank"}>Go to Recipe</a>
     </article>
   )
 }
