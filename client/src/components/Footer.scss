@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+
+.footer-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Playfair Display', serif;
+
+}
+
+.social-media {
+  margin: 10px;
+  a {
+    margin: 20px;
+  }
+}

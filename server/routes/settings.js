@@ -8,7 +8,6 @@ module.exports = (db) => {
     const command = "SELECT * FROM users WHERE users.id = $1;";
     const value = req.session["id"]
     return db.query(command, [value]).then((data) => {
-      console.log(data)
       res.json(data.rows[0]);
     })
     .catch((err)=> res.status(403).send("Error"))
@@ -29,7 +28,6 @@ db.query(command, value).then(()=> {
 
 res.status(200).send(`Informations for user ${userId} updated`)
 console.log(`Informations for user ${userId} updated`)
-res.redirect('../')
 })
 .catch(()=> res.status(403)
 )

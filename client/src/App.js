@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import IngredientSearch from './components/IngredientSearch';
 import './App.scss';
 import Home from './components/Home';
@@ -11,9 +11,12 @@ import LogIn from './components/LogIn';
 import Settings from './components/Settings';
 import ShoppingList from './components/ShoppingList';
 import Register from './components/Register';
+import Footer from './components/Footer';
 import MealPlanner from './components/MealPlanner';
 import MealProvider from './providers/MealProvider';
 import IngredientProvider from './providers/IngredientProvider';
+import { useContext } from 'react/cjs/react.production.min';
+import { UserContext } from './userContext';
 
 
 function App() {
@@ -43,6 +46,7 @@ function App() {
   
   </MealProvider>
   </IngredientProvider>
+  <Footer />
   </>
   );
 }

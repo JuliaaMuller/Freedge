@@ -11,22 +11,12 @@ import { UserContext } from '../userContext';
 
 function Home (props) {
   const { userLog } = useContext(UserContext)
-
-    // const [dayValue, setdayValue] = useState('1');
-  
-    // const days = [
-    //   { name: 'Mon', value: '1' },
-    //   { name: 'Tue', value: '2' },
-    //   { name: 'Wed', value: '3' },
-    //   { name: 'Thu', value: '4' },
-    //   { name: 'Fri', value: '5' },
-    //   { name: 'Sat', value: '6' },
-    //   { name: 'Sun', value: '7' },
-    // ];
+  const isAuth = window.localStorage.getItem("user_id")
+   
   return (
     <>
   <main>
-  {/* {!userLog && <Navigate to='/welcome'/>} */}
+  {!isAuth && <Navigate to='/welcome'/>}
     <img className='brand-logo' src='images/brand-logo.png' alt=''/>
     <div className='menu-1'>
     <div className='my-ingredients'>

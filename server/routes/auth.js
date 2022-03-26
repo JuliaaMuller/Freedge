@@ -8,7 +8,6 @@ module.exports = (db) => {
     const queryString = `SELECT * FROM users WHERE email = $1;`;
     const values = [req.body["email"]];
     db.query(queryString, values).then((data) => {
-    console.log(data.rows)
       if (data.rows.length > 0) {
         res.status(409).send("This user already exists");
         return;
@@ -30,7 +29,6 @@ module.exports = (db) => {
 
       db.query(command, uservalues)
         .then((res) => {
-          console.log(res)
           const cookie = req.session
           const user_id = res.rows[0]["id"]
           cookie["id"] = user_id
@@ -38,7 +36,7 @@ module.exports = (db) => {
           const name = data.rows[0]["first_name"]
           console.log("session created")
           res.status(200).send({id:user_id,name:name})
-          res.redirect("../");
+        
         })
         .catch((e) => res.send(e));
     })
@@ -77,19 +75,20 @@ module.exports = (db) => {
         const name = data.rows[0]["first_name"]
 
         if(!match) {
-          return res.status(403).send("The password you entered is not correct");         
+        res.status(403).send("The password you entered is not correct");         
         }
 
         res.status(200).send({id:user_id,name:name})
-        res.redirect("../");
+        
       })
-      .catch((e) => res.status(403).send("This user does not exist!"));
+      // .catch((e) => res.status(404).send("This user does not exist!"));
   });
 
   router.post("/logout", (req, res) => {
     console.log(`Logging out as: ${req.session["name"]}`);
     req.session = null
-    res.redirect("../");
+    res.status(200).send("logging out")
+
   });
   return router;
 };

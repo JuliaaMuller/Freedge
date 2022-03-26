@@ -20,7 +20,7 @@ const LogInForm = () => {
   const [alert, setAlert] = useState(false)
   const [auth, setAuth] = useState(false)
   const [input, setInput] = useState(false)
-  const { setIsLoggedIn, setUserLog, setUserId } = useContext(UserContext)
+  const { setIsLoggedIn, setUserLog, userId, setUserId } = useContext(UserContext)
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -43,14 +43,12 @@ const LogInForm = () => {
       if(res.status === 403){
         setAlert(true)
       } else if(res.status === 200){
-        
-        console.log(res.data.name)
-        // setUserLog()
+        window.localStorage.setItem("user_id", "TRUE" )
         setIsLoggedIn(true)
         setUserLog(res.data.name)
         setUserId(res.data.id)
         setAuth(true);
-        
+        window.location.href="/";
       }
     })
     .catch(err => console.log(err))

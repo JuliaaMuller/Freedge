@@ -10,7 +10,8 @@ function ShoppingList (props) {
 
   const [shoppingItems, setShoppingItems] = useState([]);
   const { userLog } = useContext(UserContext)
-
+  const isAuth = window.localStorage.getItem("user_id")
+  
   console.log(shoppingItems);
   useEffect(() => {
     axios.get("/shopping").then(({ data }) => {
@@ -27,7 +28,7 @@ function ShoppingList (props) {
   return (
 <>
 <main>
-{/* {!userLog && <Navigate to='/welcome'/>} */}
+{!isAuth && <Navigate to='/welcome'/>}
   <h2>My shopping Lists </h2>
  
   <Table striped bordered hover>
