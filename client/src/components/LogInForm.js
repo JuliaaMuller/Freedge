@@ -20,6 +20,7 @@ const LogInForm = () => {
   const [alert, setAlert] = useState(false)
   const [auth, setAuth] = useState(false)
   const [input, setInput] = useState(false)
+  const [dbAlert, setDbAlert] = useState(false)
   const { setIsLoggedIn, setUserLog, userId, setUserId } = useContext(UserContext)
 
   const handleChange = (e) => {
@@ -51,7 +52,7 @@ const LogInForm = () => {
         window.location.href="/";
       }
     })
-    .catch(err => console.log(err))
+    .catch(err => {setDbAlert(true);console.log(err)})
   }
   
   return (
@@ -73,6 +74,7 @@ const LogInForm = () => {
         Login
       </Button>
       <br />
+      {dbAlert && <span className='error-span'>Error: This user does not exist!</span>}
       {alert && <span className='error-span'>Error: Password or email incorrect!</span>}
       {input && <span className='error-span'>Error: Password and email cannot be blank!</span>}
       {auth && <Navigate to="/" />}

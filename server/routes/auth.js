@@ -81,7 +81,7 @@ module.exports = (db) => {
         res.status(200).send({id:user_id,name:name})
         
       })
-      // .catch((e) => res.status(404).send("This user does not exist!"));
+      .catch((e) => res.status(403).send("This user does not exist!"));
   });
 
   router.post("/logout", (req, res) => {
