@@ -12,8 +12,7 @@ function ShoppingList (props) {
   const [shoppingItems, setShoppingItems] = useState([]);
   const { userLog } = useContext(UserContext)
   const isAuth = window.localStorage.getItem("user_id")
-  
-  console.log(shoppingItems);
+
   useEffect(() => {
     axios.get("/shopping").then(({ data }) => {
       setShoppingItems(data);
@@ -21,10 +20,13 @@ function ShoppingList (props) {
   }, [])
 
   const deleteItem = (id, aisle) => {
-      const items = shoppingItems[aisle].filter(item => item.id !== id)
-      setShoppingItems({...shoppingItems, aisle: items});
-      axios.delete(`/shopping/${id}`).then(res => console.log(res));
+
+    Promise.all([
+      axios.delete(`/shopping/${id}`),
+      axios.get("/shopping")
+    ]).then(res => setShoppingItems(res[1].data));
   }
+
   const shoppingListItems = Object.keys(shoppingItems).map(item => <ShoppingListItem key={item} name={item} list={shoppingItems[item]} onDelete={deleteItem}/>)
 
   return (

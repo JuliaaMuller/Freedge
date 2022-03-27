@@ -12,7 +12,7 @@ export default function ShoppingListItem({ name, list, onDelete }) {
       {list.map(item => {
         return (<li key={item.id}>
           {item.quantity} {item.name}
-        
+          <img src="images/close.png" className="close" onClick={() => onDelete(item.id)}/>
         </li>)
       })}
     </ul>
