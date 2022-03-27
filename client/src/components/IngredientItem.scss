@@ -16,7 +16,8 @@
   border: 1px solid black;
   height: 100px;
   padding: 30px;
-  margin: 4px;
+  margin: 2rem;
+  position: relative;
   
   img {
     width: 1.5em;
@@ -24,8 +25,14 @@
   }
 }
 
+.delete-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .category-nav {
-  background-color: white;
+  // background-color: white;
   color: #333;
   border-radius: .5rem;
   max-width: max-content;
@@ -62,6 +69,7 @@
     width: var(--icon-size);
     height: var(--icon-size);
     display: block;
+    cursor: pointer
     
   }
 

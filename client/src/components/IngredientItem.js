@@ -33,13 +33,14 @@ export default function IngredientItem({
  
   return (
     <div className="add_ingredient--item">
-      <Button variant="outline-secondary">
-        <img onClick={() => onDelete(name)} src="images/delete.png" />
-      </Button>
-      <img src="images/plus.png" onClick={increment} />
-      <h2>{ count || quantity}</h2>
-      <img src="images/minus.png" onClick={decrement} />
-      <h3>{name}</h3>
+        <img onClick={() => onDelete(name)} src="images/close.png" className="delete-icon"/>
+
+  
+      <img src="images/up.png" onClick={increment} />
+      <h5>{ count || quantity}</h5>
+      <img src="images/down.png" onClick={decrement} />
+      <h5>{name}</h5>
+
 
       <div className="category-nav">
         <ul className="list">
