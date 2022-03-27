@@ -9,6 +9,7 @@ import UserIngredientsList from "./UserIngredientsList";
 import { Navigate } from 'react-router-dom';
 import { UserContext } from '../userContext';
 import { IngredientContext } from "../providers/IngredientProvider";
+import { InputGroup } from "react-bootstrap";
 
 
 const resultsArray = [
@@ -65,6 +66,7 @@ export default function IngredientSearch() {
   const [results, setResults] = useState([]);
   const [selection, setSelection] = useState([]);
   const [status, setStatus] = useState(false);
+  const [showInput, setShowInput] = useState(false);
   const [category, setCategory] = useState({
     vegetable: [],
     fruit: [],
@@ -160,6 +162,7 @@ export default function IngredientSearch() {
     const option = {name: term}
     
     selectedOption(option);
+    setTerm("");
   }
   
   const selectedOption = (option) => {
@@ -234,22 +237,30 @@ export default function IngredientSearch() {
       
       <main>
       {!isAuth && <Navigate to='/welcome'/>}
+            <UserIngredientsList />
+            {selection.length > 0 ? (
+              <IngredientList items={selection} onDelete={onDelete} handleCategory={handleCategory} />
+            ) : (
+              ""
+            )}
         <Form onSubmit={handleSubmit}>
-          <Form.Control
+          <InputGroup className="w-75 mt-2" style={{margin: "0 auto"}}>
+          <Button variant="btn btn-outline-secondary" onClick={() => setShowInput(!showInput)}>{showInput ? "-" : "+"}</Button>
+        { showInput && <Form.Control
             size="lg"
             name="name"
             type="text"
             placeholder="Search Ingredients"
             value={term}
             onChange={(event) => handleChange(event.target.value)}
-          />
-          <Button type="submit" variant="btn btn-outline-secondary">Add</Button>
+          />}
+          </InputGroup>
         </Form>
-        <h5>Please add at least 5 ingredients and their categories. </h5>
+        {/* <h5>Please add at least 5 ingredients and their categories. </h5> */}
         {results &&
           results.map((result) => {
             return (
-              <Card
+              <Card className="w-75" style={{margin: "0 auto"}}
                 key={result["id"]}
                 onClick={() => selectedOption(result)}
                 body
@@ -259,12 +270,6 @@ export default function IngredientSearch() {
               </Card>
             );
           })}
-        <UserIngredientsList />
-        {selection.length > 0 ? (
-          <IngredientList items={selection} onDelete={onDelete} handleCategory={handleCategory} />
-        ) : (
-          ""
-        )}
          {selection.length > 4 ? <Button variant="secondary" size="lg" onClick={() => generateMealPlan(category)}>
             Create Meal Plan 
           </Button> : ""}

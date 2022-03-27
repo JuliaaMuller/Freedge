@@ -37,7 +37,7 @@ export default function IngredientItem({
         <img onClick={() => onDelete(name)} src="images/delete.png" />
       </Button>
       <img src="images/plus.png" onClick={increment} />
-      <h2>{count || quantity}</h2>
+      <h2>{ count || quantity}</h2>
       <img src="images/minus.png" onClick={decrement} />
       <h3>{name}</h3>
 
@@ -111,47 +111,6 @@ export default function IngredientItem({
             </a>
           </li>
         </ul>
-        {/* <ButtonGroup aria-label="Basic example">
-          <Button variant="outline-secondary">
-            <img
-              onClick={() => handleCategory("vegetable", name, count)}
-              src="images/vegetable.png"
-            />
-          </Button>
-          <Button variant="outline-secondary">
-            {" "}
-            <img
-              onClick={() => handleCategory("fruit", name, count)}
-              src="images/fruits.png"
-            />
-          </Button>
-          <Button variant="outline-secondary">
-            {" "}
-            <img
-              onClick={() => handleCategory("protein", name, count)}
-              src="images/meat.png"
-            />
-          </Button>
-          <Button variant="outline-secondary">
-            {" "}
-            <img
-              onClick={() => handleCategory("dairy", name, count)}
-              src="images/dairy.png"
-            />
-          </Button>
-          <Button variant="outline-secondary">
-            <img
-              onClick={() => handleCategory("grain", name, count)}
-              src="images/carbohydrates.png"
-            />
-          </Button>
-          <Button variant="outline-secondary">
-            <img
-              onClick={() => handleCategory("other", name, count)}
-              src="images/question-mark.png"
-            />
-          </Button>
-        </ButtonGroup> */}
       </div>
     </div>
   );
