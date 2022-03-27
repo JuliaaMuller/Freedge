@@ -1,3 +1,14 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --icon-size: 2rem;
+  --indicator-spacing: calc(var(--icon-size) / 8);
+  --nav-padding: calc(var(--icon-size) / 2);
+  --backgroung-color: hsl(30, 14%, 95%);
+}
 
 .add_ingredient--item{
   display: flex;
@@ -8,8 +19,88 @@
   margin: 4px;
   
   img {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 1.5em;
+    height: 1.5em;
+  }
+}
+
+.category-nav {
+  background-color: white;
+  color: #333;
+  border-radius: .5rem;
+  max-width: max-content;
+  height: max-content;
+  align-self: center;
+  padding: 0 calc(var(--nav-padding) * 1.5);
+
+}
+
+.list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li a {
+    color: #333;
+    text-decoration: none;
+    // padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  .text {
+    font-size: .8em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms ease-in-out;
+    position: absolute;
+    padding: 2.5rem;
+  }
+  .icon img  {
+    fill: currentColor;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    display: block;
+    
+  }
+
+  .icon {
+    padding: 1em;
+    position: relative;
+  }
+  
+  .active .text {
+    pointer-events: all;
+    opacity: 1;
+    padding: 2.5rem;
+  }
+  .active .icon {
+    transform: translateY(calc(-50%));
+  }
+  
+  .active .icon::after {
+    content: "";
+    position: absolute;
+    background-color: #b2c798;
+    border-radius: 100%;
+    width: calc(var(--icon-size) * 2);
+    height: calc(var(--icon-size) * 2);
+    top: 0;
+    left: 0;
+    z-index: -1;
+    
+  }
+  .active .icon::before {
+    content: "";
+    position: absolute;
+    background-color: var(--backgroung-color);
+    border-radius: 100%;
+    width: calc((var(--icon-size) + var(--indicator-spacing)) * 2);
+    height: calc((var(--icon-size) + var(--indicator-spacing)) * 2);
+    top: -2px;
+    left: -4px;
+    z-index: -1;
+    
   }
 }
