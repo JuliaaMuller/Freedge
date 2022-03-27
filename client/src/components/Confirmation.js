@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 
 
 export default function Confirmation(props) {
-  console.log(props);
+
   return (
     <Modal 
       {...props}

@@ -48,7 +48,7 @@ export default function IngredientItem({
               <div className="icon">
                 <img
                 onClick={() => handleCategory("vegetable", name, count)}
-                src="images/vegetable.png"
+                src="images/vegetables-bag-48.png"
                 />
               </div>
               <div className="text">Veggies</div>
@@ -59,7 +59,7 @@ export default function IngredientItem({
               <div className="icon">
               <img
                 onClick={() => handleCategory("fruit", name, count)}
-                src="images/fruits.png"
+                src="images/fruit-bag.png"
                 
               />
               </div>
@@ -71,7 +71,7 @@ export default function IngredientItem({
               <div className="icon">
             <img
               onClick={() => handleCategory("protein", name, count)}
-              src="images/meat.png" 
+              src="images/beef.png" 
             />
             </div>
               <div className="text">Protein</div>
@@ -82,7 +82,7 @@ export default function IngredientItem({
               <div className="icon">
             <img
               onClick={() => handleCategory("dairy", name, count)}
-              src="images/dairy.png" 
+              src="images/egg-basket.png" 
             />
             </div>
               <div className="text">Dairy</div>
@@ -93,7 +93,7 @@ export default function IngredientItem({
               <div className="icon">
             <img
               onClick={() => handleCategory("grain", name, count)}
-              src="images/carbohydrates.png" 
+              src="images/flour.png" 
             />
             </div>
               <div className="text">Grains</div>
@@ -104,7 +104,7 @@ export default function IngredientItem({
               <div className="icon">
             <img
               onClick={() => handleCategory("other", name, count)}
-              src="images/question-mark.png" 
+              src="images/empty-jam-jar.png" 
             />
             </div>
               <div className="text">Other</div>
