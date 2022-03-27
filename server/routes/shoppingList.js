@@ -6,9 +6,18 @@ module.exports = (db) => {
   // all routes will go here 
   router.get('/', (req, res) => {
     const userId = req.session["id"]
-    const command = "SELECT * FROM shopping_list WHERE user_id = $1";
+    const command = "SELECT * FROM shopping_list WHERE user_id= $1 GROUP BY aisle, id ORDER BY aisle";
     db.query(command, [userId]).then(data => {
-      res.json(data.rows);
+      const groupData = data.rows.reduce((acc, cur) => {
+    
+        if (!acc[cur.aisle]) {
+          acc[cur.aisle] = [cur];
+        } else {
+          acc[cur.aisle].push(cur);
+        }
+        return acc;
+      }, {})
+      res.json(groupData);
     })
   });
   

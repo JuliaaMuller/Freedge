@@ -19,33 +19,19 @@ function ShoppingList (props) {
     })
   }, [])
 
-  const deleteItem = (id) => {
-      const items = shoppingItems.filter(item => item.id !== id)
-      setShoppingItems(items);
+  const deleteItem = (id, aisle) => {
+      const items = shoppingItems[aisle].filter(item => item.id !== id)
+      setShoppingItems({...shoppingItems, aisle: items});
       axios.delete(`/shopping/${id}`).then(res => console.log(res));
   }
-  const shoppingListItems = shoppingItems.map(item => <ShoppingListItem key={item.id} id={item.id} name={item.name} quantity={item.quantity} aisle={item.aisle} image={item.image} onDelete={deleteItem}/>)
+  const shoppingListItems = Object.keys(shoppingItems).map(item => <ShoppingListItem key={item} name={item} list={shoppingItems[item]} onDelete={deleteItem}/>)
+
   return (
 <>
 <main>
 {!isAuth && <Navigate to='/welcome'/>}
   <h2>My shopping Lists </h2>
- 
-  <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Quantity</th>
-          <th>Aisle</th>
-          <th>Image</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-      {shoppingListItems}
-      </tbody>
-  </Table>      
+    {shoppingListItems}
 </main>
 </>
   )

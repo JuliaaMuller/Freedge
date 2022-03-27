@@ -1,15 +1,17 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 
-export default function ShoppingListItem({ id, name, quantity, image, aisle, onDelete }) {
+export default function ShoppingListItem({ name, list, onDelete }) {
+
   return (
-    <tr>
-      <td>{id}</td>
-      <td>{name}</td>
-      <td>{quantity}</td>
-      <td>{aisle}</td>
-      <td><img src={`${image}`} /></td>
-      <td><img src="images/delete.png" onClick={() => onDelete(id)}/></td>
-    </tr>
+    <ul>
+      {name}
+      {list.map(item => {
+        return (<li key={item.id}>
+          {item.quantity} {item.name}
+        
+        </li>)
+      })}
+    </ul>
   );
 }
