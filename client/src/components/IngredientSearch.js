@@ -274,7 +274,7 @@ export default function IngredientSearch() {
             Create Meal Plan 
           </Button> : ""}
           {status && <Navigate to="/mealplanner"/>}
-          <Confirmation show={modalShow} onHide={() => setModalShow(false)}/>
+          <Confirmation show={modalShow} message={"ERRORRRORORRRR"} onHide={() => setModalShow(false)}/>
       </main>
     </>
   );

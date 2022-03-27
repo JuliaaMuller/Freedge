@@ -140,7 +140,7 @@ export default function RecipeItem({
             </ul>
           )}
         </div>
-        <Confirmation show={modalShow} onHide={() => setModalShow(false)} />
+        <Confirmation show={modalShow} message={"Items added to Shopping List"} onHide={() => setModalShow(false)} />
         {nutrients.length > 0 && <div className="footer">
           <h4>NUTRITION FACTS</h4>
           <table>
