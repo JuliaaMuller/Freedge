@@ -3,7 +3,7 @@ import ExploreListItem from './ExploreListItem';
 import axios from 'axios';
 
 export default function ExploreList({ recipeData }) {
-  console.log(recipeData);
+
   function onFav(id) {
     axios.post(`/recipes/add/${id}`).then(() => {
       console.log(`Recipe ${id} added to favorites`);

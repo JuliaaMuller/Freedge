@@ -135,7 +135,7 @@ export default function IngredientSearch() {
     return false;
   }
   const generateMealPlan = (data) => {
-    console.log(data);  
+
     if(isEmpty(data)) {
       return setModalShow(true);
     }
@@ -237,7 +237,7 @@ export default function IngredientSearch() {
       
       <main>
       {!isAuth && <Navigate to='/welcome'/>}
-      <center><h4 style={{"padding-top": "10px"}}> What do you have in your fridge?</h4></center>
+      <center><h4 style={{"paddingTop": "10px"}}> What do you have in your fridge?</h4></center>
         <Form onSubmit={handleSubmit}>
           <InputGroup className="w-75 mt-2" style={{margin: "0 auto"}}>
          
@@ -274,7 +274,7 @@ export default function IngredientSearch() {
               ""
             )}
    
-         {selection.length > 3 ? <Button className="meal-button" variant="secondary" size="lg" onClick={() => generateMealPlan(category)}>
+         {selection.length > 2 ? <Button className="meal-button" variant="secondary" size="lg" onClick={() => generateMealPlan(category)}>
             Create New Meal Plan 
           </Button> : ""}
           {status && <Navigate to="/mealplanner"/>}

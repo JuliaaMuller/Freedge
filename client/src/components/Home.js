@@ -7,11 +7,16 @@ import { FcSearch } from 'react-icons/fc';
 // import Footer from './footer';
 import { Navigate } from 'react-router-dom';
 import { UserContext } from '../userContext';
+import Explore from './Explore';
 
 
 function Home (props) {
   const { userLog } = useContext(UserContext)
-  const isAuth = window.localStorage.getItem("user_id")
+  const isAuth = window.localStorage.getItem("user_id");
+  const [term, setTerm] = useState("");
+  const [status, setStatus] = useState(false);
+
+
    
   return (
     <>
@@ -55,10 +60,13 @@ function Home (props) {
       placeholder="Enter a key word"
       aria-label="Recipient's username"
       aria-describedby="basic-addon2"
+      value={term}
+      onChange={(e) => setTerm(e.target.value)}
     />
-    <Button variant="outline-secondary" id="button-addon2" href='/explore'>
+    <Button variant="outline-secondary" id="button-addon2" onClick={() => setStatus(true)}>
       <FcSearch/>
     </Button>
+    {status && <Navigate to="/explore" state={term}/>}
   </InputGroup>
     </div>
     </div>
