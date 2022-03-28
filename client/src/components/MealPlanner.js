@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { mealContext } from '../providers/MealProvider';
 import './MealPlanner.scss';
 import { ButtonGroup, ToggleButton, InputGroup, Button, FormControl } from 'react-bootstrap';
@@ -22,6 +22,17 @@ function MealPlanner(props) {
     { name: 'Sun', value: '7' },
   ];
   
+  useEffect(() => {
+    getRecipesForDay().then((data) => {
+      let dayObject = {};
+      dayObject[`Mon`] = {name: "Mon", recipes: data};
+
+      setState(prev => ({...prev, ...dayObject}))
+      setSelected("Mon");
+      
+    })
+  }, [])
+
   function generateRecipes(day) {
     if(!state[day]) {
       getRecipesForDay().then((data) => {
