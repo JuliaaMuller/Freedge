@@ -60,11 +60,11 @@ export default function RecipeItem({
   };
 
 
-  // function onFav(id) {
-  //   axios.post(`/recipes/${id}`).then(() => {
-  //     console.log(`Recipe ${id} added to favorites`);
-  //   });
-  // }
+  function onFav(id) {
+    axios.post(`/recipes/${id}`).then(() => {
+      console.log(`Recipe ${id} added to favorites`);
+    });
+  }
 
   return (
     <>
@@ -102,7 +102,7 @@ export default function RecipeItem({
               className="fav-button"
               variant="btn btn-outline-secondary"
               type="submit"
-              // onClick={onFav}
+              onClick={onFav}
             >
               <BiBookHeart /> Add to favorites
             </Button>

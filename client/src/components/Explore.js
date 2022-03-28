@@ -5,6 +5,7 @@ import { UserContext } from "../userContext";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import ExploreList from "./ExploreList";
+import { InputGroup } from "react-bootstrap";
 import axios from "axios";
 import './Explore.scss';
 
@@ -33,6 +34,7 @@ function Explore(props) {
       <main>
         {!isAuth && <Navigate to='/welcome'/>}
         <Form onSubmit={(e) => e.preventDefault()}>
+        <InputGroup className="w-75 mt-2" style={{margin: "0 auto"}}>
           <Form.Control
             size="lg"
             name="name"
@@ -48,6 +50,7 @@ function Explore(props) {
           >
             Search
           </Button>
+          </InputGroup>
         </Form>
         <div className="recipes">
         {recipeData && <ExploreList recipeData={recipeData} />}
