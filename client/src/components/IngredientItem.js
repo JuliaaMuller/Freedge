@@ -26,7 +26,7 @@ export default function IngredientItem({
     initial[category] = true;
   }
 
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const [status, setStatus] = useState(initial);
   
   function increment() {
@@ -50,7 +50,7 @@ export default function IngredientItem({
         <img onClick={() => onDelete(name)} src="images/close.png" className="delete-icon"/>
 
       <img src="images/up.png" onClick={increment} />
-      <h5>{ count || quantity} </h5>
+      <h5>{ quantity || count} </h5>
     
       <img src="images/down.png" onClick={decrement} />
       <h6>{name}</h6>

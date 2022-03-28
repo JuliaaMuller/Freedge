@@ -78,22 +78,23 @@ export default function IngredientSearch() {
   const [modalShow, setModalShow] = useState(false);
   const isAuth = window.localStorage.getItem("user_id");
   
-  // const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=3&apiKey={process.env.REACT_APP_API_KEY}`;
+  const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=3&apiKey=${process.env.REACT_APP_API_KEY}`;
 
-  //   useEffect(() => {
-  //     axios
-  //       .get(URL)
-  //       .then(function (response) {
-  //         setResults(response.data.results);
-  //         console.log(results);
-  //       })
-  //       .catch(function (error) {
-  //         console.warn(error);
-  //       });
-  //   }, [term.length > 4 ? term: null]);
+    useEffect(() => {
+      axios
+        .get(URL)
+        .then(function (response) {
+          setResults(response.data.results);
+          console.log(results);
+        })
+        .catch(function (error) {
+          console.warn(error);
+        });
+    }, [term.length > 4 ? term: null]);
  
 
   console.log(userId);
+
   const handleChange = (value) => {
     if (!value) {
       setResults([]);
@@ -166,10 +167,11 @@ export default function IngredientSearch() {
   }
   
   const selectedOption = (option) => {
-    setTerm(option.name);
+    setTerm("");
     const found = selection.some(item => item.name === option.name);
     
     setResults([]);
+
     if (found) {
       return setModalShow(true);
     }

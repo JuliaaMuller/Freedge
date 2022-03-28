@@ -22,7 +22,7 @@ const NavMenu = () => {
   const { userLog, setUserLog } = useContext(UserContext);
   const isAuth = window.localStorage.getItem("user_id");
   const [show, setShow] = useState(false);
-
+  const [active, setActive] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
