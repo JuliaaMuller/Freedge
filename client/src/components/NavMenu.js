@@ -53,11 +53,29 @@ const NavMenu = () => {
                   src="https://github.com/JuliaaMuller/Freedge/blob/master/client/public/images/Freedge.png?raw=true"
                 />
               </Navbar.Brand>
+
               <Navbar.Toggle
                 aria-controls="basic-navbar-nav"
                 onClick={handleShow}
               />
               <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+      <Navbar.Text>
+        Signed in as: <a href="#login">Julia Muller </a>
+      </Navbar.Text>
+        <NavDropdown title="Menu" id="basic-nav-dropdown">
+          <NavDropdown.Item href="/ingredients"><BiFridge/> My ingredients</NavDropdown.Item>
+          <NavDropdown.Item href="/shoppinglist"><MdOutlineAddShoppingCart/> My shopping list</NavDropdown.Item>
+          <NavDropdown.Item href="/mealplanner"><BiCalendar/> My meal planner</NavDropdown.Item>
+          <NavDropdown.Item href="/favorites"> <BiBookHeart /> My favorites</NavDropdown.Item>
+          <NavDropdown.Item href="/explore"><BiSearchAlt /> Explore</NavDropdown.Item>
+          <NavDropdown.Item href="/about"><BsPersonCircle /> About</NavDropdown.Item>
+          <NavDropdown.Item href="/settings"><AiOutlineSetting /> Settings</NavDropdown.Item>
+          
+          <NavDropdown.Divider />
+          <NavDropdown.Item onClick={handleLogout} ><BiLogOut/> Log out</NavDropdown.Item>
+        </NavDropdown>
+      </Nav>
                 <Offcanvas show={show} onHide={handleClose}>
                   <Offcanvas.Header closeButton>
                     <Offcanvas.Title>
