@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from "react-bootstrap";
-import { BiBookHeart } from "react-icons/bi";
+import { BiHeartCircle} from "react-icons/bi";
 
 
 export default function ExploreListItem({ recipe, onFav }) {
@@ -26,8 +26,7 @@ export default function ExploreListItem({ recipe, onFav }) {
       variant="btn btn-outline-secondary"
       type="submit"
       onClick={onFav}
-      >
-      Add to favorites
+      ><BiHeartCircle/>  Add to favorites
       </Button>
       </div>
     </article>

@@ -30,18 +30,23 @@
   margin-top: 20px;
 }
 
-.shop-button {
+#shop-button {
 margin: 20px;
-color: rgb(228, 136, 136)
+color: rgb(228, 136, 136);
+background-color: #f3f1ef;
+color:black;
+border-radius: 20px;
 }
 
-.fav-button {
+#fav-button {
   margin: 20px;
+  background-color: #f3f1ef;
+  color:black;
+  border-radius: 20px;
 }
 
-.fav-button:focus {
+#fav-button:focus {
   color: gold;
- 
 }
 
 .recipe-nav {

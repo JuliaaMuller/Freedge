@@ -4,7 +4,7 @@ import RecipeInfo from "./RecipeInfo";
 import Confirmation from "./Confirmation";
 import { Button } from "react-bootstrap";
 import "./RecipeItem.scss";
-import { BiFridge, BiBookHeart } from "react-icons/bi";
+import { BiFridge, BiHeartCircle } from "react-icons/bi";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 
 export default function RecipeItem({
@@ -87,7 +87,7 @@ export default function RecipeItem({
                 <BiFridge /> Ingredients in stock : {usedIngredients.length}
                </Button> */}
             <Button
-              className="shop-button"
+              id="shop-button"
               variant="btn btn-outline-secondary"
               type="submit"
               onClick={addToShopping}
@@ -96,12 +96,12 @@ export default function RecipeItem({
               missing ingredients to shopping list
             </Button>
             <Button
-              className="fav-button"
+              id="fav-button"
               variant="btn btn-outline-secondary"
               type="submit"
               onClick={onFav}
             >
-              <div className="add-favorite-icon"><BiBookHeart /> Add to favorites</div> 
+              <div><BiHeartCircle /> Add to favorites</div> 
             </Button>
           </div>
           <ul className="recipe-nav">

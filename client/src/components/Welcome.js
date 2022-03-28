@@ -14,7 +14,7 @@ function Welcome () {
 
 <img className='logo'  src='images/brand-logo.png'/>
 
-  <div className='welcome-button'>
+  <div id='welcome-button'>
   <Button id='register-b' variant="btn btn-outline-secondary" type="submit" href='/register'>
         Register
   </Button>
