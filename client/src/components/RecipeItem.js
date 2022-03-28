@@ -77,8 +77,8 @@ export default function RecipeItem({
               </a>
             </div>
           )}
-          <h1 className="recipe-title">{title}</h1>
-          <div className="buttons">
+          <h3 className="recipe-title">{title}</h3>
+          <div className="meal-buttons">
             {/* <Button
               className="inStock-button"
               variant="btn btn-outline-secondary"
@@ -101,7 +101,7 @@ export default function RecipeItem({
               type="submit"
               onClick={onFav}
             >
-              <div className="add-favorite-icon"><BiBookHeart /></div> Add to favorites
+              <div className="add-favorite-icon"><BiBookHeart /> Add to favorites</div> 
             </Button>
           </div>
           <ul className="recipe-nav">
