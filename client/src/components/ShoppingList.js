@@ -33,7 +33,7 @@ function ShoppingList (props) {
 <>
 <main className='shopping-container'>
 {!isAuth && <Navigate to='/welcome'/>}
-  <h2>Shopping List </h2>
+  <h3 style={{"padding": "10px"}}>My Shopping List </h3>
   <div className='images'><img src='images/empty-jam-jar.png'/><img src='images/egg-basket.png'/><img src='images/grocery-bag.png'/></div>
     {shoppingListItems}
 </main>

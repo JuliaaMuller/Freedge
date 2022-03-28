@@ -237,7 +237,7 @@ export default function IngredientSearch() {
       
       <main>
       {!isAuth && <Navigate to='/welcome'/>}
-         
+      <center><h4 style={{"padding-top": "10px"}}> What do you have in your fridge?</h4></center>
         <Form onSubmit={handleSubmit}>
           <InputGroup className="w-75 mt-2" style={{margin: "0 auto"}}>
          
