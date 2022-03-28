@@ -17,14 +17,14 @@ import MealProvider from './providers/MealProvider';
 import IngredientProvider from './providers/IngredientProvider';
 import { useContext } from 'react/cjs/react.production.min';
 import { UserContext } from './userContext';
-import NavMenuExtra from './components/NavMenuExtra';
+
 
 
 function App() {
 
   return (
     <>
-    <NavMenuExtra /> 
+    <NavMenu /> 
     <IngredientProvider>
     <MealProvider>
     <BrowserRouter>

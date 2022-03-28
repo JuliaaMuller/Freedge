@@ -31,7 +31,7 @@ function ShoppingList (props) {
 
   return (
 <>
-<main>
+<main className='shopping-container'>
 {!isAuth && <Navigate to='/welcome'/>}
   <h2>Shopping List </h2>
   <div className='images'><img src='images/empty-jam-jar.png'/><img src='images/egg-basket.png'/><img src='images/grocery-bag.png'/></div>

@@ -10,5 +10,5 @@ export default function IngredientList({ items, handleCategory, onDelete }) {
       onDelete={onDelete}
     />
   ));
-  return <ul>{ingredients}</ul>;
+  return <ul className="list-item-container">{ingredients}</ul>;
 }

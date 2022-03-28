@@ -76,7 +76,7 @@ export default function IngredientSearch() {
     other: [],
   });
   const [modalShow, setModalShow] = useState(false);
-  const isAuth = window.localStorage.getItem("user_id")
+  const isAuth = window.localStorage.getItem("user_id");
   
   // const URL = `https://api.spoonacular.com/food/ingredients/search?query=${term}&number=3&apiKey={process.env.REACT_APP_API_KEY}`;
 
@@ -237,23 +237,19 @@ export default function IngredientSearch() {
       
       <main>
       {!isAuth && <Navigate to='/welcome'/>}
-            <UserIngredientsList />
-            {selection.length > 0 ? (
-              <IngredientList items={selection} onDelete={onDelete} handleCategory={handleCategory} />
-            ) : (
-              ""
-            )}
+         
         <Form onSubmit={handleSubmit}>
           <InputGroup className="w-75 mt-2" style={{margin: "0 auto"}}>
-          <Button variant="btn btn-outline-secondary" onClick={() => setShowInput(!showInput)}>{showInput ? "-" : "+"}</Button>
-        { showInput && <Form.Control
+         
+        <Form.Control
             size="lg"
             name="name"
             type="text"
             placeholder="Search Ingredients"
             value={term}
             onChange={(event) => handleChange(event.target.value)}
-          />}
+          />
+          <Button type="submit" variant="btn btn-outline-secondary">Add Ingredient</Button>
           </InputGroup>
         </Form>
         {/* <h5>Please add at least 5 ingredients and their categories. </h5> */}
@@ -270,11 +266,19 @@ export default function IngredientSearch() {
               </Card>
             );
           })}
-         {selection.length > 4 ? <Button variant="secondary" size="lg" onClick={() => generateMealPlan(category)}>
-            Create Meal Plan 
+          
+             <UserIngredientsList handleCategory={handleCategory}/>
+            {selection.length > 0 ? (
+              <IngredientList items={selection} onDelete={onDelete} handleCategory={handleCategory} />
+            ) : (
+              ""
+            )}
+   
+         {selection.length > 3 ? <Button className="meal-button" variant="secondary" size="lg" onClick={() => generateMealPlan(category)}>
+            Create New Meal Plan 
           </Button> : ""}
           {status && <Navigate to="/mealplanner"/>}
-          <Confirmation show={modalShow} message={"ERRORRRORORRRR"} onHide={() => setModalShow(false)}/>
+          <Confirmation show={modalShow} message={"The quantity and category is required"} onHide={() => setModalShow(false)}/>
       </main>
     </>
   );
