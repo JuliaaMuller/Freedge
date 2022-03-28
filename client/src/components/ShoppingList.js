@@ -5,7 +5,7 @@ import Table from "react-bootstrap/Table";
 import ShoppingListItem from './ShoppingListItem';
 import { Navigate } from 'react-router-dom';
 import { UserContext } from '../userContext';
-import "./ShoppingList.scss";
+// import "./ShoppingList.scss";
 
 function ShoppingList (props) {
 

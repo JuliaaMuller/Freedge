@@ -13,6 +13,7 @@ export default function RecipeItem({
   image,
   usedIngredients,
   missedIngredients,
+  onFav,
 }) {
   const [instructions, setInstructions] = useState([]);
   const [mealData, setMealData] = useState(null);
@@ -60,11 +61,7 @@ export default function RecipeItem({
   };
 
 
-  function onFav(id) {
-    axios.post(`/recipes/${id}`).then(() => {
-      console.log(`Recipe ${id} added to favorites`);
-    });
-  }
+  
 
   return (
     <>
@@ -104,7 +101,7 @@ export default function RecipeItem({
               type="submit"
               onClick={onFav}
             >
-              <BiBookHeart /> Add to favorites
+              <div className="add-favorite-icon"><BiBookHeart /></div> Add to favorites
             </Button>
           </div>
           <ul className="recipe-nav">
