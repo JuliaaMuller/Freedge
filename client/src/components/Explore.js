@@ -3,7 +3,6 @@ import NavMenu from "./NavMenu";
 import { Navigate } from "react-router-dom";
 import { UserContext } from "../userContext";
 import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
 import ExploreList from "./ExploreList";
 import axios from "axios";
 import './Explore.scss';

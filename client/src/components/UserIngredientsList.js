@@ -7,9 +7,6 @@ export default function UserIngredientsList() {
  const { userIngredients, onDeleteItem } = useContext(IngredientContext);
   const { userId } = useContext(UserContext);
 
-  console.log(userIngredients);
-  console.log(userId);
-
   let userItems = [];
 
   for (let key of Object.keys(userIngredients)) {
@@ -18,6 +15,7 @@ export default function UserIngredientsList() {
         <IngredientItem
           key={item.name}
           name={item.name}
+          category={key}
           quantity={item.quantity}
           onDelete={onDeleteItem}
         />

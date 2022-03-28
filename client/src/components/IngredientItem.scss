@@ -25,11 +25,6 @@
   }
 }
 
-.delete-icon {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
 
 .category-nav {
   // background-color: white;
@@ -111,4 +106,13 @@
     z-index: -1;
     
   }
+}
+
+
+.delete-icon {
+  position: absolute;
+  height: 1em;
+  width: 1em;
+  top: -0.1em;
+  right: -0.1em;
 }

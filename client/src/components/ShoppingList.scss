@@ -5,28 +5,29 @@
 .list-container {
   display: flex;
   flex-direction: row;
-  background-color: rgb(191, 240, 191);
+  background-color: rgb(236, 198, 117);
   margin: 20px auto;
   width: 50%;
   justify-content: center;
-
-}
-
-.list-container:nth-child(3), :nth-child(5), :nth-child(7) {
-  background-color: rgb(243, 201, 146);
   .heading {
-    background-color: rgb(230, 147, 39);
-    width: 100%;
+  background-color: rgb(221, 153, 27);
+  width: 100%;
   }
+
 }
 
-.list-container:nth-child(2), :nth-child(4), :nth-child(6) {
-  background-color: rgb(191, 240, 191);
-  .heading {
-    background-color: rgb(80, 119, 80);;
-    width: 100%;
-  }
-}
+// .list-container:nth-child(3), :nth-child(5), :nth-child(7) {
+//   background-color: rgb(243, 201, 146);
+//   
+// }
+
+// .list-container:nth-child(2), :nth-child(4), :nth-child(6) {
+//   background-color: rgb(191, 240, 191);
+//   .heading {
+//     background-color: rgb(80, 119, 80);;
+//     width: 100%;
+//   }
+// }
 
 .close {
   width: 12x;
@@ -34,11 +35,12 @@
   right: 0;
 }
 
-.list {
+.shopping-list {
   display:flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  padding: 0;
 
   li {
     width: 100%;

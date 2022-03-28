@@ -7,7 +7,7 @@ export default function ShoppingListItem({ name, list, onDelete }) {
   return (
 
     <div className="list-container">
-    <ul className="list">
+    <ul className="shopping-list">
       <h3 className="heading">{name}</h3>
       {list.map(item => {
         return (<li key={item.id}>

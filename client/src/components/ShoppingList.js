@@ -9,7 +9,7 @@ import { UserContext } from '../userContext';
 
 function ShoppingList (props) {
 
-  const [shoppingItems, setShoppingItems] = useState([]);
+  const [shoppingItems, setShoppingItems] = useState({});
   const { userLog } = useContext(UserContext)
   const isAuth = window.localStorage.getItem("user_id")
 
@@ -34,7 +34,7 @@ function ShoppingList (props) {
 <main>
 {!isAuth && <Navigate to='/welcome'/>}
   <h2>Shopping List </h2>
-  <div className='icons'><img src='images/empty-jam-jar.png'/><img src='images/egg-basket.png'/><img src='images/grocery-bag.png'/></div>
+  <div className='images'><img src='images/empty-jam-jar.png'/><img src='images/egg-basket.png'/><img src='images/grocery-bag.png'/></div>
     {shoppingListItems}
 </main>
 </>
