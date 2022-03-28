@@ -3,7 +3,7 @@ import IngredientItem from "./IngredientItem";
 import { IngredientContext } from "../providers/IngredientProvider";
 import { UserContext } from '../userContext';
 
-export default function UserIngredientsList() {
+export default function UserIngredientsList(props) {
  const { userIngredients, onDeleteItem } = useContext(IngredientContext);
   const { userId } = useContext(UserContext);
 
@@ -18,6 +18,7 @@ export default function UserIngredientsList() {
           category={key}
           quantity={item.quantity}
           onDelete={onDeleteItem}
+          handleCategory={props.handleCategory}
         />
       )
     );
