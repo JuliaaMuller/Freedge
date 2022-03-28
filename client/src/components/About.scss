@@ -1,32 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
 .about-container {
+display: flex;
+flex-direction: column;
 margin-top: 20px;
 justify-content: center;
+align-items: center;
  h5 {
    font-family: 'Playfair Display', serif;
  }
 }
 
-.menu-1 {
+.menu-1-about {
 display: flex;
 flex-direction: row;
-justify-content: space-between;
+justify-content: center;
 }
 
 .manseerat {
 margin-top: 20px;
 margin: 20px;
-width: 80%;
+width: 50%;
 padding: 10px;
 background-color: #ede7e1;
 border-radius: 8px;
 text-align: center;
+box-shadow: 0 4px 8px 2px rgba(77, 77, 77, 0.15);
 }
 
-.manseerat:hover {
-  box-shadow: 3px 4px rgb(201, 178, 158);
-}
 
 #mama-img {
   height: 90px;
@@ -36,16 +37,14 @@ text-align: center;
 .julia {
 margin-top: 20px;
 margin: 20px;
-width: 80%;
+width: 50%;
 padding: 10px;
 background-color: #ede7e1;
 border-radius: 8px;
 text-align: center;
+box-shadow: 0 4px 8px 2px rgba(77, 77, 77, 0.15);
 }
 
-.julia:hover {
-  box-shadow: 3px 4px rgb(201, 178, 158);
-}
 
 #juju-img {
   height: 90px;
@@ -56,19 +55,16 @@ text-align: center;
 margin-top: 20px;
 margin: 20px;
 padding: 10px;
+width: 65%;
 background-color: #ede7e1;
 border-radius: 8px;
 text-align: center;
-}
-
-.description:hover {
-  box-shadow: 3px 4px rgb(201, 178, 158);
+box-shadow: 0 4px 8px 2px rgba(77, 77, 77, 0.15);
 }
 
 #image-about {
 display: block;
 margin: 0px auto;
-height: 250px;
-height: 300px;
-border-radius: 12px;
+width: 10%;
+border-radius: 20px;
 }

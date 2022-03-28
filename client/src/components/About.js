@@ -8,7 +8,7 @@ function About (props) {
 <main>
 <div className='about-container'>
   <center><h5> Who are we ? </h5></center>
-  <div className='menu-1'>
+  <div className='menu-1-about'>
   <div className='manseerat'>
     <p> Manseerat Kaur is a full-stack developper </p>
     <img id='mama-img' src='https://live.staticflickr.com/8818/17050483727_b541cbe73b_z.jpg'/>
