@@ -141,18 +141,21 @@ export default function RecipeItem({
         {nutrients.length > 0 && <div className="footer">
           <h4>NUTRITION FACTS</h4>
           <table>
+            <thead>
             <tr>
-              <td>
+              <th>
                 CALORIES:
                 {`${nutrients[0].amount} ${nutrients[0].unit}`}
-              </td>
-              <td>
+              </th>
+              <th>
                 SATURATED FAT: {`${nutrients[1].amount} ${nutrients[1].unit}`}
-              </td>
-              <td>
+              </th>
+              <th>
                 SODIUM: {`${nutrients[7].amount} ${nutrients[7].unit}`}
-              </td>
+              </th>
             </tr>
+            </thead>
+            <tbody>
             <tr>
               <td>
                 SUGAR: {`${nutrients[5].amount} ${nutrients[5].unit}`}
@@ -164,6 +167,7 @@ export default function RecipeItem({
                 CARBOHYDRATES: {`${nutrients[3].amount} ${nutrients[3].unit}`}
               </td>
             </tr>
+            </tbody>
           </table>
         </div>}
       </div>

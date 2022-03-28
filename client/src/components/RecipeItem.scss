@@ -118,22 +118,23 @@ border-radius: 20px;
     text-align: center;
     color: white;
     margin: auto;
+
   }
-  td {
+  td, th {
     border: 2px solid white;
     padding: 4px;
-  }
-  td:nth-child(2), td:nth-child(1), td:nth-child(3) {
-    border-top: none;
-  }
-  td:nth-child(4), td:nth-child(5), td:nth-child(6) {
-    border-bottom: none;
+  
   }
 
-  td:nth-child(1), td:nth-child(4) {
-    border-left: none;
+
+  th {
+    border-top: none;
   }
-  td:nth-child(3), td:nth-child(6) {
+
+  td:nth-child(1), th:nth-child(1){
+     border-left: none;
+  }
+  td:nth-child(3), th:nth-child(3){
     border-right: none;
   }
 
