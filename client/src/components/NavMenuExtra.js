@@ -67,7 +67,7 @@ const NavMenu = () => {
                   </Offcanvas.Header>
                   <Offcanvas.Body>
                     <Nav className="me-auto flex-column">
-                      <Nav.Link href="/">Active</Nav.Link>
+                      
                       <Nav.Link href="/ingredients" eventKey="link-1">
                         <BiFridge /> My ingredients
                       </Nav.Link>
@@ -88,9 +88,6 @@ const NavMenu = () => {
                       </Nav.Link>
                       <Nav.Link href="/settings" eventKey="link-7">
                         <AiOutlineSetting /> Settings
-                      </Nav.Link>
-                      <Nav.Link href="/about" eventKey="link-8">
-                        <BsPersonCircle /> About
                       </Nav.Link>
                       <Nav.Link
                         href="#"
