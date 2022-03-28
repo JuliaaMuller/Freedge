@@ -9,10 +9,11 @@ import './FavoriteItem.scss';
 
 
 
-export default function FavoriteItem ({recipe_id, onDelete}) {
+export default function FavoriteItem ({recipe_id, onDelete, url}) {
 
 const[title,setTitle]=useState('')
 const[image, setImage]=useState('')
+const[recipeUrl, setUrl]=useState('')
 
   useEffect(()=> {
     // let url = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY}`
@@ -21,6 +22,7 @@ const[image, setImage]=useState('')
     .then((response)=>  {
       setTitle(response.data.title)
       setImage(response.data.image)
+      setUrl(response.data.sourceUrl)
     })
     .catch((err) => console.log(err));
   }, [])
@@ -32,11 +34,18 @@ const[image, setImage]=useState('')
       <h5 className='fav-recipe-title'>
         {title}
         </h5>
-      <img className='fav-recipe-image' 
+      <img className='fav-recipe-image' href={recipeUrl}
       src={image}
       />
       <div className='buttons'>
-      
+      <Button
+      id="go-to-button-explore"
+      variant="btn btn-outline-secondary"
+      type="submit"
+      href={recipeUrl} target={"_blank"}
+      >
+      Go to Recipe
+      </Button>
         <Button  id='fav-button' onClick={onDelete} variant="btn btn-outline-secondary" type="submit" >
                 <GiBrokenHeart/> Remove from favorites
         </Button>

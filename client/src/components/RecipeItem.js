@@ -70,8 +70,8 @@ export default function RecipeItem({
         <div className="recipe-body">
           {mealData && (
             <div className="info">
-              <span>Ready In: {mealData.readyInMinutes} mins </span>
-              <span>Serves: {mealData.servings} </span>
+              <span>Ready In: {mealData.readyInMinutes} mins | </span>
+              <span>Serves: {mealData.servings} | </span>
               <a href={mealData.sourceUrl} target="_blank">
                 Find Details
               </a>
@@ -114,7 +114,7 @@ export default function RecipeItem({
               </h3>
             </li>
             <li className={showMethod ? "active" : ""} onClick={toggleShow}>
-              <h3>Method</h3>
+              <h3>Steps</h3>
             </li>
           </ul>
           {showIngredients && (

@@ -1,6 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
 .recipe-item {
-  
-  
   border-color: black;
   border: solid 2px;
   border-radius: 8px;
@@ -12,24 +12,18 @@
   width: 80%;
   margin: 50px auto;
   background-color: white;
+  box-shadow: 0 4px 8px 2px rgba(77, 77, 77, 0.15)
 }
-.recipe-item:hover {
-  box-shadow: 3px 4px gray;
-}
+
 .recipe-title {
   text-align: center;
+  font-family: 'Playfair Display', serif;
 }
 
 .recipe-image {
-  // display: block;
-  margin: 0px auto;
+  margin: 10px;
   height: 200px;
   border-radius: 8px;
-  // max-width: 100%;
-  // width: -webkit-fill-available;
-  /* background-size: contain; */
-  // height: -webkit-fill-available;
-
 }
 
 .buttons {
@@ -112,6 +106,8 @@ color: rgb(228, 136, 136)
 
 .footer{
   background-color: #b2c798;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
   color: white;
   table {
     text-align: center;

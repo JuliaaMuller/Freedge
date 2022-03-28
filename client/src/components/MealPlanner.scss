@@ -2,13 +2,30 @@
 .my-meal-planner {
 margin-top: 20px;
 text-align: center;
-padding: 10px;
-border-color: black;
-border: solid 2px;
-border-radius: 8px;
-text-align: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+h2 {
+  font-family: 'Playfair Display', serif;
+  color: black;
+  margin-top: 20px;
+  width: 30%;
+  justify-content: center;
+  border-color: black;
+  border: solid 1px;
+  border-radius: 20px;
+  text-align: center;
+  background-color:#f3f1ef;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
-.my-meal-planner:hover {
-  box-shadow: 3px 4px gray;
 }
+
+#days-button {
+  font-size: 15px;
+  background-color: #f3f1ef;
+  color:black;
+  border-radius: 20px;
+}
+

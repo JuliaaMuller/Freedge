@@ -40,9 +40,9 @@ function MealPlanner(props) {
   return (
 <>
 <main>
-  <h2>My meal planner </h2>
   <div className='my-meal-planner'>
-         <ButtonGroup className='days-button'>
+  <h2>My meal planner </h2>
+         <ButtonGroup id='days-button'>
         {days.map((day, idx) => (
           <ToggleButton
             key={idx}

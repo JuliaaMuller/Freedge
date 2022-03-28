@@ -1,41 +1,63 @@
+.favorites-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
+
 .favorite-container {
-align-items: center;
-display: flex;
-flex-direction: row;
-justify-content: center;
-flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  flex-wrap: wrap;
 }
 
 .fav-recipe-item {
-// margin-top: 20px;
-margin: 20px;
-width: 45%;
-padding: 10px;
-background-color: #ede7e1;
-background-image: url('https://www.svgrepo.com/show/91325/bookmark.svg') ;
-background-repeat: no-repeat;
-background-position: top;
-background-position-x: right;
-background-size: 60px;
-border-radius: 8px;
-text-align: center;
-}
-
-.fav-recipe-item:hover {
-  box-shadow: 3px 4px rgb(201, 178, 158);
+  // margin-top: 20px;
+  margin: 20px;
+  padding: 10px;
+  background-color: #ede7e1;
+  background-image: url('https://www.svgrepo.com/show/91325/bookmark.svg') ;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-position-x: right;
+  background-size: 60px;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 25%;
+  box-shadow: 0 4px 8px 2px rgba(77, 77, 77, 0.15)
 }
 
 .fav-recipe-title {
   font-family: 'Playfair Display', serif;
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-left: 10%;
+  width: 80%;
 }
+
 .fav-recipe-image {
+  margin-bottom: 1rem;
+  border-radius: 8px;
   height: 200px;
-  border-radius: 30px;
 }
 
 #fav-title {
   font-family: 'Playfair Display', serif;
   text-align:center;
+  color: black;
+  margin-top: 20px;
+  justify-content: center;
+  border-color: black;
+  border: solid 1px;
+  border-radius: 20px;
+  text-align: center;
+  background-color:#f3f1ef;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
 #fav-button {

@@ -33,7 +33,9 @@ console.log('favList=',favList)
 <>
 <main>
 {!isAuth && <Navigate to="/welcome"/>}
+<header className='favorites-header'>
 <h2 id='fav-title'>My favorites recipes </h2>
+</header>
   <div className='favorite-container'>
 
   
