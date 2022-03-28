@@ -1,38 +1,64 @@
-* {
-  margin: 0;
-  padding: 0;
+
+.explore-box{
+  margin-top: 10px;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+  h5 {
+    margin-top: 15px;
+    font-family: 'Playfair Display', serif;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+  }
 }
 
 .recipes {
   display: flex;
   align-items: center;
+  border-radius: 8px;
+  text-align: center;
 }
 
 section {
   margin: 2rem 0 1rem 0; 
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  // background-color: #ede7e1;
 }
 
-h1 {
+h4 {
   text-align: center;
   margin-bottom: 2rem;
+  font-family: 'Playfair Display', serif;
 }
 
 article img {
-  width: 100%;
   margin-bottom: 1rem;
+  border-radius: 8px;
+  height: 200px;
 }
 
 article {
+  background-color: #ede7e1;
   display: flex;
   flex-direction: column;
   padding: 2rem;
   margin: 0 1rem;
-  
+  margin-bottom: 20px;
+  border-radius: 8px;
   box-shadow: 0 4px 8px 2px rgba(77, 77, 77, 0.15);
 }
-
+// .article:hover {
+//   box-shadow: 3px 4px rgb(201, 178, 158);
+// }
 .instructions {
   font-size: 0.9rem;
   margin-bottom: 1rem;
@@ -46,6 +72,17 @@ article a {
   width: fit-content;
   padding: 0.5rem 1rem;
   cursor: pointer ;
+}
+
+.go-to-button{
+font-size: 15px;
+background-color: #f3f1ef;
+color:black;
+border-radius: 20px;
+}
+
+#explore-bar-2{
+  width: 30%;
 }
 
 @media only screen and (max-width: 800px) {

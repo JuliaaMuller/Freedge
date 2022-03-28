@@ -3,10 +3,12 @@ import NavMenu from "./NavMenu";
 import { Navigate } from "react-router-dom";
 import { UserContext } from "../userContext";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 import ExploreList from "./ExploreList";
 import axios from "axios";
 import './Explore.scss';
+import { InputGroup, Button, FormControl } from 'react-bootstrap';
+import { FcSearch } from 'react-icons/fc';
 
 function Explore(props) {
   const { userLog } = useContext(UserContext);
@@ -32,25 +34,24 @@ function Explore(props) {
     <>
       <main>
         {!isAuth && <Navigate to='/welcome'/>}
-        <Form onSubmit={(e) => e.preventDefault()}>
-          <Form.Control
-            size="lg"
+        <div className="explore-box">
+        <h5>Explore for more recipes : </h5>
+        <Form classname='search-container' onSubmit={(e) => e.preventDefault()}>
+        <InputGroup className="mb-3" id='explore-bar-2'>
+          <FormControl
             name="name"
-            type="text"
             value={term}
             onChange={(e) => setTerm(e.target.value)}
-            placeholder="Search Recipes"
+            placeholder="Enter a key word"
           />
-          <Button
-            type="submit"
-            variant="btn btn-outline-secondary"
-            onClick={getRecipeData}
-          >
-            Search
+          <Button variant="outline-secondary" type ='submit' id="button-addon2" onClick={getRecipeData}>
+            <FcSearch/>
           </Button>
-        </Form>
+        </InputGroup>
+        </Form> 
         <div className="recipes">
         {recipeData && <ExploreList recipeData={recipeData} />}
+        </div>
         </div>
       </main>
     </>

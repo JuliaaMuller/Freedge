@@ -25,10 +25,10 @@
   margin: 0px auto;
   height: 200px;
   border-radius: 8px;
-  max-width: 100%;
-  width: -webkit-fill-available;
+  // max-width: 100%;
+  // width: -webkit-fill-available;
   /* background-size: contain; */
-  height: -webkit-fill-available;
+  // height: -webkit-fill-available;
 
 }
 
@@ -43,6 +43,11 @@ color: rgb(228, 136, 136)
 
 .fav-button {
   margin: 20px;
+}
+
+.fav-button:focus {
+  color: gold;
+ 
 }
 
 .recipe-nav {

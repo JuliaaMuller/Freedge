@@ -35,11 +35,21 @@ module.exports = (db) => {
     });
   });
   
-  router.post('/recipes/:id', (req, res) => {
+  router.post("/add/:id", (req, res) => {
+
+    const askQuery = `SELECT * FROM favorites WHERE recipe_id = $1 AND user_id = $2;`
+    console.log("req.params add favorites", req.params)
     const queryString = `INSERT INTO favorites(recipe_id, user_id) VALUES ($1, $2) RETURNING *;`
-    const values = [req.params["id"], req.session["user_id"]];
-    return db.query(queryString, values)
-    .then(() => res.status(200).send("New favorite"))
+    const values = [req.params["id"], req.session["id"]];
+    return db.query(askQuery,values).then((data)=>{ if(!data.rows[0]){
+
+      return db.query(queryString, values)
+      .then(() => res.status(200).send("New favorite")) 
+    } else {
+      res.status(403).send("This favorite has already been added by this user")
+    } })
+    
+    // .catch(()=> res.status(403).send("Error adding this recipe to favorites"))
   })
 
   return router;
