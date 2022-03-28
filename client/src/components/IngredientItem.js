@@ -3,11 +3,13 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
 import "./IngredientItem.scss";
 
+
 export default function IngredientItem({
   name,
   handleCategory,
   quantity,
   onDelete,
+  category
 }) {
 
   let initial = {
@@ -19,8 +21,11 @@ export default function IngredientItem({
     grain: false
   };
 
+  if (category) {
+    initial[category] = true;
+  }
   const [count, setCount] = useState(0);
-  const [status, setStatus] = useState(initial)
+  const [status, setStatus] = useState(initial);
 
   function increment() {
     setCount((prev) => prev + 1);
