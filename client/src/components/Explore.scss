@@ -74,11 +74,20 @@ article a {
   cursor: pointer ;
 }
 
-.go-to-button{
+#go-to-button-explore{
 font-size: 15px;
 background-color: #f3f1ef;
 color:black;
 border-radius: 20px;
+margin: 10px;
+}
+
+#fav-button-explore {
+  font-size: 15px;
+  background-color: #f3f1ef;
+  color:black;
+  border-radius: 20px;
+  margin: 10px;
 }
 
 #explore-bar-2{

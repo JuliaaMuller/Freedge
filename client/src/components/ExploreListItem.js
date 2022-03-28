@@ -1,6 +1,9 @@
 import React from 'react'
+import { Button } from "react-bootstrap";
+import { BiBookHeart } from "react-icons/bi";
 
-export default function ExploreListItem({ recipe }) {
+
+export default function ExploreListItem({ recipe, onFav }) {
   return (
     <article>
       <h4>{recipe.title}</h4>
@@ -9,7 +12,24 @@ export default function ExploreListItem({ recipe }) {
         <span>Cooking Time: {recipe.readyInMinutes} mins </span> |
       <span>     Servings: {recipe.servings}     </span>   
       </div>
-      <a className='go-to-button' href={recipe.sourceUrl} target={"_blank"}>Go to Recipe</a>
+      <div className='explore-button-container'>
+      <Button
+      id="go-to-button-explore"
+      variant="btn btn-outline-secondary"
+      type="submit"
+      href={recipe.sourceUrl} target={"_blank"}
+      >
+      Go to Recipe
+      </Button>
+      <Button
+      id="fav-button-explore"
+      variant="btn btn-outline-secondary"
+      type="submit"
+      onClick={onFav}
+      >
+      Add to favorites
+      </Button>
+      </div>
     </article>
   )
 }
