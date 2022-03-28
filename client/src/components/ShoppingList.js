@@ -5,7 +5,7 @@ import Table from "react-bootstrap/Table";
 import ShoppingListItem from './ShoppingListItem';
 import { Navigate } from 'react-router-dom';
 import { UserContext } from '../userContext';
-// import "./ShoppingList.scss";
+import "./ShoppingList.scss";
 
 function ShoppingList (props) {
 
@@ -31,9 +31,9 @@ function ShoppingList (props) {
 
   return (
 <>
-<main>
+<main className='shopping-container'>
 {!isAuth && <Navigate to='/welcome'/>}
-  <h2>Shopping List </h2>
+  <h3 style={{"padding": "10px"}}>My Shopping List </h3>
   <div className='images'><img src='images/empty-jam-jar.png'/><img src='images/egg-basket.png'/><img src='images/grocery-bag.png'/></div>
     {shoppingListItems}
 </main>

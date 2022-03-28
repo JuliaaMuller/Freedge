@@ -1,6 +1,6 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
-// import "./ShoppingList.scss";
+import "./ShoppingList.scss";
 
 export default function ShoppingListItem({ name, list, onDelete }) {
 
