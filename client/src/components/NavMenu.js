@@ -61,7 +61,7 @@ const NavMenu = () => {
               <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
       <Navbar.Text>
-        Signed in as: <a href="#login">Julia Muller </a>
+        Signed in as: <a href="#login">{userLog} </a>
       </Navbar.Text>
         <NavDropdown title="Menu" id="basic-nav-dropdown">
           <NavDropdown.Item href="/ingredients"><BiFridge/> My ingredients</NavDropdown.Item>
