@@ -8,6 +8,7 @@ import Explore from './components/Explore';
 import Favorites from './components/Favorites';
 import NavMenu from './components/NavMenu';
 import LogIn from './components/LogIn';
+import ErrorPage from './components/ErrorPage';
 import Settings from './components/Settings';
 import ShoppingList from './components/ShoppingList';
 import Register from './components/Register';
@@ -41,6 +42,7 @@ function App() {
         <Route path="/shoppinglist" element={<ShoppingList />}></Route>
         <Route path="/mealplanner" element={<MealPlanner />}></Route>
         <Route path="/about" element={<About />}></Route>
+        <Route path="*" element={<ErrorPage />}></Route>
     
     </Routes>
   </BrowserRouter>
