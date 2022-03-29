@@ -125,7 +125,7 @@ export default function RecipeItem({
               </ul>
               <ul className="missed">
                 {missedIngredients.map((item) => {
-                  return <li>{item.original}</li>;
+                  return <li key={item.id}>{item.original}</li>;
                 })}
               </ul>
             </div>

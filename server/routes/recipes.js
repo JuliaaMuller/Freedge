@@ -23,8 +23,12 @@ module.exports = (db) => {
           result[item][Math.floor(Math.random() * result[item].length)].name
       );
 
-      const queryString = queryList.join(",");
-        console.log(queryString);
+      const secondList = Object.keys(result).map(
+        (item) =>
+          result[item][Math.floor(Math.random() * result[item].length)].name
+      );
+      const queryString = queryList.join(",") + "," + secondList.join(",");
+      console.log(queryString);
       const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${queryString}&number=2&ranking=1&apiKey=${process.env.API_KEY
       }`;
 
