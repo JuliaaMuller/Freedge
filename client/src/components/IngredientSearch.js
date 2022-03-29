@@ -90,7 +90,7 @@ export default function IngredientSearch() {
         .catch(function (error) {
           console.warn(error);
         });
-    }, [term.length > 4 ? term: null]);
+    }, [term.length > 3 ? term: null]);
  
 
   console.log(userId);
@@ -102,10 +102,10 @@ export default function IngredientSearch() {
    
     
     setTerm(value);
-    if (value.length > 3) {
-      setResults(resultsArray);
+    // if (value.length > 3) {
+    //   setResults(resultsArray);
      
-    }
+    // }
 
   };
 
@@ -269,14 +269,14 @@ export default function IngredientSearch() {
             );
           })}
           
-             <UserIngredientsList handleCategory={handleCategory}/>
             {selection.length > 0 ? (
               <IngredientList items={selection} onDelete={onDelete} handleCategory={handleCategory} />
-            ) : (
-              ""
-            )}
+              ) : (
+                ""
+                )}
+                <UserIngredientsList handleCategory={handleCategory}/>
    
-         {selection.length > 2 ? <Button className="meal-button" variant="secondary" size="lg" onClick={() => generateMealPlan(category)}>
+         {selection.length > 1 ? <Button className="meal-button" variant="secondary" size="lg" onClick={() => generateMealPlan(category)}>
             Create New Meal Plan 
           </Button> : ""}
           {status && <Navigate to="/mealplanner"/>}

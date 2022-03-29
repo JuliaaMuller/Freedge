@@ -33,7 +33,7 @@ export default function RecipeItem({
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(nutrients);
+ 
   function addToShopping() {
     missedIngredients.forEach((item) => {
       let amount = 1;
@@ -59,7 +59,6 @@ export default function RecipeItem({
     setShowMethod(!showMethod);
     setShowIngredients(!showIngredients);
   };
-
 
   
 
@@ -121,12 +120,12 @@ export default function RecipeItem({
             <div className="recipe-ingredients">
               <ul className="stock">
                 {usedIngredients.map((item) => {
-                  return <li>{item.original}</li>;
+                  return <li key={item.id}>{item.original}</li>;
                 })}
               </ul>
               <ul className="missed">
                 {missedIngredients.map((item) => {
-                  return <li>{item.original}</li>;
+                  return <li key={item.id}>{item.original}</li>;
                 })}
               </ul>
             </div>
