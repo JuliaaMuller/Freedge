@@ -16,7 +16,7 @@ const[image, setImage]=useState('')
 const[recipeUrl, setUrl]=useState('')
 
   useEffect(()=> {
-    // let url = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY}`
+    // let url = `https://api.spoonacular.com/recipes/${recipe_id}/information?apiKey=${process.env.REACT_APP_API_KEY}`
     let url = `https://api.spoonacular.com/recipes/${recipe_id}/information?includeNutrition=false&apiKey=e6e56c0c58be4654a653d00d767b3fc5`
     return axios.get(url)
     .then((response)=>  {
